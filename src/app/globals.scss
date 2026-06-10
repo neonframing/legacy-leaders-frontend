@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+// Color tokens requested for the project. This file is kept for Sass-based styling,
+// but the runtime import uses globals.css because Next dev in this environment is
+// failing to resolve Sass despite the package being installed.
+
 :root {
   --background: #f6f1e8;
   --foreground: #344059;
