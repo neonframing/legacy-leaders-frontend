@@ -5,6 +5,8 @@ import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 
+export const revalidate = 60;
+
 export default async function Home() {
   const query = `*[_type == "testimonial"]{
     _id,
@@ -14,7 +16,9 @@ export default async function Home() {
     image
   }`;
 
-  const testimonials = await client.fetch(query);
+  const testimonials = await client.fetch(query, {}, {
+    next: { revalidate: 60, tags: ["testimonials"] },
+  });
   const testimonialSlides = testimonials.map((testimonial) => ({
     _id: testimonial._id,
     name: testimonial.name,
