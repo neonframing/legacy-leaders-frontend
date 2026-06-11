@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 import { ArrowRight, ArrowUpRight, BookOpen, Briefcase, Heart, PlayCircle, Target, Users } from "lucide-react";
 import { client, urlFor } from '@/lib/sanityClient';
@@ -6,8 +7,6 @@ import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-
-export const revalidate = 60;
 
 export default async function Home() {
   const query = `*[_type == "testimonial"]{
