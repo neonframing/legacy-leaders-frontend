@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -18,10 +19,10 @@ function HeaderButton({ children, variant = "primary", className = "" }) {
 }
 
 const navLinks = [
-  { name: "Our Story", href: "#story" },
-  { name: "Our Programs", href: "#programs" },
-  { name: "Get Involved", href: "#get-involved" },
-  { name: "Contact Us", href: "#contact" },
+  { name: "Our Story", href: "/our-story" },
+  { name: "Our Programs", href: "/our-programs" },
+  { name: "Get Involved", href: "/get-involved" },
+  { name: "Contact Us", href: "/contact-us" },
 ];
 
 export default function SiteHeader() {
@@ -55,19 +56,19 @@ export default function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
-        <a href="#" className="z-50 flex-shrink-0">
+        <Link href="/" className="z-50 flex-shrink-0">
           <BrandLogo />
-        </a>
+        </Link>
 
         <nav className="hidden items-center space-x-8 lg:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="cursor-pointer text-sm font-semibold uppercase tracking-wider transition-colors hover:text-[#D89B2B]"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -135,14 +136,14 @@ export default function SiteHeader() {
           </button>
 
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="cursor-pointer text-2xl font-bold uppercase tracking-widest text-[#344059] hover:text-[#D89B2B]"
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <div className="flex flex-col items-center space-y-4">
             <button

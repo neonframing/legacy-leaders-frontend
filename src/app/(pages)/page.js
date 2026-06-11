@@ -9,7 +9,7 @@ export default function Home() {
       <SiteHeader />
 
       <main className="flex-1 bg-[var(--color-sand)] text-[var(--color-ink)]">
-        <section className="relative overflow-hidden bg-[#fafafa] pt-16 pb-12 lg:pt-20 lg:pb-16">
+        <section className="relative overflow-hidden bg-[#fafafa] pt-28 pb-12 lg:pt-32 lg:pb-16">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-50 -skew-x-12 translate-x-20 opacity-50 pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
@@ -173,10 +173,15 @@ export default function Home() {
 
         <section className="bg-gray-100 py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="flex flex-col overflow-hidden rounded-sm border border-gray-200 bg-white shadow-sm lg:flex-row lg:items-stretch">
-              <div className="relative min-h-[260px] w-full bg-[#344059] lg:min-h-full lg:w-5/12">
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,#344059_0%,#4a5b7a_60%,#667085_100%)]" />
-                <div className="absolute inset-0 bg-[#344059]/25" />
+            <div className="group flex flex-col overflow-hidden rounded-sm border border-gray-200 bg-white shadow-sm lg:flex-row lg:items-stretch">
+              <div className="relative w-full overflow-hidden bg-[#344059] aspect-[2/3] sm:aspect-[3/4] lg:w-5/12 lg:aspect-auto lg:min-h-full">
+                <img
+                  src="/jessica.jpg"
+                  alt="Jessica testimonial"
+                  className="absolute inset-0 h-full w-full object-cover object-[50%_22%] transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-[#344059]/24 transition-colors duration-500 group-hover:bg-[#344059]/10" />
+                <div className="absolute inset-0 bg-[linear-gradient(130deg,rgba(216,155,43,0.24)_0%,rgba(255,255,255,0)_68%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
 
               <div className="relative w-full bg-white p-10 sm:p-16 lg:w-7/12 lg:p-24">
@@ -188,8 +193,8 @@ export default function Home() {
                   <div className="flex items-center gap-4">
                     <div className="h-[2px] w-10 bg-[#D89B2B]" />
                     <div>
-                      <p className="text-sm font-bold uppercase tracking-wider text-[#344059]">Jairo</p>
-                      <p className="text-sm text-gray-500">Legacy Fellow Alumnus</p>
+                      <p className="text-sm font-bold uppercase tracking-wider text-[#344059]">Jessica</p>
+                      <p className="text-sm text-gray-500">Legacy Fellow Alumna</p>
                     </div>
                   </div>
                 </div>
@@ -198,10 +203,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="get-involved" className="bg-white py-24 md:py-32">
+        <section id="get-involved" className="bg-white py-20 md:py-24">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="mb-12 md:mb-16">
-              <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#D89B2B]">Action</h4>
+              <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#D89B2B]">Take Action</h4>
               <h2 className="text-4xl font-extrabold leading-tight text-[#344059] md:text-5xl">GET INVOLVED.</h2>
             </div>
 
