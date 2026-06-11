@@ -1,9 +1,28 @@
-import { ArrowRight, ArrowUpRight, BookOpen, Briefcase, Heart, PlayCircle, Quote, Target, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Briefcase, Heart, PlayCircle, Target, Users } from "lucide-react";
+import { client, urlFor } from '@/lib/sanityClient';
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 
-export default function Home() {
+export default async function Home() {
+  const query = `*[_type == "testimonial"]{
+    _id,
+    name,
+    role,
+    quote,
+    image
+  }`;
+
+  const testimonials = await client.fetch(query);
+  const testimonialSlides = testimonials.map((testimonial) => ({
+    _id: testimonial._id,
+    name: testimonial.name,
+    role: testimonial.role,
+    quote: testimonial.quote,
+    imageUrl: testimonial.image ? urlFor(testimonial.image).url() : null,
+  }));
+
   return (
     <div className="min-h-screen bg-white font-sans text-[#344059] selection:bg-[#D89B2B] selection:text-white">
       <SiteHeader />
@@ -172,34 +191,8 @@ export default function Home() {
         </section>
 
         <section className="bg-gray-100 py-24 sm:py-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="group flex flex-col overflow-hidden rounded-sm border border-gray-200 bg-white shadow-sm lg:flex-row lg:items-stretch">
-              <div className="relative w-full overflow-hidden bg-[#344059] aspect-[2/3] sm:aspect-[3/4] lg:w-5/12 lg:aspect-auto lg:min-h-full">
-                <img
-                  src="/jessica.jpg"
-                  alt="Jessica testimonial"
-                  className="absolute inset-0 h-full w-full object-cover object-[50%_22%] transition-transform duration-700 group-hover:scale-[1.02]"
-                />
-                <div className="absolute inset-0 bg-[#344059]/24 transition-colors duration-500 group-hover:bg-[#344059]/10" />
-                <div className="absolute inset-0 bg-[linear-gradient(130deg,rgba(216,155,43,0.24)_0%,rgba(255,255,255,0)_68%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              </div>
-
-              <div className="relative w-full bg-white p-10 sm:p-16 lg:w-7/12 lg:p-24">
-                <Quote size={64} className="absolute left-12 top-12 text-gray-100" />
-                <div className="relative z-10">
-                  <h3 className="mb-8 text-2xl font-black uppercase tracking-tighter leading-tight text-[#344059] sm:text-3xl lg:text-4xl">
-                    "Before this program, I had big aspirations but no clear path. Legacy Leaders helped me organize my dreams and map my vision."
-                  </h3>
-                  <div className="flex items-center gap-4">
-                    <div className="h-[2px] w-10 bg-[#D89B2B]" />
-                    <div>
-                      <p className="text-sm font-bold uppercase tracking-wider text-[#344059]">Jessica</p>
-                      <p className="text-sm text-gray-500">Legacy Fellow Alumna</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="mx-auto max-w-7xl px-6 lg:px-12">
+              <TestimonialsCarousel testimonials={testimonialSlides} />
           </div>
         </section>
 
