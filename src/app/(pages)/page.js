@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { ArrowRight, ArrowUpRight, BookOpen, Briefcase, Heart, PlayCircle, Target, Users } from "lucide-react";
 import { client, urlFor } from '@/lib/sanityClient';
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
@@ -17,7 +19,7 @@ export default async function Home() {
   }`;
 
   const testimonials = await client.fetch(query, {}, {
-    next: { revalidate: 60, tags: ["testimonials"] },
+    cache: 'no-store'
   });
   const testimonialSlides = testimonials.map((testimonial) => ({
     _id: testimonial._id,
