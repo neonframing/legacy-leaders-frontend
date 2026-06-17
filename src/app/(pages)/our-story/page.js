@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { ArrowRight, Globe2, Handshake, Quote, Sparkles, Users } from "lucide-react";
 
+export const runtime = 'edge';
+
 import MediaCarousel from "@/components/MediaCarousel";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
