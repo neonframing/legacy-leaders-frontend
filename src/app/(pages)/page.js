@@ -62,13 +62,13 @@ export default async function Home() {
                 Sign Up Now
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <a
+              {/* <a
                 href="#hero-video"
                 className="px-10 py-5 bg-transparent border border-gray-300 text-[#344059] font-bold uppercase tracking-widest text-xs hover:border-[#344059] transition-all duration-300 flex items-center justify-center gap-3 rounded-sm group"
               >
                 <PlayCircle size={18} className="text-[#D89B2B] group-hover:scale-110 transition-transform" />
                 Watch Our Story
-              </a>
+              </a> */}
             </div>
             </div>
 
