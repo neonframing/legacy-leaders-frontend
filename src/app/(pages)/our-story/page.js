@@ -1,27 +1,48 @@
 import Image from "next/image";
-import { ArrowRight, Globe2, Handshake, Quote, Sparkles, Users } from "lucide-react";
+import { ArrowRight, Quote, Sparkles, Users } from "lucide-react";
 
 export const runtime = 'edge';
 
-import MediaCarousel from "@/components/MediaCarousel";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import InteractiveBoardCards from "@/components/InteractiveBoardCards";
+import FellowsCarousel from "@/components/FellowsCarousel";
+import GalaCarousel from "@/components/GalaCarousel";
 import { client, urlFor } from "@/lib/sanityClient";
 
 const applicationLink = "https://gemini.google.com/u/0/app/b95da039e13652a4";
 
+// Simplified array for CSS Columns Masonry
 const historyImages = [
   {
-    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-    alt: "Legacy Leaders group session",
+    src: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1600&q=80",
+    alt: "Legacy Leaders wide group session",
+    aspect: "aspect-[16/9]", 
   },
   {
     src: "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80",
     alt: "Mentor leading a workshop",
+    aspect: "aspect-[4/5]", 
   },
   {
     src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
     alt: "Community event with young adults",
+    aspect: "aspect-[4/3]", 
+  },
+  {
+    src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
+    alt: "Professionals collaborating wide",
+    aspect: "aspect-[16/9]", 
+  },
+  {
+    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    alt: "Leadership seminar",
+    aspect: "aspect-[3/4]", 
+  },
+  {
+    src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
+    alt: "Community outreach event",
+    aspect: "aspect-[4/5]", 
   },
 ];
 
@@ -63,98 +84,54 @@ const fellowsByYear = [
   },
 ];
 
-const boardMembers = [
+// Grouped for the new Gala Component
+const galaEditions = [
   {
-    name: "Liv Peterson",
-    role: "Board Chair",
-    company: "Creative Entrepreneur, Liv More Media",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
-    bio: "Liv brings a creative strategist's lens to board leadership, helping Legacy Leaders sharpen its story, deepen community reach, and stay rooted in authentic impact.",
+    year: "2025",
+    images: [
+      {
+        src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=80",
+        alt: "Guests arriving at the 2025 gala",
+        label: "Arrival",
+        caption: "An opening hour designed for connection, mentorship, and community celebration.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1400&q=80",
+        alt: "Audience listening during keynote moment",
+        label: "Stories",
+        caption: "Transformational testimonies that remind supporters why investment matters.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1400&q=80",
+        alt: "Celebratory gala stage moment",
+        label: "Honoring impact",
+        caption: "Recognizing leaders and partners whose example ripples outward.",
+      },
+    ]
   },
   {
-    name: "Nelly Taromina",
-    role: "Vice Chair",
-    company: "Chief Executive Officer, JADA Construction & Design",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=80",
-    bio: "Nelly contributes executive vision and operational insight that help move bold ideas from concept to action while keeping long-term sustainability in focus.",
-  },
-  {
-    name: "Everett Gutierrez Jr.",
-    role: "Ex-Officio",
-    company: "President & Founder, Legacy Leaders",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
-    bio: "Everett keeps the board connected to the heart of the mission, ensuring every strategic decision reflects the lived needs and potential of the communities served.",
-  },
-  {
-    name: "Thomas Kunkle",
-    role: "Treasurer",
-    company: "Financial Advisor, WestPoint Financial Group",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80",
-    bio: "Thomas offers financial oversight and discipline that strengthen stewardship, growth planning, and the long-term resilience of the organization.",
-  },
-  {
-    name: "Christina Roberson-Smeltzer",
-    role: "Secretary",
-    company: "Vice President of Public Affairs, Maze of Life",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
-    bio: "Christina brings communications, public affairs, and governance expertise that helps Legacy Leaders build trust, visibility, and stronger external relationships.",
-  },
-  {
-    name: "Mary Douglas",
-    role: "Advisory Board Chair",
-    company: "Inside Sales Specialist, KeHE Food Distributors",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80",
-    bio: "Mary connects business insight with servant leadership, helping turn strategic opportunities into partnerships that support growth and greater reach.",
-  },
-  {
-    name: "Monet Traslavina",
-    role: "Young Professionals Board",
-    company: "Director of Operations, Esther Grace Foundation",
-    image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80",
-    bio: "Monet represents the alumni voice, bringing operational knowledge and next-generation perspective to how Legacy Leaders invests in its future leaders.",
-  },
-];
-
-const gala2025Images = [
-  {
-    src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=80",
-    alt: "Guests arriving at the 2025 gala",
-    label: "Arrival",
-    caption: "An opening hour designed for connection, mentorship, and community celebration before the main program begins.",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1400&q=80",
-    alt: "Audience listening during keynote moment",
-    label: "Stories",
-    caption: "Transformational testimonies and mission moments that remind supporters exactly why investment in leadership matters.",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1400&q=80",
-    alt: "Celebratory gala stage moment",
-    label: "Honoring impact",
-    caption: "The evening recognizes leaders, partners, and alumni whose example continues to ripple outward into community change.",
-  },
-];
-
-const gala2023Images = [
-  {
-    src: "https://images.unsplash.com/photo-1515168833906-d2a3b82b302a?auto=format&fit=crop&w=1400&q=80",
-    alt: "Friends posing together at gala",
-    label: "Community",
-    caption: "A room full of mentors, professionals, donors, and fellows celebrating what happens when people choose to invest in each other.",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1400&q=80",
-    alt: "Networking and conversation during gala",
-    label: "Connection",
-    caption: "Every gala creates space for meaningful introductions, future collaborations, and new opportunities for emerging leaders.",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1400&q=80",
-    alt: "Fundraising celebration at gala",
-    label: "Momentum",
-    caption: "The energy of the night translates into resources that fuel mentorship, leadership training, and life-changing experiences.",
-  },
+    year: "2023",
+    images: [
+      {
+        src: "https://images.unsplash.com/photo-1515168833906-d2a3b82b302a?auto=format&fit=crop&w=1400&q=80",
+        alt: "Friends posing together at gala",
+        label: "Community",
+        caption: "A room full of mentors and fellows celebrating investment in each other.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1400&q=80",
+        alt: "Networking and conversation during gala",
+        label: "Connection",
+        caption: "Every gala creates space for meaningful introductions and future collaborations.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1400&q=80",
+        alt: "Fundraising celebration at gala",
+        label: "Momentum",
+        caption: "Translating the energy of the night into resources that fuel mentorship.",
+      },
+    ]
+  }
 ];
 
 const boardMembersQuery = `*[_type == "boardMember"] | order(_createdAt asc) {
@@ -211,49 +188,7 @@ export default async function OurStoryPage() {
           </div>
         </section>
 
-        {/* 2. PRESIDENT'S WELCOME */}
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
-          <div className="mx-auto max-w-7xl overflow-hidden rounded-none border border-[#344059]/10 bg-[#f8f6f1] shadow-[0_24px_80px_rgba(52,64,89,0.05)]">
-            <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
-              <div className="relative min-h-[22rem] lg:min-h-full">
-                <Image
-                  src="/chief.webp"
-                  alt="President and founder portrait placeholder"
-                  fill
-                  sizes="(min-width: 1024px) 38vw, 100vw"
-                  className="object-cover grayscale"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(52,64,89,0.12),rgba(52,64,89,0.45))]" />
-              </div>
-
-              <div className="relative p-8 sm:p-12 lg:p-16">
-                <Quote className="absolute left-8 top-8 h-12 w-12 text-[#D89B2B]/20 sm:left-12 sm:top-12 sm:h-16 sm:w-16" />
-                <div className="relative z-10">
-                  <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">From the President</p>
-                  <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] sm:text-4xl">Welcome to Legacy Leaders</h2>
-                  <div className="mt-6 space-y-5 text-base leading-8 text-gray-600 sm:text-lg">
-                    <p>
-                      Thank you for your interest in Legacy Leaders. Since 2010, we have been committed to helping individuals discover their potential, develop their leadership abilities, and create meaningful impact in their communities and beyond.
-                    </p>
-                    <p>
-                      We believe leadership is not defined by a title. It is defined by influence. Through mentorship, leadership development, coaching, speaking engagements, workshops, and service opportunities, we help people build confidence, strengthen their skills, discover purpose, and pursue their goals with greater clarity.
-                    </p>
-                    <p>
-                      None of this work happens alone. It takes mentors, donors, volunteers, alumni, and partners who are willing to invest in the next generation. Whether you want to grow as a leader, support the mission, or create opportunities for others, we invite you to join us in building a legacy that lasts.
-                    </p>
-                  </div>
-                  <div className="mt-8 border-t border-[#344059]/10 pt-6">
-                    <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#344059]">Leading for Change,</p>
-                    <p className="mt-2 text-2xl font-black tracking-tight text-[#344059]">Everett Gutierrez Jr.</p>
-                    <p className="text-sm uppercase tracking-[0.18em] text-gray-500">President &amp; Founder, Legacy Leaders</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 3. MISSION & VISION */}
+        {/* 2. MISSION & VISION */}
         <section className="bg-[#344059] px-6 py-20 text-white sm:py-24 lg:px-12 lg:py-28">
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
@@ -281,103 +216,86 @@ export default async function OurStoryPage() {
           </div>
         </section>
 
-        {/* 4. HISTORY */}
+        {/* 3. HISTORY (Sticky Text + CSS Columns Masonry) */}
         <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-14 flex flex-col gap-6 lg:mb-16 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Our History</p>
-                <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl">Built in Chicago. Growing beyond it.</h2>
-              </div>
-              <p className="max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
-                Legacy Leaders has grown from youth mentoring into a multi-layered leadership development organization serving young people, emerging professionals, mentors, and global partners.
-              </p>
-            </div>
-
-            <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-              <div className="space-y-6 text-base leading-8 text-gray-600 sm:text-lg">
-                <p>
-                  Since its inception in 2010, Legacy Leaders has been committed to developing the potential of individuals from Black and Brown communities by equipping them with the confidence, leadership skills, and support needed to pursue greater opportunities and create lasting change.
-                </p>
-                <p>
-                  What began as a passion for mentoring and developing youth throughout Chicago grew into leadership programs, mentorship opportunities, and community-based experiences that empowered young people to overcome barriers, discover their strengths, and envision a brighter future.
-                </p>
-                <p>
-                  As the impact expanded, so did the vision. Today, Legacy Leaders serves emerging leaders through a robust Young Adult Fellowship Program now entering its fifth cycle, connecting participants with mentors, leadership training, professional development opportunities, service experiences, and a network designed to help them thrive personally and professionally.
-                </p>
-                <p>
-                  Through strategic partnerships and global outreach, Legacy Leaders also supports a children's home in South Africa, reflecting the belief that leadership, hope, and opportunity should never be limited by geography. At the center of it all is one conviction: every person carries untapped potential and the power to influence the world around them.
-                </p>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="relative overflow-hidden rounded-none sm:col-span-2">
-                  <div className="relative aspect-[16/10] w-full">
-                    <Image
-                      src={historyImages[0].src}
-                      alt={historyImages[0].alt}
-                      fill
-                      sizes="(min-width: 1024px) 42vw, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
+            {/* FIX 1: Change lg:items-start to lg:items-center to vertically center the row */}
+            <div className="flex flex-col lg:flex-row gap-16 lg:items-center">
+              
+              {/* FIX 2: Add self-start here so the text still pins to the top of the screen when scrolling */}
+              <div className="w-full lg:w-[45%] lg:sticky lg:top-32 self-start space-y-8 flex-shrink-0">
+                <div>
+                  <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Our History</p>
+                  <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl">
+                    Built in Chicago.<br />Growing beyond it.
+                  </h2>
                 </div>
-                {historyImages.slice(1).map((image) => (
-                  <div key={image.src} className="relative overflow-hidden rounded-none">
-                    <div className="relative aspect-[4/5] w-full">
+                <div className="space-y-6 text-lg leading-8 text-gray-600 lg:pr-6">
+                  <p>
+                    Since its inception in 2010, Legacy Leaders has been committed to developing the potential of individuals from Black and Brown communities by equipping them with the confidence, leadership skills, and support needed to pursue greater opportunities and create lasting change.
+                  </p>
+                  <p>
+                    What began as a passion for mentoring and developing youth throughout the city of Chicago has grown into a multifaceted leadership development organization impacting individuals across multiple stages of life. In our early years, Legacy Leaders focused on creating youth leadership programs, mentorship opportunities, and community-based experiences that empowered young people to overcome barriers, discover their strengths, and envision a brighter future.
+                  </p>
+                  <p>
+                    As our impact expanded, so did our vision. Today, Legacy Leaders serves emerging leaders through a robust Young Adult Fellowship Program, now entering its fifth program cycle. This flagship initiative connects young adults with mentors, leadership training, professional development opportunities, community service experiences, and a network of support designed to help them thrive personally and professionally. Through this program, participants gain the tools, confidence, and relationships needed to become influential leaders within their families, workplaces, and communities.
+                  </p>
+                  <p>
+                    Our commitment to leadership development extends beyond our local communities. Through strategic partnerships and global outreach efforts, Legacy Leaders also supports a children's home in South Africa, providing resources, encouragement, and opportunities that help young people flourish despite challenging circumstances. This international partnership reflects our belief that leadership, hope, and opportunity should know no geographic boundaries.
+                  </p>
+                  <p>
+                    At the heart of everything we do is the belief that every individual possesses untapped potential and the ability to positively influence the world around them. Through mentorship, leadership development, coaching, service-learning experiences, and collaborative partnerships, Legacy Leaders helps individuals identify their strengths, overcome obstacles, and transform their futures.
+                  </p>
+                  <p className="font-bold text-[#344059]">
+                    More than a leadership organization, Legacy Leaders is a community dedicated to raising up the next generation of purpose-driven leaders who will create meaningful impact in their families, organizations, neighborhoods, and beyond.
+                  </p>
+                </div>
+              </div>
+
+              {/* Masonry Image Column */}
+              <div className="w-full lg:w-[55%]">
+                <div className="columns-1 sm:columns-2 gap-6 space-y-6">
+                  {historyImages.map((image, index) => (
+                    <div 
+                      key={index} 
+                      className={`relative overflow-hidden rounded-none w-full bg-gray-100 break-inside-avoid ${image.aspect}`}
+                    >
                       <Image
                         src={image.src}
                         alt={image.alt}
                         fill
-                        sizes="(min-width: 1024px) 20vw, 50vw"
-                        className="object-cover"
+                        sizes="(min-width: 1024px) 30vw, 100vw"
+                        className="object-cover transition-transform duration-700 hover:scale-105"
                       />
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
+
             </div>
           </div>
         </section>
 
-        {/* 5. FELLOWS */}
-        <section className="bg-[#f8f6f1] px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        {/* 4. FELLOWS (Replaced with PC-Accessible Carousel) */}
+        <section className="bg-[#f8f6f1] pt-20 pb-10 sm:pt-24 lg:pt-28 lg:pb-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="mb-16 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div>
                 <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Our Fellows</p>
-                <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl">A grid of impact across each year.</h2>
+                <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl">A timeline of impact.</h2>
               </div>
-              <p className="max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
-                Every cohort adds a new chapter to the Legacy Leaders story. These fellowship cycles represent a growing community of emerging leaders developing vision, discipline, and influence.
+              <p className="max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg">
+                Every cohort adds a new chapter to the Legacy Leaders story. Scroll through our fellowship cycles to see a growing community of emerging leaders.
               </p>
             </div>
+          </div>
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
-              {fellowsByYear.map((fellow) => (
-                <article key={fellow.label} className="overflow-hidden rounded-none border border-[#344059]/10 bg-white shadow-sm transition-shadow hover:shadow-md">
-                  <div className="relative aspect-[4/5] w-full">
-                    <Image
-                      src={fellow.image}
-                      alt={`${fellow.year} fellows`}
-                      fill
-                      sizes="(min-width: 1280px) 18vw, (min-width: 768px) 42vw, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="space-y-3 p-6">
-                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#D89B2B]">{fellow.label}</p>
-                    <h3 className="text-xl font-black uppercase tracking-tight text-[#344059]">{fellow.year}</h3>
-                    <p className="text-sm font-semibold text-[#344059]">{fellow.title}</p>
-                    <p className="text-sm leading-6 text-gray-600">{fellow.description}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
+          <div className="mx-auto max-w-[1400px]">
+            <FellowsCarousel fellows={fellowsByYear} />
           </div>
         </section>
 
-        {/* 6. LEADERSHIP (Combined Board, Advisory, YPB) */}
+        {/* 5. LEADERSHIP */}
         <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
           <div className="mx-auto max-w-7xl">
             <div className="mb-16 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between border-b border-[#344059]/10 pb-12">
@@ -419,69 +337,69 @@ export default async function OurStoryPage() {
               ))}
             </div>
 
-            {/* Sub-Boards */}
-            <div className="grid gap-6 lg:grid-cols-2">
-              <article className="rounded-none border border-[#344059]/10 bg-[#f8f6f1] p-8 sm:p-10">
-                <Globe2 className="h-8 w-8 text-[#D89B2B]" />
-                <p className="mt-6 text-sm font-bold uppercase tracking-[0.24em] text-[#344059]">Legacy Advisory Board</p>
-                <p className="mt-4 text-base leading-8 text-gray-600">
-                  The Advisory Board is made up of experienced professionals, business leaders, and community advocates who provide specialized expertise, industry insight, and strategic counsel to strengthen the mission and expand organizational impact.
-                </p>
-                <a
-                  href={applicationLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-8 inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-[#D89B2B] transition-colors hover:text-[#344059]"
-                >
-                  Learn about advisory service <ArrowRight size={16} />
-                </a>
-              </article>
+            {/* Sub-Boards Interactive Component */}
+            <InteractiveBoardCards applicationLink={applicationLink} />
+          </div>
+        </section>
 
-              <article className="rounded-none border border-[#344059]/10 bg-[#f8f6f1] p-8 sm:p-10">
-                <Handshake className="h-8 w-8 text-[#D89B2B]" />
-                <p className="mt-6 text-sm font-bold uppercase tracking-[0.24em] text-[#344059]">Young Professionals Board</p>
-                <p className="mt-4 text-base leading-8 text-gray-600">
-                  Made up of Legacy Leaders alumni who give back by supporting events, recruiting future fellows, fundraising, and bringing valuable insight into how the organization can continue to grow.
-                </p>
-                <a
-                  href={applicationLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-8 inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-[#D89B2B] transition-colors hover:text-[#344059]"
-                >
-                  Apply to get involved <ArrowRight size={16} />
-                </a>
-              </article>
+        {/* 6. PRESIDENT'S WELCOME */}
+        <section className="bg-white px-6 pb-20 sm:pb-24 lg:px-12 lg:pb-28">
+          <div className="mx-auto max-w-7xl overflow-hidden rounded-none border border-[#344059]/10 bg-[#f8f6f1] shadow-[0_24px_80px_rgba(52,64,89,0.05)]">
+            <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
+              <div className="relative min-h-[22rem] lg:min-h-full">
+                <Image
+                  src="/chief.webp"
+                  alt="President and founder portrait placeholder"
+                  fill
+                  sizes="(min-width: 1024px) 38vw, 100vw"
+                  className="object-cover grayscale"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(52,64,89,0.12),rgba(52,64,89,0.45))]" />
+              </div>
+
+              <div className="relative p-8 sm:p-12 lg:p-16">
+                <Quote className="absolute left-8 top-8 h-12 w-12 text-[#D89B2B]/20 sm:left-12 sm:top-12 sm:h-16 sm:w-16" />
+                <div className="relative z-10">
+                  <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">From the President</p>
+                  <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] sm:text-4xl">Welcome to Legacy Leaders</h2>
+                  <div className="mt-6 space-y-5 text-base leading-8 text-gray-600 sm:text-lg">
+                    <p>
+                      Thank you for your interest in Legacy Leaders. Since 2010, we have been committed to helping individuals discover their potential, develop their leadership abilities, and create meaningful impact in their communities and beyond.
+                    </p>
+                    <p>
+                      We believe leadership is not defined by a title. It is defined by influence. Through mentorship, leadership development, coaching, speaking engagements, workshops, and service opportunities, we help people build confidence, strengthen their skills, discover purpose, and pursue their goals with greater clarity.
+                    </p>
+                    <p>
+                      None of this work happens alone. It takes mentors, donors, volunteers, alumni, and partners who are willing to invest in the next generation. Whether you want to grow as a leader, support the mission, or create opportunities for others, we invite you to join us in building a legacy that lasts.
+                    </p>
+                  </div>
+                  <div className="mt-8 border-t border-[#344059]/10 pt-6">
+                    <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#344059]">Leading for Change,</p>
+                    <p className="mt-2 text-2xl font-black tracking-tight text-[#344059]">Everett Gutierrez Jr.</p>
+                    <p className="text-sm uppercase tracking-[0.18em] text-gray-500">President &amp; Founder, Legacy Leaders</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* 7. GALA */}
-        <section className="bg-[#344059] px-6 py-20 text-white sm:py-24 lg:px-12 lg:py-28">
+        {/* 7. GALA (Replaced with Dynamic Carousel) */}
+        <section className="bg-[#344059] px-6 py-20 text-white sm:py-24 lg:px-12 lg:py-32">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-14 grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+            <div className="mb-20 grid gap-6 md:grid-cols-2 md:items-end">
               <div>
                 <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Legacy Sneaker Gala</p>
-                <h2 className="text-4xl font-black uppercase tracking-tight sm:text-5xl">A celebration of purpose and possibility.</h2>
+                <h2 className="text-5xl font-black uppercase tracking-tight sm:text-6xl md:text-[5.5rem] md:leading-[0.9]">
+                  A celebration <br />of purpose.
+                </h2>
               </div>
-              <p className="text-base leading-relaxed text-white/80 sm:text-lg">
-                The Legacy Sneaker Gala is the organization's signature biannual fundraising and celebration event, bringing together mentors, supporters, professionals, and emerging leaders for an evening of inspiration. More than a fundraiser, it is a reminder that leadership can be both authentic and accessible.
+              <p className="text-lg leading-relaxed text-white/80 max-w-lg md:ml-auto">
+                Our signature biannual event brings together mentors, supporters, and emerging leaders for an evening of inspiration. More than a fundraiser, it is a reminder that leadership can be both authentic and accessible.
               </p>
             </div>
 
-            <div className="space-y-20">
-              <MediaCarousel
-                title="2025 Sneaker Gala"
-                description="The 2025 edition highlighted transformational stories, honored outstanding leaders and partners, and rallied support for the next chapter of youth and young adult leadership development."
-                images={gala2025Images}
-              />
-
-              <MediaCarousel
-                title="2023 Sneaker Gala"
-                description="The 2023 celebration brought together alumni, board members, donors, and community champions to invest in mentorship, education, and leadership opportunities that leave a lasting legacy."
-                images={gala2023Images}
-              />
-            </div>
+            <GalaCarousel editions={galaEditions} />
           </div>
         </section>
       </main>
