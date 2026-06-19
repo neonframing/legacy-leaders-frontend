@@ -89,8 +89,8 @@ export default function FellowsCarousel({ fellows }) {
                 className="object-cover"
               />
             </div>
-            <div className="space-y-3 p-8 flex-1 flex flex-col">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#D89B2B]">{fellow.label}</p>
+            <div className="space-y-2 p-8 flex-1 flex flex-col">
+              <p className="text-xl font-bold uppercase tracking-[0.22em] text-[#D89B2B]">{fellow.label}</p>
               <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059]">{fellow.year}</h3>
               <p className="text-base font-bold text-[#344059]">{fellow.title}</p>
               <p className="text-base leading-relaxed text-gray-600 flex-1">{fellow.description}</p>

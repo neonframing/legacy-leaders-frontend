@@ -4,6 +4,7 @@ export const runtime = 'edge';
 import { ArrowRight, ArrowUpRight, BookOpen, Briefcase, Heart, PlayCircle, Target, Users } from "lucide-react";
 import { client, urlFor } from '@/lib/sanityClient';
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import Link from 'next/link';
 
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
@@ -100,12 +101,12 @@ export default async function Home() {
                   At Every Stage.
                 </h3>
               </div>
-              <a
-                href="#programs"
+              <Link
+                href="/our-programs"
                 className="flex items-center gap-2 border-b-2 border-transparent pb-2 text-sm font-bold uppercase tracking-widest text-[#344059] transition-colors hover:border-[#D89B2B] hover:text-[#D89B2B]"
               >
                 View All Programs <ArrowRight size={16} />
-              </a>
+              </Link>
             </div>
 
             <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">

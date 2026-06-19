@@ -48,35 +48,30 @@ const historyImages = [
 
 const fellowsByYear = [
   {
-    year: "Cycle One",
     label: "2021",
     title: "Foundations of confidence",
     description: "The first fellowship cohort centered identity, confidence, and career clarity for emerging leaders ready to take purposeful first steps.",
     image: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=80",
   },
   {
-    year: "Cycle Two",
     label: "2022",
     title: "Mentorship in motion",
     description: "The second class deepened mentor relationships, leadership coaching, and accountability systems that helped fellows move from ideas to action.",
     image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
   },
   {
-    year: "Cycle Three",
     label: "2023",
     title: "Networks that open doors",
     description: "Professional exposure, community service, and peer connection expanded what fellows believed was possible for their families and futures.",
     image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80",
   },
   {
-    year: "Cycle Four",
     label: "2024",
     title: "Leadership with strategy",
     description: "Participants sharpened practical leadership skills while building stronger career plans, community impact, and personal discipline.",
     image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
   },
   {
-    year: "Cycle Five",
     label: "2025",
     title: "The next legacy",
     description: "The newest cohort continues the flagship journey with mentorship, professional development, and transformational experiences for the next wave of leaders.",
