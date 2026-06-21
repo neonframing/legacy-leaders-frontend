@@ -41,7 +41,7 @@ export default function GalaCarousel({ editions }) {
       <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between border-b border-white/20 pb-6">
         <div className="flex items-center gap-6">
           <h3 className="text-4xl font-black uppercase tracking-tight text-white transition-all">
-            {activeEdition.year} Edition
+            {activeEdition.year} Gala Highlights
           </h3>
           <div className="flex items-center gap-2">
             <button 
