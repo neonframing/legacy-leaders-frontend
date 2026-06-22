@@ -438,7 +438,7 @@ export default async function OurStoryPage() {
                   <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059]">{member.name}</h3>
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-[#D89B2B]">{member.role}</p>
                   <p className="mt-2 text-sm leading-7 text-gray-500">{member.company}</p>
-                  <p className="mt-4 text-sm leading-7 text-gray-600">{member.bio}</p>
+                  <p className="mt-4 text-sm leading-7 text-gray-600 whitespace-pre-wrap">{member.bio}</p>
                 </article>
               ))}
             </div>
