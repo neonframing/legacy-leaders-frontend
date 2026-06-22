@@ -239,24 +239,25 @@ const galaEditions = [
   }
 ];
 
-const boardMembersQuery = `*[_type == "boardMember"] | order(_createdAt asc) {
+// Fetches all board members sorted by their manual drag-and-drop position
+const boardMembersQuery = `*[_type == "boardMember"] | order(orderRank) {
   _id,
   name,
   role,
   company,
   bio,
-  image
+  "imageUrl": image.asset->url
 }`;
 
 export default async function OurStoryPage() {
+  // Fetch the ordered array directly from Sanity
   const boardMembers = await client.fetch(boardMembersQuery, {}, {
     cache: "no-store",
-  });
+  }) || []; // Fallback to empty array if nothing is returned
 
   return (
     <div className="min-h-screen bg-white font-sans text-[#344059] selection:bg-[#D89B2B] selection:text-white">
       <SiteHeader />
-
       <main>
         {/* 1. HERO SECTION */}
         <section className="relative overflow-hidden bg-[#f6f1e8] px-6 pb-20 pt-36 sm:pt-40 lg:px-12 lg:pb-28 lg:pt-48">
@@ -423,9 +424,9 @@ export default async function OurStoryPage() {
                 <article key={member._id} className="group flex flex-col">
                   <div className="relative mb-6 overflow-hidden bg-[#e8ebf1] rounded-none">
                     <div className="relative aspect-[3/4] w-full">
-                      {member.image ? (
+                      {member.imageUrl ? (
                         <Image
-                          src={urlFor(member.image).width(900).auto("format").url()}
+                          src={member.imageUrl}
                           alt={member.name}
                           fill
                           sizes="(min-width: 1280px) 22vw, (min-width: 768px) 40vw, 100vw"
