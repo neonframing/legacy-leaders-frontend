@@ -10,8 +10,6 @@ import FellowsCarousel from "@/components/FellowsCarousel";
 import GalaCarousel from "@/components/GalaCarousel";
 import { client, urlFor } from "@/lib/sanityClient";
 
-const applicationLink = "https://gemini.google.com/u/0/app/b95da039e13652a4";
-
 // Simplified array for CSS Columns Masonry
 const historyImages = [
   {
@@ -410,7 +408,7 @@ export default async function OurStoryPage() {
                 <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl">Experience, imagination, and conviction.</h2>
               </div>
               <a
-                href={applicationLink}
+                href="#"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-[#344059] transition-colors hover:text-[#D89B2B]"
@@ -444,7 +442,7 @@ export default async function OurStoryPage() {
             </div>
 
             {/* Sub-Boards Interactive Component */}
-            <InteractiveBoardCards applicationLink={applicationLink} />
+            <InteractiveBoardCards />
           </div>
         </section>
 

@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 
 import BrandLogo from "@/components/BrandLogo";
 
-function HeaderButton({ children, variant = "primary", className = "" }) {
+function HeaderButton({ children, variant = "primary", className = "", href, onClick }) {
   const baseStyle = "inline-flex cursor-pointer items-center justify-center border px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-all duration-300";
   const variants = {
     primary: "border-[#D89B2B] bg-[#D89B2B] text-white hover:bg-transparent hover:text-[#D89B2B]",
@@ -15,7 +15,21 @@ function HeaderButton({ children, variant = "primary", className = "" }) {
     outlineWhite: "border-white bg-transparent text-white hover:bg-white hover:text-[#344059]",
   };
 
-  return <button className={`${baseStyle} ${variants[variant]} ${className}`}>{children}</button>;
+  const combinedStyles = `${baseStyle} ${variants[variant]} ${className}`;
+
+  if (href) {
+    return (
+      <Link href={href} className={combinedStyles} onClick={onClick}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <button type="button" className={combinedStyles} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
 
 const navLinks = [
@@ -107,7 +121,9 @@ export default function SiteHeader() {
               </div>
             )}
           </div>
-          <HeaderButton variant="primary">Donate Today</HeaderButton>
+          <HeaderButton variant="primary" href="/get-involved#legacy-donor">
+            Donate Today
+          </HeaderButton>
         </div>
 
         {!mobileMenuOpen && (
@@ -180,7 +196,13 @@ export default function SiteHeader() {
               </div>
             )}
           </div>
-          <HeaderButton variant="primary">Donate Today</HeaderButton>
+          <HeaderButton 
+            variant="primary" 
+            href="/get-involved#donate"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Donate Today
+          </HeaderButton>
         </div>
       )}
     </header>

@@ -15,7 +15,7 @@ export default function InteractiveRequirements({ items }) {
           <div 
             key={idx} 
             onMouseEnter={() => setActiveIndex(idx)}
-            className={`group flex items-start gap-5 p-6 border transition-all duration-300 cursor-pointer ${
+            className={`group flex items-start gap-5 p-6 border transition-all duration-300 ${
               activeIndex === idx 
                 ? 'border-[#D89B2B] bg-white shadow-md scale-[1.02]' 
                 : 'border-gray-200 bg-gray-50 hover:bg-white'

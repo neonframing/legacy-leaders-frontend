@@ -33,7 +33,7 @@ export default function GetInvolvedPage() {
         </section>
 
         {/* --- 2. REQUEST AN INTERN --- */}
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28 border-b border-[#344059]/10">
+        <section id="request-intern" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28 border-b border-[#344059]/10">
           <div className="mx-auto max-w-7xl">
             <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-16 items-center">
               
@@ -86,7 +86,7 @@ export default function GetInvolvedPage() {
         </section>
 
         {/* --- 3. DONATE TODAY --- */}
-        <section className="bg-[#344059] text-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        <section id="legacy-donor" className="bg-[#344059] text-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
           <div className="mx-auto max-w-7xl">
             
             {/* Donate Header */}
@@ -183,7 +183,7 @@ export default function GetInvolvedPage() {
         </section>
 
         {/* --- 4. VOLUNTEER --- */}
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        <section id="volunteer" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
           <div className="mx-auto max-w-7xl">
             <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
               
@@ -264,7 +264,7 @@ export default function GetInvolvedPage() {
                   Join our next cohort to gain the mentorship, network, and practical leadership skills necessary to maximize your potential.
                 </p>
                 <Link 
-                  href="/our-programs#fellows" 
+                  href="/our-programs#legacy-fellows" 
                   className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#D89B2B] group-hover:text-[#344059] border-b-2 border-transparent group-hover:border-[#344059] pb-1 transition-all"
                 >
                   View Program Details
@@ -285,7 +285,7 @@ export default function GetInvolvedPage() {
                   Share your expertise, expand your network, and guide a young adult through their leadership and professional development journey.
                 </p>
                 <Link 
-                  href="/our-programs#mentors" 
+                  href="/our-programs#legacy-mentors" 
                   className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest !text-[#D89B2B] group-hover:text-white border-b-2 border-transparent group-hover:border-[#D89B2B] pb-1 transition-all"
                 >
                   View Program Details

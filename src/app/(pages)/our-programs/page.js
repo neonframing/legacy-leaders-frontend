@@ -135,7 +135,7 @@ export default function OurProgramsPage() {
                 An intensive cohort-based program designed for high-potential young adults seeking to accelerate their professional growth, secure financial independence, and create generational wealth through hands-on mentorship.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-5">
-                <button className="px-10 py-5 bg-[#344059] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none">
+                <button className="px-10 py-5 bg-[#344059] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] cursor-pointer transition-all duration-300 flex items-center justify-center gap-3 group rounded-none">
                   Apply for Fellowship
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -248,7 +248,7 @@ export default function OurProgramsPage() {
                 Join the next cohort of Legacy Fellows and start building the foundation for your future impact.
               </p>
             </div>
-            <button className="whitespace-nowrap px-10 py-5 bg-[#D89B2B] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#344059] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
+            <button className="whitespace-nowrap px-10 py-5 bg-[#D89B2B] text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#344059] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
               Apply for Fellowship
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </button>
@@ -256,7 +256,7 @@ export default function OurProgramsPage() {
         </section>
 
         {/* --- 6. LEGACY MENTORS (Intro) --- */}
-        <section id="mentors" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        <section id="legacy-mentors" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
           <div className="mx-auto max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -347,7 +347,7 @@ export default function OurProgramsPage() {
                   Most importantly, we are looking for mentors who care deeply about people and are passionate about helping others discover their potential and achieve their goals.
                 </p>
               </div>
-              <button className="whitespace-nowrap px-10 py-5 bg-[#344059] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
+              <button className="whitespace-nowrap px-10 py-5 bg-[#344059] text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#D89B2B] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
                 Become a Legacy Mentor
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
@@ -465,7 +465,7 @@ export default function OurProgramsPage() {
                 <p className="text-gray-600 mb-8 leading-relaxed">
                   Join our next cohort to gain the mentorship, network, and skills necessary to maximize your potential.
                 </p>
-                <button className="mx-auto px-8 py-4 bg-[#344059] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
+                <button className="mx-auto px-8 py-4 bg-[#344059] text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
                   Apply Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -476,7 +476,7 @@ export default function OurProgramsPage() {
                 <p className="text-gray-600 mb-8 leading-relaxed">
                   Share your expertise and guide a young adult through their leadership and professional development journey.
                 </p>
-                <button className="mx-auto px-8 py-4 bg-[#344059] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
+                <button className="mx-auto px-8 py-4 bg-[#344059] text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
                   Apply Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
