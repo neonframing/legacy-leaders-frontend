@@ -1,5 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
+import Link from "next/link";
+
 import BrandLogo from "@/components/BrandLogo";
 
 export default function SiteFooter() {
@@ -19,10 +21,10 @@ export default function SiteFooter() {
           <div>
             <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-[#D89B2B]">Quick Links</h4>
             <ul className="space-y-4">
-              <li><a href="#story" className="text-gray-400 transition-colors hover:text-white">About Us</a></li>
-              <li><a href="#programs" className="text-gray-400 transition-colors hover:text-white">Our Programs</a></li>
-              <li><a href="#get-involved" className="text-gray-400 transition-colors hover:text-white">Get Involved</a></li>
-              <li><a href="#" className="text-gray-400 transition-colors hover:text-white">Blog</a></li>
+              <li><Link href="/our-story" className="text-gray-400 transition-colors hover:text-white">About Us</Link></li>
+              <li><Link href="/our-programs" className="text-gray-400 transition-colors hover:text-white">Our Programs</Link></li>
+              <li><Link href="/get-involved" className="text-gray-400 transition-colors hover:text-white">Get Involved</Link></li>
+              <li><Link href="#" className="text-gray-400 transition-colors hover:text-white">Blog</Link></li>
             </ul>
           </div>
 

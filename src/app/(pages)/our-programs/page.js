@@ -119,7 +119,7 @@ export default function OurProgramsPage() {
 
       <main>
         {/* --- 1. LEGACY FELLOWS HERO --- */}
-        <section className="relative overflow-hidden bg-[#f6f1e8] px-6 pb-20 pt-36 sm:pt-40 lg:px-12 lg:pb-28 lg:pt-48">
+        <section id="fellows" className="relative overflow-hidden bg-[#f6f1e8] px-6 pb-20 pt-36 sm:pt-40 lg:px-12 lg:pb-28 lg:pt-48">
           <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-white/40 lg:block" />
           <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             
@@ -256,7 +256,7 @@ export default function OurProgramsPage() {
         </section>
 
         {/* --- 6. LEGACY MENTORS (Intro) --- */}
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        <section id="mentors" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
           <div className="mx-auto max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>

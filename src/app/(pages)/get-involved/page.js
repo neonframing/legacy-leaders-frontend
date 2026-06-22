@@ -264,7 +264,7 @@ export default function GetInvolvedPage() {
                   Join our next cohort to gain the mentorship, network, and practical leadership skills necessary to maximize your potential.
                 </p>
                 <Link 
-                  href="/our-programs" 
+                  href="/our-programs#fellows" 
                   className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#D89B2B] group-hover:text-[#344059] border-b-2 border-transparent group-hover:border-[#344059] pb-1 transition-all"
                 >
                   View Program Details
@@ -285,7 +285,7 @@ export default function GetInvolvedPage() {
                   Share your expertise, expand your network, and guide a young adult through their leadership and professional development journey.
                 </p>
                 <Link 
-                  href="/our-programs" 
+                  href="/our-programs#mentors" 
                   className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest !text-[#D89B2B] group-hover:text-white border-b-2 border-transparent group-hover:border-[#D89B2B] pb-1 transition-all"
                 >
                   View Program Details

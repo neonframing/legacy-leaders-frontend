@@ -131,9 +131,9 @@ export default async function Home() {
                 <p className="mb-8 leading-relaxed text-gray-300">
                   A select group of seasoned professionals guiding young adults through leadership training and one-on-one coaching to help the next generation pay it forward.
                 </p>
-                <a href="#" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#D89B2B] group-hover:text-white">
+                <Link href="#" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#D89B2B] group-hover:text-white">
                   Become a Mentor <ArrowUpRight size={16} />
-                </a>
+                </Link>
               </div>
 
               <div className="group relative overflow-hidden border border-gray-200 bg-white p-10 transition-all duration-300 hover:border-[#344059] hover:shadow-2xl">
