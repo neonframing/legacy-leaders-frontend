@@ -65,7 +65,7 @@ const navLinks = [
   },
   { 
     name: "Contact Us", 
-    href: "/contact" 
+    href: "/contact-us" 
   },
 ];
 

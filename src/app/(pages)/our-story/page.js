@@ -1,511 +1,481 @@
 import Image from "next/image";
-import { ArrowRight, Quote, Sparkles, Users } from "lucide-react";
+import { ArrowRight, ChevronRight, PlayCircle, Target, Users, BookOpen, CheckCircle2, ArrowDown } from "lucide-react";
 
 export const runtime = 'edge';
 
-import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import InteractiveBoardCards from "@/components/InteractiveBoardCards";
-import FellowsCarousel from "@/components/FellowsCarousel";
-import GalaCarousel from "@/components/GalaCarousel";
-import { client, urlFor } from "@/lib/sanityClient";
+import SiteFooter from "@/components/SiteFooter";
+import InteractiveRequirements from "@/components/InteractiveRequirements";
+import HeroVideo from "@/components/HeroVideo"; // Import the component
 
-// Simplified array for CSS Columns Masonry
-const historyImages = [
-  {
-    src: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1600&q=80",
-    alt: "Legacy Leaders wide group session",
-    aspect: "aspect-[16/9]", 
-  },
-  {
-    src: "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80",
-    alt: "Mentor leading a workshop",
-    aspect: "aspect-[4/5]", 
-  },
-  {
-    src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
-    alt: "Community event with young adults",
-    aspect: "aspect-[4/3]", 
-  },
-  {
-    src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
-    alt: "Professionals collaborating wide",
-    aspect: "aspect-[16/9]", 
-  },
-  {
-    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
-    alt: "Leadership seminar",
-    aspect: "aspect-[3/4]", 
-  },
-  {
-    src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
-    alt: "Community outreach event",
-    aspect: "aspect-[4/5]", 
-  },
-];
+// --- Content Data ---
 
-const fellowsByYear = [
+const fellowsGains = [
   {
-    label: "2021",
-    title: "Foundations of confidence",
-    description: "The first fellowship cohort centered identity, confidence, and career clarity for emerging leaders ready to take purposeful first steps.",
-    image: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=80",
-    individuals: [
-      { name: "Marcus Johnson", role: "Software Engineer", image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=400&q=80" },
-      { name: "Elena Rodriguez", role: "Marketing Director", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" },
-      { name: "David Chen", role: "Financial Analyst", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" },
-      { name: "Sarah Williams", role: "Operations Manager", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" },
-      { name: "James Taylor", role: "Product Designer", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" },
-      { name: "Maya Patel", role: "Data Scientist", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" },
-      { name: "Isaiah Washington", role: "Policy Advisor", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" },
-      { name: "Chloe Bennett", role: "HR Specialist", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" },
-      { name: "Lucas Mitchell", role: "Sales Executive", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" },
-      { name: "Zoe Foster", role: "Creative Strategist", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" },
-      { name: "Julian Park", role: "Urban Planner", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" },
-      { name: "Aisha Jenkins", role: "Nonprofit Director", image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=400&q=80" },
-      { name: "Ryan Cooper", role: "Consultant", image: "https://images.unsplash.com/photo-1509783236416-c9ad59bae472?auto=format&fit=crop&w=400&q=80" },
-      { name: "Mia Gomez", role: "Brand Manager", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80" },
-      { name: "Nathan Wright", role: "Civil Engineer", image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" },
-      { name: "Grace Lee", role: "Clinical Researcher", image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" },
-      { name: "Elijah Brooks", role: "Communications Director", image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80" },
-      { name: "Sofia Morales", role: "UX Researcher", image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" },
-      { name: "Caleb Hughes", role: "Logistics Manager", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" },
-      { name: "Ava Richardson", role: "Account Executive", image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=400&q=80" },
-    ]
+    title: "Discover Your Purpose",
+    desc: "Gain greater clarity about who you are, what you value, and how your unique gifts can make a meaningful impact in the world through DISC and other assessments.",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
   },
   {
-    label: "2022",
-    title: "Mentorship in motion",
-    description: "The second class deepened mentor relationships, leadership coaching, and accountability systems that helped fellows move from ideas to action.",
-    image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80",
-    individuals: [
-      { name: "Michael Chang", role: "Business Consultant", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" },
-      { name: "Jessica Smith", role: "Healthcare Administrator", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80" },
-      { name: "Robert Wilson", role: "Nonprofit Director", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" },
-      { name: "Amanda Lee", role: "Legal Associate", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" },
-      { name: "Omar Tariq", role: "Financial Advisor", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" },
-      { name: "Nadia Rossi", role: "Public Relations", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" },
-      { name: "Trevor Evans", role: "Systems Engineer", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" },
-      { name: "Vanessa Cruz", role: "Educator", image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=400&q=80" },
-      { name: "Dominic Silva", role: "Real Estate Broker", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" },
-      { name: "Priya Sharma", role: "Clinical Therapist", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" },
-      { name: "Leo Brooks", role: "Architect", image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80" },
-      { name: "Carmen Reyes", role: "Community Organizer", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" },
-      { name: "Victor Nguyen", role: "Supply Chain Analyst", image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" },
-      { name: "Hannah Ward", role: "Digital Marketer", image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" },
-      { name: "Tyler Morgan", role: "Data Architect", image: "https://images.unsplash.com/photo-1509783236416-c9ad59bae472?auto=format&fit=crop&w=400&q=80" },
-      { name: "Sienna Patel", role: "Event Coordinator", image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" },
-      { name: "Jordan Cole", role: "Investment Analyst", image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=400&q=80" },
-      { name: "Alicia Kemp", role: "Content Director", image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=400&q=80" },
-      { name: "Gavin Hayes", role: "Operations Lead", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" },
-      { name: "Nina Sullivan", role: "Policy Researcher", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" },
-    ]
+    title: "A Strong Professional Network",
+    desc: "Connect with mentors, leaders, and peers who can support your growth.",
+    image: "https://images.unsplash.com/photo-1515168833906-d2a3b82b302a?auto=format&fit=crop&w=800&q=80"
   },
   {
-    label: "2023",
-    title: "Networks that open doors",
-    description: "Professional exposure, community service, and peer connection expanded what fellows believed was possible for their families and futures.",
-    image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80",
-    individuals: [
-       { name: "Thomas Anderson", role: "Systems Architect", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" },
-       { name: "Lisa Thompson", role: "Creative Director", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" },
-       { name: "Christopher Davis", role: "Investment Banker", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" },
-       { name: "Maya Jackson", role: "Product Manager", image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80" },
-       { name: "Ethan Scott", role: "UX Designer", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" },
-       { name: "Isabella Flores", role: "Biomedical Engineer", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" },
-       { name: "Alexander White", role: "Corporate Counsel", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" },
-       { name: "Lily Chen", role: "Fundraising Manager", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" },
-       { name: "Derek Mason", role: "Civil Servant", image: "https://images.unsplash.com/photo-1509783236416-c9ad59bae472?auto=format&fit=crop&w=400&q=80" },
-       { name: "Samantha Reid", role: "Healthcare Consultant", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80" },
-       { name: "Wesley Reed", role: "Cybersecurity Analyst", image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" },
-       { name: "Zahra Khan", role: "Public Health Official", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" },
-       { name: "Justin Baker", role: "Commercial Real Estate", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" },
-       { name: "Tanya Woods", role: "Media Relations", image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" },
-       { name: "Gabriel Soto", role: "Data Scientist", image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80" },
-       { name: "Megan Bailey", role: "Education Admin", image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" },
-       { name: "Devin Murphy", role: "Operations Analyst", image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=400&q=80" },
-       { name: "Audrey Foster", role: "Grant Writer", image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=400&q=80" },
-       { name: "Collin Gray", role: "Logistics Coordinator", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" },
-       { name: "Kiara Bennett", role: "Brand Strategist", image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=400&q=80" },
-    ]
+    title: "A Credential That Sets You Apart",
+    desc: "Receive a certificate of completion that highlights your leadership experience and helps distinguish you in academic, professional, and career opportunities.",
+    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80"
   },
   {
-    label: "2024",
-    title: "Leadership with strategy",
-    description: "Participants sharpened practical leadership skills while building stronger career plans, community impact, and personal discipline.",
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
-    individuals: [
-      { name: "Kevin Martinez", role: "Urban Planner", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" },
-      { name: "Rachel Green", role: "Policy Analyst", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80" },
-      { name: "Daniel Kim", role: "Civil Engineer", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" },
-      { name: "Michelle Brown", role: "HR Executive", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" },
-      { name: "Anthony White", role: "Sales Director", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" },
-      { name: "Jasmine Kaur", role: "Art Director", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" },
-      { name: "Brian Hughes", role: "Financial Planner", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" },
-      { name: "Lauren Perez", role: "Clinical Pharmacist", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" },
-      { name: "Sean Simmons", role: "Tech Consultant", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" },
-      { name: "Natalie Barnes", role: "Supply Chain Manager", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" },
-      { name: "Aaron Foster", role: "Legislative Aide", image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" },
-      { name: "Chelsea Gomez", role: "Social Worker", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" },
-      { name: "Eric Butler", role: "Software Developer", image: "https://images.unsplash.com/photo-1509783236416-c9ad59bae472?auto=format&fit=crop&w=400&q=80" },
-      { name: "Victoria Price", role: "Digital Analyst", image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" },
-      { name: "Corey Howard", role: "Business Dev Manager", image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80" },
-      { name: "Allison Brooks", role: "Compliance Officer", image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" },
-      { name: "Ian Cooper", role: "Investment Analyst", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" },
-      { name: "Brooke Rogers", role: "Marketing Coordinator", image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=400&q=80" },
-      { name: "Marcus Reed", role: "Operations Director", image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=400&q=80" },
-      { name: "Julia Bell", role: "Content Strategist", image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=400&q=80" },
-    ]
-  },
-  {
-    label: "2025",
-    title: "The next legacy",
-    description: "The newest cohort continues the flagship journey with mentorship, professional development, and transformational experiences for the next wave of leaders.",
-    image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80",
-    individuals: [
-      { name: "Sophia Carter", role: "Fellow", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" },
-      { name: "Jackson Wright", role: "Fellow", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" },
-      { name: "Olivia Scott", role: "Fellow", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" },
-      { name: "William Harris", role: "Fellow", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" },
-      { name: "Emma Nelson", role: "Fellow", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80" },
-      { name: "Liam King", role: "Fellow", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" },
-      { name: "Charlotte Green", role: "Fellow", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" },
-      { name: "Noah Adams", role: "Fellow", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" },
-      { name: "Amelia Baker", role: "Fellow", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" },
-      { name: "Lucas Gonzalez", role: "Fellow", image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" },
-      { name: "Harper Perez", role: "Fellow", image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=400&q=80" },
-      { name: "Oliver Roberts", role: "Fellow", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" },
-      { name: "Evelyn Turner", role: "Fellow", image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" },
-      { name: "Benjamin Phillips", role: "Fellow", image: "https://images.unsplash.com/photo-1509783236416-c9ad59bae472?auto=format&fit=crop&w=400&q=80" },
-      { name: "Abigail Campbell", role: "Fellow", image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" },
-      { name: "Henry Parker", role: "Fellow", image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80" },
-      { name: "Emily Evans", role: "Fellow", image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=400&q=80" },
-      { name: "Alexander Edwards", role: "Fellow", image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=400&q=80" },
-      { name: "Elizabeth Collins", role: "Fellow", image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80" },
-      { name: "Sebastian Stewart", role: "Fellow", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" },
-    ]
-  },
-];
-
-// Grouped for the new Gala Component
-const galaEditions = [
-  {
-    year: "2025",
-    images: [
-      {
-        src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=80",
-        alt: "Guests arriving at the 2025 gala",
-        label: "Arrival",
-        caption: "An opening hour designed for connection, mentorship, and community celebration.",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1400&q=80",
-        alt: "Audience listening during keynote moment",
-        label: "Stories",
-        caption: "Transformational testimonies that remind supporters why investment matters.",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1400&q=80",
-        alt: "Celebratory gala stage moment",
-        label: "Honoring impact",
-        caption: "Recognizing leaders and partners whose example ripples outward.",
-      },
-    ]
-  },
-  {
-    year: "2023",
-    images: [
-      {
-        src: "https://images.unsplash.com/photo-1515168833906-d2a3b82b302a?auto=format&fit=crop&w=1400&q=80",
-        alt: "Friends posing together at gala",
-        label: "Community",
-        caption: "A room full of mentors and fellows celebrating investment in each other.",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1400&q=80",
-        alt: "Networking and conversation during gala",
-        label: "Connection",
-        caption: "Every gala creates space for meaningful introductions and future collaborations.",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1400&q=80",
-        alt: "Fundraising celebration at gala",
-        label: "Momentum",
-        caption: "Translating the energy of the night into resources that fuel mentorship.",
-      },
-    ]
+    title: "Accelerate Your Career or Business",
+    desc: "Gain practical leadership, communication, and professional skills that can help you earn greater responsibilities, pursue new opportunities, or launch and grow your own business.",
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
-// Fetches all board members sorted by their manual drag-and-drop position
-const boardMembersQuery = `*[_type == "boardMember"] | order(orderRank) {
-  _id,
-  name,
-  role,
-  company,
-  bio,
-  "imageUrl": image.asset->url
-}`;
+const fellowsRequirements = [
+  {
+    title: "Monthly Training",
+    desc: "Legacy Fellows (ages 21-30) meet every last Saturday of the month from August through May in Chicago (8am to 3pm).",
+    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Out-of-State Retreat",
+    desc: "This will take place in Lake Geneva, Wisconsin from October 8th to the 11th.",
+    image: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Mentor Coaching",
+    desc: "You will be partnered with a professional mentor coach throughout the program cycle to meet with virtually.",
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Capstone Event",
+    desc: "This is designed to bring all of your learnings together with all your other Fellows at the end of the program.",
+    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80"
+  }
+];
 
-export default async function OurStoryPage() {
-  // Fetch the ordered array directly from Sanity
-  const boardMembers = await client.fetch(boardMembersQuery, {}, {
-    cache: "no-store",
-  }) || []; // Fallback to empty array if nothing is returned
+const mentorPathways = [
+  {
+    title: "Meaningful Mentorship",
+    desc: "Meet with a young adult Fellow virtually once a month (held on the last Saturday of each month from 11:00 AM - 12:00 PM) through conversations that provide guidance, encouragement, accountability, and support throughout their leadership journey from September through May."
+  },
+  {
+    title: "Ongoing Development & Community",
+    desc: "Attend 4 mentor virtual training sessions and engage in two in-person events designed to strengthen your impact and connection to the Legacy Leaders community."
+  },
+  {
+    title: "Invest in Future Leaders",
+    desc: "Partner with Fellows as they work through leadership development topics, helping them apply new concepts, navigate challenges, and grow personally and professionally."
+  },
+  {
+    title: "Open Doors to Opportunity",
+    desc: "Leverage your experience, connections, and network to help Fellows explore careers, discover opportunities, and expand their vision for what's possible."
+  }
+];
 
+const mentorQualifications = [
+  "Bring Professional Experience – Typically 35+ years old with leadership, coaching, mentoring, or industry experience.",
+  "Lead with Character – Demonstrate integrity, humility, compassion, and a commitment to leading by example.",
+  "Listen & Support Well – Create a safe space for Fellows to share, learn, and grow through authentic conversations.",
+  "Embrace Growth & Problem Solving – Encourage Fellows through challenges while helping them identify solutions and opportunities.",
+  "Serve with Passion – Are committed to helping others succeed and willing to go the extra mile to support Fellow development.",
+  "Value Diversity & Inclusion – Respect and celebrate different backgrounds, experiences, and perspectives.",
+  "Invest in the Mission – Believe in developing future leaders and actively contribute to the success of the Legacy Fellows Program.",
+  "Commit to Engagement – Participate in monthly mentor meetings, training opportunities, and ongoing communication with Fellows throughout the program year."
+];
+
+const coachingSteps = [
+  {
+    title: "Discover",
+    subtitle: "Gain Clarity on Who You Are",
+    desc: "Every coaching journey begins with self-awareness. Through assessments, reflection, feedback, and meaningful conversations, clients identify their strengths, blind spots, values, passions, and opportunities for growth.",
+    outcomes: ["Greater self-awareness", "Clarity of strengths and opportunities", "Understanding of leadership style", "Increased confidence and purpose"]
+  },
+  {
+    title: "Align",
+    subtitle: "Connect Your Values to Your Vision",
+    desc: "Once clarity is established, coaching helps individuals align their actions, priorities, and goals with the leader they want to become. This stage focuses on creating intentional plans and eliminating barriers that create inconsistency.",
+    outcomes: ["Clear personal and professional goals", "Increased focus and accountability", "Improved decision-making", "Stronger alignment between values and actions"]
+  },
+  {
+    title: "Grow",
+    subtitle: "Develop the Skills to Lead Effectively",
+    desc: "Growth happens through action. Coaches challenge and support clients as they develop leadership competencies such as communication, emotional intelligence, delegation, conflict management, influence, and strategic thinking.",
+    outcomes: ["Improved leadership effectiveness", "Stronger communication skills", "Increased emotional intelligence", "Better team and relationship outcomes"]
+  },
+  {
+    title: "Multiply",
+    subtitle: "Create Lasting Impact and Legacy",
+    desc: "Leadership is not just about personal success—it's about empowering others. In the final phase, clients focus on sustaining growth, developing others, and creating meaningful impact within their organizations, families, and communities.",
+    outcomes: ["Increased influence and impact", "Stronger mentoring and coaching abilities", "Sustainable leadership habits", "A legacy of developing others"]
+  }
+];
+
+export default function OurProgramsPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-[#344059] selection:bg-[#D89B2B] selection:text-white">
       <SiteHeader />
+
       <main>
-        {/* 1. HERO SECTION */}
-        <section className="relative overflow-hidden bg-[#f6f1e8] px-6 pb-20 pt-36 sm:pt-40 lg:px-12 lg:pb-28 lg:pt-48">
+        {/* --- 1. LEGACY FELLOWS HERO --- */}
+        <section id="fellows" className="relative overflow-hidden bg-[#f6f1e8] px-6 pb-20 pt-36 sm:pt-40 lg:px-12 lg:pb-28 lg:pt-48">
           <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-white/40 lg:block" />
-          <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            
             <div className="relative z-10">
-              <p className="mb-5 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Our Story</p>
-              <h1 className="text-5xl font-black uppercase tracking-tighter text-[#344059] sm:text-6xl lg:text-[5.5rem] lg:leading-[0.92]">
-                Developing leaders who shape what comes next.
+              <div className="flex items-center gap-4 mb-6">
+                <span className="w-12 h-[2px] bg-[#D89B2B]"></span>
+                <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Ages 21-30</p>
+              </div>
+              <h1 className="text-5xl font-black uppercase tracking-tighter text-[#344059] sm:text-6xl lg:text-[5rem] lg:leading-[0.92]">
+                Legacy <br />Fellows.
               </h1>
-              <p className="mt-8 max-w-2xl border-l-2 border-[#D89B2B] pl-6 text-lg leading-relaxed text-gray-600 sm:text-xl">
-                Legacy Leaders equips youth and adults with the tools to develop their maximum potential and become purposeful leaders in their communities and beyond.
+              <p className="mt-8 text-lg leading-relaxed text-gray-600 sm:text-xl">
+                Legacy Fellows (ages 21-30) help leaders of color achieve financial independence and life balance by discovering their purpose, developing business opportunities, and creating a network of success that generates generational wealth. We elevate young adults to become the best version of themselves and teach them to share their stories with the world!
               </p>
             </div>
 
-            <div className="relative overflow-hidden rounded-none bg-[#344059] shadow-[0_24px_70px_rgba(52,64,89,0.18)]">
-              <div className="relative aspect-[4/3] w-full">
-                <Image
-                  src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1400&q=80"
-                  alt="Legacy Leaders fellows celebrating together"
-                  fill
-                  sizes="(min-width: 1024px) 48vw, 100vw"
-                  className="object-cover"
-                />
+            {/* Video Player */}
+            <div className="relative overflow-hidden bg-black shadow-[0_24px_80px_rgba(52,64,89,0.15)] rounded-sm group border border-[#344059]/10">
+              <HeroVideo 
+                videoId="BLSYwYzxt7Y" 
+                thumbnailSrc="https://images.unsplash.com/photo-1515168833906-d2a3b82b302a?auto=format&fit=crop&w=1200&q=80"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* --- 2. WHAT YOU'LL GAIN --- */}
+        <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28 border-t border-gray-100">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-16">
+              <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">What Am I Getting Out Of It?</h4>
+              <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl max-w-3xl">
+                What You'll Gain
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-gray-600 max-w-3xl">
+                As a Legacy Fellow, you'll gain access to meaningful experiences, valuable relationships, and practical leadership development opportunities designed to help you grow with purpose, confidence, and impact. Here's what you can expect:
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {fellowsGains.map((gain, idx) => (
+                <div key={idx} className="group relative border border-[#344059]/10 overflow-hidden min-h-[400px] flex flex-col justify-end p-10 lg:p-12">
+                  <Image 
+                    src={gain.image} 
+                    alt={gain.title}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[800ms] scale-100 group-hover:scale-105 z-0" 
+                  />
+                  <div className="absolute inset-0 bg-[#344059]/90 group-hover:bg-[#344059]/75 transition-colors duration-500 z-10" />
+                  
+                  <div className="relative z-20">
+                    <span className="block text-5xl font-black text-white/10 mb-4 transition-colors group-hover:text-[#D89B2B]/20">
+                      0{idx + 1}
+                    </span>
+                    <h3 className="text-2xl font-black uppercase tracking-tight text-white mb-4">
+                      {gain.title}
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      {gain.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* --- 3. WHAT WE ASK OF YOU --- */}
+        <section className="bg-[#f8f6f1] px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-16 max-w-3xl">
+              <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">What Am I Putting In?</h4>
+              <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl mb-6">
+                What We Ask of You
+              </h2>
+              <p className="text-lg leading-relaxed text-gray-600">
+                Great leaders aren't developed by chance—they are shaped through commitment, growth, and meaningful experiences. As a Legacy Fellow, you'll have the opportunity to invest in yourself, build authentic relationships, embrace new challenges, and actively engage in the learning process. We ask Fellows to bring their best effort, an open mind, and a willingness to grow. 
+              </p>
+            </div>
+
+            <InteractiveRequirements items={fellowsRequirements} />
+          </div>
+        </section>
+
+        {/* --- 4. LEADERSHIP MODELS IMAGE BREAK --- */}
+        <section className="w-full bg-[#344059]">
+           <div className="relative w-full aspect-[21/9] md:aspect-[21/7] overflow-hidden">
+              <Image 
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=2000&q=80" 
+                alt="Fellows Leadership Model"
+                fill
+                className="object-cover opacity-60"
+              />
+              <div className="absolute inset-0 bg-[#344059]/40 mix-blend-multiply" />
+              <div className="absolute inset-0 flex items-center justify-center p-6">
+                 <div className="text-center">
+                    <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-4 drop-shadow-lg">
+                      Fellows Leadership Model
+                    </h2>
+                    <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-widest text-[#D89B2B] drop-shadow-md">
+                      + Personal Leadership Model
+                    </h3>
+                 </div>
               </div>
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(52,64,89,0.05),rgba(52,64,89,0.75))]" />
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white sm:p-10">
-                <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#D89B2B]">Since 2010</p>
-                <p className="mt-3 max-w-xl text-lg leading-relaxed text-white/90">
-                  What started in Chicago as a commitment to mentoring youth has become a multi-stage leadership development community with local and global reach.
-                </p>
+           </div>
+        </section>
+
+        {/* --- 5. FELLOWS CTA SECTION --- */}
+        <section className="bg-white border-y border-[#344059]/10">
+          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] mb-4">
+                Ready to accelerate your leadership journey?
+              </h2>
+              <p className="text-gray-600 text-lg">
+                Join the next cohort of Legacy Fellows and start building the foundation for your future impact.
+              </p>
+            </div>
+            <button className="whitespace-nowrap px-10 py-5 bg-[#D89B2B] text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#344059] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
+              Apply for Fellowship
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+        </section>
+
+        {/* --- 6. LEGACY MENTORS (Intro) --- */}
+        <section id="legacy-mentors" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Preferred Age 35+</p>
+                <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl mb-8">
+                  Legacy Mentors.
+                </h2>
+                <div className="space-y-6 text-lg leading-relaxed text-gray-600">
+                  <p className="font-bold text-[#344059] text-2xl mb-2">
+                    One conversation can change a life.
+                  </p>
+                  <p>
+                    As a Legacy Leaders Mentor, you'll have the opportunity to invest in a young adult's personal, professional, and leadership development by sharing your experiences, encouragement, and wisdom. 
+                  </p>
+                  <p>
+                    Through meaningful relationships and intentional guidance, mentors help participants discover their potential, navigate challenges, and pursue their goals with greater confidence. Whether you're a seasoned professional, entrepreneur, or community leader, your influence can create a lasting impact that extends far beyond the program.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="relative w-full aspect-[4/5] bg-gray-100 overflow-hidden">
+                 <Image 
+                   src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80" 
+                   alt="Mentor coaching a fellow" 
+                   fill
+                   className="object-cover"
+                 />
+                 <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[#D89B2B] z-[-1]"></div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 2. MISSION & VISION */}
-        <section className="bg-[#344059] px-6 py-20 text-white sm:py-24 lg:px-12 lg:py-28">
-          <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div>
-              <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Core Pillars</p>
-              <h2 className="text-4xl font-black uppercase tracking-tight sm:text-5xl lg:leading-[1.1]">
-                A movement rooted in purpose.
+        {/* --- 7. YOUR INVESTMENT (4 Pathways) --- */}
+        <section className="bg-[#344059] text-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-16">
+              <h4 className="uppercase tracking-[0.2em] text-[#D89B2B] text-sm font-bold mb-4">Your Investment</h4>
+              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white">
+                How Mentors Make An Impact.
               </h2>
             </div>
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="rounded-none border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-colors hover:bg-white/10">
-                <Users className="h-8 w-8 text-[#D89B2B]" />
-                <p className="mt-6 text-sm font-bold uppercase tracking-[0.2em] text-white/65">Our Mission</p>
-                <p className="mt-3 text-lg leading-relaxed text-white/90">
-                  Equip youth and adults with the tools to develop their maximum potential and become purposeful leaders in their communities and beyond.
-                </p>
-              </div>
-              <div className="rounded-none border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-colors hover:bg-white/10">
-                <Sparkles className="h-8 w-8 text-[#D89B2B]" />
-                <p className="mt-6 text-sm font-bold uppercase tracking-[0.2em] text-white/65">Our Vision</p>
-                <p className="mt-3 text-lg leading-relaxed text-white/90">
-                  Provide training and life-transforming experiences that create a ripple effect of world changers.
-                </p>
-              </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-left divide-y md:divide-y-0 md:divide-x divide-white/20">
+              {mentorPathways.map((pathway, idx) => (
+                <div key={idx} className={`pt-8 md:pt-0 ${idx !== 0 ? 'md:pl-12' : ''}`}>
+                  <span className="block text-6xl font-black text-white/10 mb-4">0{idx + 1}</span>
+                  <h3 className="text-xl font-bold mb-4 text-[#D89B2B] uppercase tracking-wide">{pathway.title}</h3>
+                  <p className="text-gray-300 leading-relaxed text-sm lg:text-base">{pathway.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* 3. HISTORY (Sticky Text + CSS Columns Masonry) */}
-        <section id="our-history" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        {/* --- 8. MENTOR QUALIFICATIONS --- */}
+        <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
           <div className="mx-auto max-w-7xl">
-            {/* FIX 1: Change lg:items-start to lg:items-center to vertically center the row */}
-            <div className="flex flex-col lg:flex-row gap-16 lg:items-center">
-              
-              {/* FIX 2: Add self-start here so the text still pins to the top of the screen when scrolling */}
-              <div className="w-full lg:w-[45%] lg:sticky lg:top-32 self-start space-y-8 flex-shrink-0">
-                <div>
-                  <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Our History</p>
-                  <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl">
-                    Built in Chicago.<br />Growing beyond it.
-                  </h2>
-                </div>
-                <div className="space-y-6 text-lg leading-8 text-gray-600 lg:pr-6">
-                  <p>
-                    Since its inception in 2010, Legacy Leaders has been committed to developing the potential of individuals from Black and Brown communities by equipping them with the confidence, leadership skills, and support needed to pursue greater opportunities and create lasting change.
-                  </p>
-                  <p>
-                    What began as a passion for mentoring and developing youth throughout the city of Chicago has grown into a multifaceted leadership development organization impacting individuals across multiple stages of life. In our early years, Legacy Leaders focused on creating youth leadership programs, mentorship opportunities, and community-based experiences that empowered young people to overcome barriers, discover their strengths, and envision a brighter future.
-                  </p>
-                  <p>
-                    As our impact expanded, so did our vision. Today, Legacy Leaders serves emerging leaders through a robust Young Adult Fellowship Program, now entering its fifth program cycle. This flagship initiative connects young adults with mentors, leadership training, professional development opportunities, community service experiences, and a network of support designed to help them thrive personally and professionally. Through this program, participants gain the tools, confidence, and relationships needed to become influential leaders within their families, workplaces, and communities.
-                  </p>
-                  <p>
-                    Our commitment to leadership development extends beyond our local communities. Through strategic partnerships and global outreach efforts, Legacy Leaders also supports a children's home in South Africa, providing resources, encouragement, and opportunities that help young people flourish despite challenging circumstances. This international partnership reflects our belief that leadership, hope, and opportunity should know no geographic boundaries.
-                  </p>
-                  <p>
-                    At the heart of everything we do is the belief that every individual possesses untapped potential and the ability to positively influence the world around them. Through mentorship, leadership development, coaching, service-learning experiences, and collaborative partnerships, Legacy Leaders helps individuals identify their strengths, overcome obstacles, and transform their futures.
-                  </p>
-                  <p className="font-bold text-[#344059]">
-                    More than a leadership organization, Legacy Leaders is a community dedicated to raising up the next generation of purpose-driven leaders who will create meaningful impact in their families, organizations, neighborhoods, and beyond.
-                  </p>
-                </div>
-              </div>
-
-              {/* Masonry Image Column */}
-              <div className="w-full lg:w-[55%]">
-                <div className="columns-1 sm:columns-2 gap-6 space-y-6">
-                  {historyImages.map((image, index) => (
-                    <div 
-                      key={index} 
-                      className={`relative overflow-hidden rounded-none w-full bg-gray-100 break-inside-avoid ${image.aspect}`}
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(min-width: 1024px) 30vw, 100vw"
-                        className="object-cover transition-transform duration-700 hover:scale-105"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* 4. FELLOWS (Replaced with PC-Accessible Carousel) */}
-        <section className="bg-[#f8f6f1] pt-20 pb-10 sm:pt-24 lg:pt-28 lg:pb-12">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="mb-16 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Our Fellows</p>
-                <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl">A timeline of impact.</h2>
-              </div>
-              <p className="max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg">
-                Every cohort adds a new chapter to the Legacy Leaders story. Scroll through our fellowship cycles to see a growing community of emerging leaders.
+            <div className="max-w-3xl mb-16">
+              <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Who We Look For</h4>
+              <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl mb-6">
+                Ideal Mentor Qualifications.
+              </h2>
+              <p className="text-lg leading-relaxed text-gray-600">
+                We are seeking mentors who are committed to investing in the next generation of leaders. 
               </p>
             </div>
-          </div>
 
-          <div className="mx-auto max-w-[1400px]">
-            <FellowsCarousel fellows={fellowsByYear} />
+            <div className="grid md:grid-cols-2 gap-x-12 gap-y-6 mb-16">
+              {mentorQualifications.map((qual, idx) => {
+                const [title, desc] = qual.split(" – ");
+                return (
+                  <div key={idx} className="flex gap-4 items-start p-6 bg-gray-50 border border-gray-100 hover:border-[#D89B2B]/50 transition-colors">
+                    <CheckCircle2 className="text-[#D89B2B] w-6 h-6 shrink-0 mt-1" />
+                    <div>
+                      <p className="font-bold text-[#344059] text-lg mb-1">{title}</p>
+                      {desc && <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="bg-[#f8f6f1] p-10 border-l-4 border-[#D89B2B] flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <div className="max-w-2xl">
+                <p className="text-[#344059] font-bold mb-2">Education: Bachelor's degree preferred, but not required.</p>
+                <p className="text-gray-600">
+                  Most importantly, we are looking for mentors who care deeply about people and are passionate about helping others discover their potential and achieve their goals.
+                </p>
+              </div>
+              <button className="whitespace-nowrap px-10 py-5 bg-[#344059] text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#D89B2B] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
+                Become a Legacy Mentor
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
           </div>
         </section>
 
-        {/* 5. LEADERSHIP */}
-        <section id="leadership" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-16 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between border-b border-[#344059]/10 pb-12">
-              <div>
-                <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">The Leadership</p>
-                <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl">Experience, imagination, and conviction.</h2>
-              </div>
-              <a
-                href="#"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-[#344059] transition-colors hover:text-[#D89B2B]"
-              >
-                Sign up to be a board member <ArrowRight size={16} />
-              </a>
+        {/* --- 9. LEGACY COACHING WITH CONNECTING ARROWS --- */}
+        <section id="legacy-coaching" className="bg-[#f6f1e8] px-6 py-20 sm:py-24 lg:px-12 lg:py-28 relative overflow-hidden">
+          <div className="mx-auto max-w-7xl relative">
+            
+            <div className="text-center mb-20">
+              <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-4">Professional Development</h4>
+              <h2 className="text-4xl md:text-5xl font-black text-[#344059] tracking-tight mb-8">
+                THE LEGACY COACHING MODEL™
+              </h2>
             </div>
 
-            <div className="mb-24 grid gap-x-8 gap-y-14 md:grid-cols-2 xl:grid-cols-4">
-              {boardMembers.map((member) => (
-                <article key={member._id} className="group flex flex-col">
-                  <div className="relative mb-6 overflow-hidden bg-[#e8ebf1] rounded-none">
-                    <div className="relative aspect-[3/4] w-full">
-                      {member.imageUrl ? (
-                        <Image
-                          src={member.imageUrl}
-                          alt={member.name}
-                          fill
-                          sizes="(min-width: 1280px) 22vw, (min-width: 768px) 40vw, 100vw"
-                          className="object-cover grayscale transition-all duration-700 group-hover:scale-[1.03] group-hover:grayscale-0"
-                        />
-                      ) : null}
+            {/* Desktop SVG Connecting Arrow Overlay */}
+            <div className="hidden xl:block absolute top-[250px] left-0 right-0 z-0 h-40 pointer-events-none">
+              <svg width="100%" height="100%" preserveAspectRatio="none" className="stroke-[#D89B2B]/30" strokeWidth="2" fill="none" strokeDasharray="8 8">
+                <path d="M 12% 0 Q 30% 120 38% 0" />
+                <path d="M 38% 0 Q 55% 120 62% 0" />
+                <path d="M 62% 0 Q 80% 120 88% 0" />
+              </svg>
+            </div>
+
+            {/* The 4 Steps */}
+            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8 mb-24 relative z-10">
+              {coachingSteps.map((step, idx) => (
+                <div key={idx} className="flex flex-col">
+                  {/* Step Card */}
+                  <div className="bg-white p-10 border border-[#344059]/10 shadow-sm relative overflow-hidden group flex-1">
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-[#f8f6f1] group-hover:bg-[#D89B2B] transition-colors duration-300 flex items-center justify-center rounded-bl-3xl z-10">
+                      <span className="text-xl font-black text-[#344059] group-hover:text-white">
+                        {idx + 1}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-3xl font-black uppercase text-[#344059] mb-2">{step.title}</h3>
+                    <p className="text-sm font-bold uppercase tracking-widest text-[#D89B2B] mb-6 min-h-[40px]">{step.subtitle}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-8">{step.desc}</p>
+                    
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-widest text-[#344059] mb-4 border-b pb-2">Outcomes</p>
+                      <ul className="space-y-3">
+                        {step.outcomes.map((outcome, oIdx) => (
+                          <li key={oIdx} className="flex items-start gap-2 text-sm text-gray-600">
+                            <span className="text-[#D89B2B] mt-0.5">•</span>
+                            {outcome}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                  <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059]">{member.name}</h3>
-                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-[#D89B2B]">{member.role}</p>
-                  <p className="mt-2 text-sm leading-7 text-gray-500">{member.company}</p>
-                  <p className="mt-4 text-sm leading-7 text-gray-600 whitespace-pre-wrap">{member.bio}</p>
-                </article>
+
+                  {/* Mobile Downward Arrow (Shows only on smaller screens between cards) */}
+                  {idx < coachingSteps.length - 1 && (
+                    <div className="xl:hidden flex justify-center py-6">
+                      <ArrowDown size={32} className="text-[#D89B2B]/50 animate-bounce" />
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
 
-            {/* Sub-Boards Interactive Component */}
-            <InteractiveBoardCards />
-          </div>
-        </section>
-
-        {/* 6. PRESIDENT'S WELCOME */}
-        <section className="bg-white px-6 pb-20 sm:pb-24 lg:px-12 lg:pb-28">
-          <div className="mx-auto max-w-7xl overflow-hidden rounded-none border border-[#344059]/10 bg-[#f8f6f1] shadow-[0_24px_80px_rgba(52,64,89,0.05)]">
-            <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
-              <div className="relative min-h-[22rem] lg:min-h-full">
-                <Image
-                  src="/chief.webp"
-                  alt="President and founder portrait placeholder"
-                  fill
-                  sizes="(min-width: 1024px) 38vw, 100vw"
-                  className="object-cover grayscale"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(52,64,89,0.12),rgba(52,64,89,0.45))]" />
-              </div>
-
-              <div className="relative p-8 sm:p-12 lg:p-16">
-                <Quote className="absolute left-8 top-8 h-12 w-12 text-[#D89B2B]/20 sm:left-12 sm:top-12 sm:h-16 sm:w-16" />
-                <div className="relative z-10">
-                  <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">From the President</p>
-                  <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] sm:text-4xl">Welcome to Legacy Leaders</h2>
-                  <div className="mt-6 space-y-5 text-base leading-8 text-gray-600 sm:text-lg">
-                    <p>
-                      Thank you for your interest in Legacy Leaders. Since 2010, we have been committed to helping individuals discover their potential, develop their leadership abilities, and create meaningful impact in their communities and beyond.
-                    </p>
-                    <p>
-                      We believe leadership is not defined by a title. It is defined by influence. Through mentorship, leadership development, coaching, speaking engagements, workshops, and service opportunities, we help people build confidence, strengthen their skills, discover purpose, and pursue their goals with greater clarity.
-                    </p>
-                    <p>
-                      None of this work happens alone. It takes mentors, donors, volunteers, alumni, and partners who are willing to invest in the next generation. Whether you want to grow as a leader, support the mission, or create opportunities for others, we invite you to join us in building a legacy that lasts.
-                    </p>
-                  </div>
-                  <div className="mt-8 border-t border-[#344059]/10 pt-6">
-                    <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#344059]">Leading for Change,</p>
-                    <p className="mt-2 text-2xl font-black tracking-tight text-[#344059]">Everett Gutierrez Jr.</p>
-                    <p className="text-sm uppercase tracking-[0.18em] text-gray-500">President &amp; Founder, Legacy Leaders</p>
-                  </div>
-                </div>
-              </div>
+            {/* Promise & Services Split */}
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 bg-[#344059] text-white p-10 md:p-16 relative z-10">
+               <div>
+                  <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-6">Legacy Coaching Promise</h4>
+                  <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-8">
+                    Discover who you are. <br/>
+                    <span className="text-gray-400">Align with where you're going.</span> <br/>
+                    Grow into the leader you're meant to become. <br/>
+                    <span className="text-[#D89B2B]">Multiply your impact for generations to come.</span>
+                  </h3>
+               </div>
+               
+               <div className="lg:border-l border-white/20 lg:pl-12">
+                  <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-6">Services Included in the Model</h4>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-4">
+                    {[
+                      "Executive Coaching", "Leadership Coaching", "Career Coaching", 
+                      "Entrepreneur Coaching", "DISC Assessments", "360 Feedback Assessments", 
+                      "Team Development Coaching", "Leadership Retreats", "Peer Coaching Circles"
+                    ].map((service, idx) => (
+                      <li key={idx} className="flex items-center gap-3 text-sm text-gray-300">
+                        <CheckCircle2 size={16} className="text-[#D89B2B]" />
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
+               </div>
             </div>
+
           </div>
         </section>
 
-        {/* 7. GALA (Replaced with Dynamic Carousel) */}
-        <section id='sneaker-gala' className="bg-[#344059] px-6 py-20 text-white sm:py-24 lg:px-12 lg:py-32">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-20 grid gap-6 md:grid-cols-2 md:items-end">
-              <div>
-                <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Legacy Sneaker Gala</p>
-                <h2 className="text-5xl font-black uppercase tracking-tight sm:text-6xl md:text-[5.5rem] md:leading-[0.9]">
-                  A celebration <br />of purpose.
-                </h2>
-              </div>
-              <p className="text-lg leading-relaxed text-white/80 max-w-lg md:ml-auto">
-                Our signature biannual event brings together mentors, supporters, and emerging leaders for an evening of inspiration. More than a fundraiser, it is a reminder that leadership can be both authentic and accessible.
+        {/* --- 10. FINAL DUAL CTA SECTION --- */}
+        <section className="bg-white border-t border-[#344059]/10">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12 lg:py-28">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-[#344059] mb-6">
+                Take Your Next Step
+              </h2>
+              <p className="text-xl text-gray-600">
+                Whether you are looking to accelerate your own growth or invest in the leaders of tomorrow, there is a place for you at Legacy Leaders.
               </p>
             </div>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-[#f8f6f1] p-10 md:p-14 text-center border border-[#344059]/10 hover:border-[#D89B2B] transition-colors">
+                <Users className="w-12 h-12 text-[#D89B2B] mx-auto mb-6" />
+                <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059] mb-4">Become a Legacy Fellow</h3>
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  Join our next cohort to gain the mentorship, network, and skills necessary to maximize your potential.
+                </p>
+                <button className="mx-auto px-8 py-4 bg-[#344059] text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
+                  Apply Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
 
-            <GalaCarousel editions={galaEditions} />
+              <div className="bg-[#f8f6f1] p-10 md:p-14 text-center border border-[#344059]/10 hover:border-[#D89B2B] transition-colors">
+                <Target className="w-12 h-12 text-[#D89B2B] mx-auto mb-6" />
+                <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059] mb-4">Become a Legacy Mentor</h3>
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  Share your expertise and guide a young adult through their leadership and professional development journey.
+                </p>
+                <button className="mx-auto px-8 py-4 bg-[#344059] text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
+                  Apply Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
           </div>
         </section>
+
       </main>
 
       <SiteFooter />

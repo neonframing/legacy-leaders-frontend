@@ -12,20 +12,14 @@ export default function TestimonialsCarousel({ testimonials = [] }) {
 
   const goNext = useCallback(() => {
     setActiveIndex((current) => {
-      if (!total) {
-        return current;
-      }
-
+      if (!total) return current;
       return (current + 1) % total;
     });
   }, [total]);
 
   const goPrev = useCallback(() => {
     setActiveIndex((current) => {
-      if (!total) {
-        return current;
-      }
-
+      if (!total) return current;
       return (current - 1 + total) % total;
     });
   }, [total]);
@@ -35,10 +29,7 @@ export default function TestimonialsCarousel({ testimonials = [] }) {
   }, []);
 
   useEffect(() => {
-    if (total < 2 || isPaused) {
-      return undefined;
-    }
-
+    if (total < 2 || isPaused) return undefined;
     const timer = setInterval(goNext, 5500);
     return () => clearInterval(timer);
   }, [goNext, isPaused, total]);
@@ -64,13 +55,10 @@ export default function TestimonialsCarousel({ testimonials = [] }) {
         goPrev();
       }
     }
-
     touchStartX.current = null;
   };
 
-  if (!total) {
-    return null;
-  }
+  if (!total) return null;
 
   return (
     <div
@@ -80,41 +68,46 @@ export default function TestimonialsCarousel({ testimonials = [] }) {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="relative min-h-[42rem] lg:min-h-[46rem]">
+      {/* Component overall min-height reduced from 42rem/46rem to values that gracefully scale content */}
+      <div className="relative min-h-[26rem] sm:min-h-[20rem] lg:min-h-[16rem]">
         {testimonials.map((testimonial, index) => (
           <article
             key={testimonial._id ?? index}
             aria-hidden={index !== activeIndex}
-            className={`flex min-h-[42rem] flex-col transition-opacity duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:min-h-[46rem] lg:flex-row lg:items-stretch ${
+            className={`flex min-h-[26rem] sm:min-h-[20rem] lg:min-h-[16rem] flex-col transition-opacity duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:flex-row lg:items-stretch ${
               index === activeIndex ? "relative opacity-100" : "pointer-events-none absolute inset-0 opacity-0"
             }`}
           >
-            <div className="relative w-full overflow-hidden bg-[#344059] aspect-[2/3] sm:aspect-[3/4] lg:w-5/12 lg:aspect-auto lg:min-h-full">
+            {/* Image section adjusted from 5/12 width to 4/12 for compactness */}
+            <div className="relative w-full overflow-hidden bg-[#344059] aspect-[4/3] sm:aspect-[2/1] lg:w-4/12 lg:aspect-auto lg:min-h-full">
               {testimonial.imageUrl ? (
                 <Image
                   src={testimonial.imageUrl}
                   alt={`${testimonial.name} testimonial`}
                   fill
-                  className="absolute inset-0 h-full w-full object-cover object-[50%_22%]"
+                  className="absolute inset-0 h-full w-full object-cover object-center"
                 />
               ) : (
                 <div className="absolute inset-0 h-full w-full bg-[#344059]" />
               )}
-              <div className="absolute inset-0 bg-[#344059]/24" />
+              <div className="absolute inset-0 bg-[#344059]/10" />
             </div>
 
-            <div className="relative w-full bg-white p-10 pb-20 sm:p-16 sm:pb-24 lg:w-7/12 lg:p-24 lg:pb-28">
-              <Quote size={64} className="absolute left-12 top-12 text-gray-100" />
+            {/* Typography updates applied inside text container block */}
+            <div className="relative w-full bg-white p-6 pb-14 sm:p-10 sm:pb-16 lg:w-8/12 lg:p-12 lg:pb-16 flex flex-col justify-center">
+              <Quote size={40} className="absolute left-6 top-6 text-gray-100/80" />
               <div className="relative z-10">
-                <h3 className="mb-8 text-2xl font-black uppercase tracking-tighter leading-tight text-[#344059] sm:text-3xl lg:text-4xl">
+                {/* Removed uppercase, removed font-black, and lowered size to text-base/lg/xl */}
+                <h3 className="mb-6 text-base font-medium tracking-normal leading-relaxed text-[#344059] sm:text-lg lg:text-xl italic">
                   &ldquo;{testimonial.quote}&rdquo;
                 </h3>
-                <div className="flex items-center gap-4">
-                  <div className="h-[2px] w-10 bg-[#D89B2B]" />
+                <div className="flex items-center gap-3">
+                  <div className="h-[1px] w-6 bg-[#D89B2B]" />
                   <div>
-                    <p className="text-sm font-bold uppercase tracking-wider text-[#344059]">{testimonial.name}</p>
+                    {/* Removed uppercase modification */}
+                    <p className="text-sm font-bold text-[#344059]">{testimonial.name}</p>
                     {testimonial.role && (
-                      <p className="text-sm text-gray-500">{testimonial.role}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{testimonial.role}</p>
                     )}
                   </div>
                 </div>
@@ -124,16 +117,16 @@ export default function TestimonialsCarousel({ testimonials = [] }) {
         ))}
 
         {total > 1 && (
-          <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 flex items-center justify-center">
-            <div className="pointer-events-auto flex items-center gap-2 rounded-full bg-[#344059]/18 px-3 py-2 backdrop-blur-sm">
+          <div className="pointer-events-none absolute inset-x-0 bottom-4 z-20 flex items-center justify-center">
+            <div className="pointer-events-auto flex items-center gap-1.5 rounded-full bg-[#344059]/10 px-2.5 py-1.5 backdrop-blur-sm">
               {testimonials.map((testimonial, index) => (
                 <button
                   key={testimonial._id ?? index}
                   type="button"
                   aria-label={`Go to testimonial ${index + 1}`}
                   onClick={() => goTo(index)}
-                  className={`h-2.5 w-2.5 rounded-full border border-[#D89B2B]/60 transition-all duration-500 ${
-                    index === activeIndex ? "scale-110 bg-[#D89B2B]" : "bg-[#D89B2B]/25 hover:bg-[#D89B2B]/45"
+                  className={`h-2 w-2 rounded-full border border-[#D89B2B]/40 transition-all duration-500 ${
+                    index === activeIndex ? "scale-110 bg-[#D89B2B]" : "bg-[#D89B2B]/20 hover:bg-[#D89B2B]/40"
                   }`}
                 />
               ))}

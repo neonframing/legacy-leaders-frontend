@@ -126,20 +126,19 @@ export default function OurProgramsPage() {
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-6">
                 <span className="w-12 h-[2px] bg-[#D89B2B]"></span>
-                <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Ages 21-30</p>
               </div>
               <h1 className="text-5xl font-black uppercase tracking-tighter text-[#344059] sm:text-6xl lg:text-[5rem] lg:leading-[0.92]">
                 Legacy <br />Fellows.
               </h1>
               <p className="mt-8 text-lg leading-relaxed text-gray-600 sm:text-xl">
-                An intensive cohort-based program designed for high-potential young adults seeking to accelerate their professional growth, secure financial independence, and create generational wealth through hands-on mentorship.
+                Legacy Fellows (ages 21-30) help leaders of color achieve financial independence and life balance by discovering their purpose, developing business opportunities, and creating a network of success that generates generational wealth. We elevate young adults to become the best version of themselves and teach them to share their stories with the world!
               </p>
-              <div className="mt-10 flex flex-col sm:flex-row gap-5">
+              {/* <div className="mt-10 flex flex-col sm:flex-row gap-5">
                 <button className="px-10 py-5 bg-[#344059] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] cursor-pointer transition-all duration-300 flex items-center justify-center gap-3 group rounded-none">
                   Apply for Fellowship
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </button>
-              </div>
+              </div> */}
             </div>
 
             {/* Video Player */}
