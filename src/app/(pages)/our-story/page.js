@@ -321,7 +321,7 @@ export default async function OurStoryPage() {
         </section>
 
         {/* 3. HISTORY (Sticky Text + CSS Columns Masonry) */}
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        <section id="our-history" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
           <div className="mx-auto max-w-7xl">
             {/* FIX 1: Change lg:items-start to lg:items-center to vertically center the row */}
             <div className="flex flex-col lg:flex-row gap-16 lg:items-center">
@@ -400,7 +400,7 @@ export default async function OurStoryPage() {
         </section>
 
         {/* 5. LEADERSHIP */}
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        <section id="leadership" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
           <div className="mx-auto max-w-7xl">
             <div className="mb-16 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between border-b border-[#344059]/10 pb-12">
               <div>
@@ -489,7 +489,7 @@ export default async function OurStoryPage() {
         </section>
 
         {/* 7. GALA (Replaced with Dynamic Carousel) */}
-        <section className="bg-[#344059] px-6 py-20 text-white sm:py-24 lg:px-12 lg:py-32">
+        <section id='sneaker-gala' className="bg-[#344059] px-6 py-20 text-white sm:py-24 lg:px-12 lg:py-32">
           <div className="mx-auto max-w-7xl">
             <div className="mb-20 grid gap-6 md:grid-cols-2 md:items-end">
               <div>

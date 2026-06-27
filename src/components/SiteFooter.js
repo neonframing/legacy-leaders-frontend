@@ -32,8 +32,8 @@ export default function SiteFooter() {
             <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-[#D89B2B]">Contact</h4>
             <ul className="space-y-4 text-sm text-gray-400">
               <li>info@mylegacyleaders.org</li>
-              <li>+1 (555) 123-4567</li>
-              <li>123 Corporate Blvd,<br />Suite 400<br />Chicago, IL 60601</li>
+              <li>+1 (773) 217-9528</li>
+              <li>Chicago, IL 60601</li>
             </ul>
           </div>
 

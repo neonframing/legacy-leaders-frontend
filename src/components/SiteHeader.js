@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 import BrandLogo from "@/components/BrandLogo";
 
@@ -33,29 +33,67 @@ function HeaderButton({ children, variant = "primary", className = "", href, onC
 }
 
 const navLinks = [
-  { name: "Our Story", href: "/our-story" },
-  { name: "Our Programs", href: "/our-programs" },
-  { name: "Get Involved", href: "/get-involved" },
-  { name: "Contact Us", href: "/contact-us" },
+  { 
+    name: "Our Story", 
+    href: "/our-story",
+    subLinks: [
+      { name: "About Us", href: "/our-story" },
+      { name: "Our History", href: "/our-story#our-history" },
+      { name: "Leadership", href: "/our-story#leadership" },
+      { name: "Sneaker Gala", href: "/our-story#sneaker-gala" },
+    ]
+  },
+  { 
+    name: "Our Programs", 
+    href: "/our-programs",
+    subLinks: [
+      { name: "Overview", href: "/our-programs" },
+      { name: "Legacy Fellows", href: "/our-programs#legacy-fellows" },
+      { name: "Legacy Mentors", href: "/our-programs#legacy-mentors" },
+      { name: "Legacy Coaching", href: "/our-programs#legacy-coaching" },
+    ]
+  },
+  { 
+    name: "Get Involved", 
+    href: "/get-involved",
+    subLinks: [
+      { name: "Overview", href: "/get-involved" },
+      { name: "Donate", href: "/get-involved#legacy-donor" },
+      { name: "Request an Intern", href: "/get-involved#request-intern" },
+      { name: "Volunteer", href: "/get-involved#volunteer" },
+    ]
+  },
+  { 
+    name: "Contact Us", 
+    href: "/contact" 
+  },
 ];
 
 export default function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loginMenuOpen, setLoginMenuOpen] = useState(false);
-  const [mobileLoginOpen, setMobileLoginOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null); // Tracks which desktop dropdown is open
+  const [expandedMobileSection, setExpandedMobileSection] = useState(null); // Tracks which mobile accordion is open
+  
   const loginMenuRef = useRef(null);
+  const navMenuRef = useRef(null);
 
+  // Handle Navbar styling on scroll
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle clicking outside of dropdowns to close them
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (loginMenuRef.current && !loginMenuRef.current.contains(event.target)) {
         setLoginMenuOpen(false);
+      }
+      if (navMenuRef.current && !navMenuRef.current.contains(event.target)) {
+        setActiveDropdown(null);
       }
     };
 
@@ -74,18 +112,50 @@ export default function SiteHeader() {
           <BrandLogo />
         </Link>
 
-        <nav className="hidden items-center space-x-8 lg:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="cursor-pointer text-sm font-semibold uppercase tracking-wider transition-colors hover:text-[#D89B2B]"
+        {/* --- DESKTOP NAVIGATION --- */}
+        <nav ref={navMenuRef} className="hidden items-center space-x-8 lg:flex">
+          {navLinks.map((link, idx) => (
+            <div 
+              key={link.name} 
+              className="relative"
+              onMouseEnter={() => link.subLinks && setActiveDropdown(idx)}
+              onMouseLeave={() => setActiveDropdown(null)}
             >
-              {link.name}
-            </Link>
+              <Link
+                href={link.href}
+                className="flex items-center gap-1 cursor-pointer text-sm font-semibold uppercase tracking-wider transition-colors hover:text-[#D89B2B]"
+              >
+                {link.name}
+                {link.subLinks && <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === idx ? "rotate-180 text-[#D89B2B]" : ""}`} />}
+              </Link>
+              
+              {/* Desktop Dropdown Menu */}
+              {link.subLinks && activeDropdown === idx && (
+                <div className="absolute left-0 top-full pt-6 min-w-[220px]">
+                  <div className="overflow-hidden border border-gray-200 bg-white shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+                    {link.subLinks.map((subLink, subIdx) => (
+                      <Link
+                        key={subLink.name}
+                        // Use object notation for secure Next.js hash routing
+                        href={
+                          subLink.href.includes('#') 
+                          ? { pathname: subLink.href.split('#')[0], hash: subLink.href.split('#')[1] }
+                          : subLink.href
+                        }
+                        className={`block cursor-pointer px-5 py-3 text-xs font-semibold uppercase tracking-widest text-[#344059] transition-colors hover:bg-[#f8f6f1] hover:text-[#D89B2B] ${subIdx !== 0 ? 'border-t border-gray-100' : ''}`}
+                        onClick={() => setActiveDropdown(null)}
+                      >
+                        {subLink.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
+        {/* --- DESKTOP LOGIN & CTA --- */}
         <div className="hidden items-center space-x-4 lg:flex">
           <div
             ref={loginMenuRef}
@@ -95,25 +165,25 @@ export default function SiteHeader() {
           >
             <button
               type="button"
-              className="cursor-pointer text-sm font-semibold uppercase tracking-wider transition-colors hover:text-[#D89B2B]"
+              className="flex items-center gap-1 cursor-pointer text-sm font-semibold uppercase tracking-wider transition-colors hover:text-[#D89B2B]"
               onClick={() => setLoginMenuOpen((open) => !open)}
               aria-haspopup="menu"
               aria-expanded={loginMenuOpen}
             >
-              Login
+              Login <ChevronDown size={14} className={`transition-transform duration-200 ${loginMenuOpen ? "rotate-180 text-[#D89B2B]" : ""}`} />
             </button>
             {loginMenuOpen && (
-              <div className="absolute right-0 top-full min-w-[210px] pt-2">
-                <div className="overflow-hidden border border-gray-200 bg-white shadow-lg">
+              <div className="absolute right-0 top-full min-w-[210px] pt-6">
+                <div className="overflow-hidden border border-gray-200 bg-white shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
                   <a
                     href="#"
-                    className="block cursor-pointer px-4 py-3 text-sm font-semibold uppercase tracking-wider text-[#344059] transition-colors hover:bg-[#f6f1e8] hover:text-[#D89B2B]"
+                    className="block cursor-pointer px-5 py-3 text-xs font-semibold uppercase tracking-widest text-[#344059] transition-colors hover:bg-[#f8f6f1] hover:text-[#D89B2B]"
                   >
                     Fellows Login
                   </a>
                   <a
                     href="#"
-                    className="block cursor-pointer border-t border-gray-100 px-4 py-3 text-sm font-semibold uppercase tracking-wider text-[#344059] transition-colors hover:bg-[#f6f1e8] hover:text-[#D89B2B]"
+                    className="block cursor-pointer border-t border-gray-100 px-5 py-3 text-xs font-semibold uppercase tracking-widest text-[#344059] transition-colors hover:bg-[#f8f6f1] hover:text-[#D89B2B]"
                   >
                     Mentors Login
                   </a>
@@ -121,11 +191,12 @@ export default function SiteHeader() {
               </div>
             )}
           </div>
-          <HeaderButton variant="primary" href="/get-involved#legacy-donor">
+          <HeaderButton variant="primary" href={{ pathname: '/get-involved', hash: 'legacy-donor' }}>
             Donate Today
           </HeaderButton>
         </div>
 
+        {/* --- MOBILE MENU TOGGLE --- */}
         {!mobileMenuOpen && (
           <button
             className="z-50 cursor-pointer text-[#344059] lg:hidden"
@@ -137,72 +208,96 @@ export default function SiteHeader() {
         )}
       </div>
 
+      {/* --- MOBILE FULLSCREEN MENU --- */}
       {mobileMenuOpen && (
-        <div className="absolute left-0 top-0 z-40 flex h-screen w-full flex-col items-center justify-center space-y-8 bg-white">
+        <div className="fixed inset-0 z-40 flex h-[100dvh] w-full flex-col bg-white overflow-y-auto pt-24 pb-12 px-6 animate-in fade-in duration-200">
           <button
             type="button"
             className="absolute right-6 top-6 cursor-pointer text-[#344059]"
             onClick={() => {
               setMobileMenuOpen(false);
-              setMobileLoginOpen(false);
+              setExpandedMobileSection(null);
             }}
             aria-label="Close menu"
           >
             <X size={30} />
           </button>
 
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="cursor-pointer text-2xl font-bold uppercase tracking-widest text-[#344059] hover:text-[#D89B2B]"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <div className="flex flex-col items-center space-y-4">
-            <button
-              type="button"
-              className="cursor-pointer text-xl font-bold uppercase tracking-widest text-[#344059] hover:text-[#D89B2B]"
-              onClick={() => setMobileLoginOpen((open) => !open)}
-              aria-expanded={mobileLoginOpen}
-              aria-controls="mobile-login-menu"
-            >
-              Login
-            </button>
-            {mobileLoginOpen && (
-              <div id="mobile-login-menu" className="flex flex-col items-center space-y-3">
-                <a
-                  href="#"
-                  className="cursor-pointer text-base font-semibold uppercase tracking-wider text-[#344059] hover:text-[#D89B2B]"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    setMobileLoginOpen(false);
-                  }}
-                >
-                  Fellows Login
-                </a>
-                <a
-                  href="#"
-                  className="cursor-pointer text-base font-semibold uppercase tracking-wider text-[#344059] hover:text-[#D89B2B]"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    setMobileLoginOpen(false);
-                  }}
-                >
-                  Mentors Login
-                </a>
+          <div className="flex flex-col space-y-6 w-full max-w-sm mx-auto">
+            {navLinks.map((link, idx) => (
+              <div key={link.name} className="flex flex-col border-b border-gray-100 pb-4">
+                <div className="flex items-center justify-between">
+                  <Link
+                    href={link.href}
+                    className="text-2xl font-black uppercase tracking-tight text-[#344059]"
+                    onClick={() => {
+                      if (!link.subLinks) setMobileMenuOpen(false);
+                    }}
+                  >
+                    {link.name}
+                  </Link>
+                  {link.subLinks && (
+                    <button 
+                      onClick={() => setExpandedMobileSection(expandedMobileSection === idx ? null : idx)}
+                      className="p-2 text-[#D89B2B]"
+                    >
+                      <ChevronDown size={24} className={`transition-transform duration-300 ${expandedMobileSection === idx ? "rotate-180" : ""}`} />
+                    </button>
+                  )}
+                </div>
+                
+                {/* Mobile Accordion Sub-links */}
+                {link.subLinks && expandedMobileSection === idx && (
+                  <div className="mt-4 flex flex-col space-y-4 pl-4 border-l-2 border-[#D89B2B] animate-in slide-in-from-top-2">
+                    {link.subLinks.map((subLink) => (
+                      <Link
+                        key={subLink.name}
+                        href={
+                          subLink.href.includes('#') 
+                          ? { pathname: subLink.href.split('#')[0], hash: subLink.href.split('#')[1] }
+                          : subLink.href
+                        }
+                        className="text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-[#D89B2B]"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {subLink.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
+            ))}
+
+            {/* Mobile Login Accordion */}
+            <div className="flex flex-col border-b border-gray-100 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-2xl font-black uppercase tracking-tight text-[#344059]">Login</span>
+                <button 
+                  onClick={() => setExpandedMobileSection('login')}
+                  className="p-2 text-[#D89B2B]"
+                >
+                  <ChevronDown size={24} className={`transition-transform duration-300 ${expandedMobileSection === 'login' ? "rotate-180" : ""}`} />
+                </button>
+              </div>
+              {expandedMobileSection === 'login' && (
+                <div className="mt-4 flex flex-col space-y-4 pl-4 border-l-2 border-[#D89B2B] animate-in slide-in-from-top-2">
+                  <a href="#" className="text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-[#D89B2B]">Fellows Login</a>
+                  <a href="#" className="text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-[#D89B2B]">Mentors Login</a>
+                </div>
+              )}
+            </div>
+
+            <div className="pt-6">
+              <HeaderButton 
+                variant="primary" 
+                className="w-full"
+                href={{ pathname: '/get-involved', hash: 'legacy-donor' }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Donate Today
+              </HeaderButton>
+            </div>
           </div>
-          <HeaderButton 
-            variant="primary" 
-            href="/get-involved#donate"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Donate Today
-          </HeaderButton>
         </div>
       )}
     </header>

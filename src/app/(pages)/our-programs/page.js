@@ -356,7 +356,7 @@ export default function OurProgramsPage() {
         </section>
 
         {/* --- 9. LEGACY COACHING WITH CONNECTING ARROWS --- */}
-        <section className="bg-[#f6f1e8] px-6 py-20 sm:py-24 lg:px-12 lg:py-28 relative overflow-hidden">
+        <section id="legacy-coaching" className="bg-[#f6f1e8] px-6 py-20 sm:py-24 lg:px-12 lg:py-28 relative overflow-hidden">
           <div className="mx-auto max-w-7xl relative">
             
             <div className="text-center mb-20">
