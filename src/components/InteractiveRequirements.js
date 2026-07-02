@@ -15,18 +15,23 @@ export default function InteractiveRequirements({ items }) {
           <div 
             key={idx} 
             onMouseEnter={() => setActiveIndex(idx)}
-            className={`group flex items-start gap-5 p-6 border transition-all duration-300 ${
+            className={`group relative overflow-hidden flex items-start gap-5 p-6 border transition-all duration-300 ${
               activeIndex === idx 
                 ? 'border-[#D89B2B] bg-white shadow-md scale-[1.02]' 
                 : 'border-gray-200 bg-gray-50 hover:bg-white'
             }`}
           >
-            <div className={`mt-1 p-2 transition-colors duration-300 ${
+            <div
+              className={`absolute inset-0 pointer-events-none transition-colors duration-300 ${
+                activeIndex === idx ? 'bg-[#344059]/14' : 'bg-[#344059]/8'
+              }`}
+            />
+            <div className={`relative z-10 mt-1 p-2 transition-colors duration-300 ${
               activeIndex === idx ? 'bg-[#D89B2B] text-white' : 'bg-gray-200 text-[#344059]'
             }`}>
               <ChevronRight size={20} />
             </div>
-            <div>
+            <div className="relative z-10">
               <h4 className="font-bold text-[#344059] text-xl uppercase tracking-wide mb-2">
                 {item.title}
               </h4>
