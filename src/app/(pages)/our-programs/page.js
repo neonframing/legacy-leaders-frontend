@@ -362,6 +362,35 @@ export default function OurProgramsPage() {
         {/* --- 9. LEGACY COACHING WITH CONNECTING ARROWS --- */}
         <section id="legacy-coaching" className="bg-[#f6f1e8] px-6 py-16 sm:py-20 lg:px-10 lg:py-24 relative overflow-hidden">
           <div className="mx-auto max-w-7xl relative">
+
+            {/* Promise & Services Split */}
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 bg-[#344059] text-white p-8 md:p-12 relative z-10 mb-14">
+               <div>
+                  <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-6">Legacy Coaching Promise</h4>
+                  <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight mb-6">
+                    Discover who you are. <br/>
+                    <span className="text-gray-400">Align with where you're going.</span> <br/>
+                    Grow into the leader you're meant to become. <br/>
+                    <span className="text-[#D89B2B]">Multiply your impact for generations to come.</span>
+                  </h3>
+               </div>
+               
+               <div className="lg:border-l border-white/20 lg:pl-8">
+                  <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-6">Services Included in the Model</h4>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
+                    {[
+                      "Executive Coaching", "Leadership Coaching", "Career Coaching", 
+                      "Entrepreneur Coaching", "DISC Assessments", "360 Feedback Assessments", 
+                      "Team Development Coaching", "Leadership Retreats", "Peer Coaching Circles"
+                    ].map((service, idx) => (
+                      <li key={idx} className="flex items-center gap-3 text-sm text-gray-300">
+                        <CheckCircle2 size={16} className="text-[#D89B2B]" />
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
+               </div>
+            </div>
             
             <div className="text-center mb-14">
               <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-4">Professional Development</h4>
@@ -416,35 +445,6 @@ export default function OurProgramsPage() {
                   )}
                 </div>
               ))}
-            </div>
-
-            {/* Promise & Services Split */}
-            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 bg-[#344059] text-white p-8 md:p-12 relative z-10">
-               <div>
-                  <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-6">Legacy Coaching Promise</h4>
-                  <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight mb-6">
-                    Discover who you are. <br/>
-                    <span className="text-gray-400">Align with where you're going.</span> <br/>
-                    Grow into the leader you're meant to become. <br/>
-                    <span className="text-[#D89B2B]">Multiply your impact for generations to come.</span>
-                  </h3>
-               </div>
-               
-               <div className="lg:border-l border-white/20 lg:pl-8">
-                  <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-6">Services Included in the Model</h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
-                    {[
-                      "Executive Coaching", "Leadership Coaching", "Career Coaching", 
-                      "Entrepreneur Coaching", "DISC Assessments", "360 Feedback Assessments", 
-                      "Team Development Coaching", "Leadership Retreats", "Peer Coaching Circles"
-                    ].map((service, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-sm text-gray-300">
-                        <CheckCircle2 size={16} className="text-[#D89B2B]" />
-                        {service}
-                      </li>
-                    ))}
-                  </ul>
-               </div>
             </div>
 
           </div>
