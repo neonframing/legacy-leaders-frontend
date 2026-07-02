@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Heart, Users, Mail, ShieldCheck, CheckCircle2, ArrowUpRight, Target } from "lucide-react";
 
-export const runtime = 'edge';
-
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -17,17 +15,34 @@ export default function GetInvolvedPage() {
         <section className="relative overflow-hidden bg-[#f6f1e8] px-6 pb-20 pt-36 sm:pt-40 lg:px-12 lg:pb-28 lg:pt-48">
           <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-white/40 lg:block" />
           <div className="mx-auto max-w-7xl relative z-10">
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-4 mb-6">
-                <span className="w-12 h-[2px] bg-[#D89B2B]"></span>
-                <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Take Action</p>
+            <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1fr)_460px]">
+              <div className="max-w-3xl">
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="w-12 h-[2px] bg-[#D89B2B]"></span>
+                  <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Take Action</p>
+                </div>
+                <h1 className="text-5xl font-black uppercase tracking-tighter text-[#344059] sm:text-6xl lg:text-[5.5rem] lg:leading-[0.92]">
+                  Get <br />Involved.
+                </h1>
+                <p className="mt-8 text-lg leading-relaxed text-gray-600 sm:text-xl border-l-2 border-[#D89B2B] pl-6">
+                  It takes a village to provide the resources and support needed to transform a life. Discover how you can partner with Legacy Leaders to create lasting impact.
+                </p>
               </div>
-              <h1 className="text-5xl font-black uppercase tracking-tighter text-[#344059] sm:text-6xl lg:text-[5.5rem] lg:leading-[0.92]">
-                Get <br />Involved.
-              </h1>
-              <p className="mt-8 text-lg leading-relaxed text-gray-600 sm:text-xl border-l-2 border-[#D89B2B] pl-6">
-                It takes a village to provide the resources and support needed to transform a life. Discover how you can partner with Legacy Leaders to create lasting impact.
-              </p>
+
+              <div className="relative hidden h-[520px] overflow-hidden shadow-[0_24px_80px_rgba(52,64,89,0.14)] lg:block">
+                <Image
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80"
+                  alt="Legacy Leaders volunteers and mentors gathered in community"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 460px, 100vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#344059]/45 via-[#344059]/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 bg-[#D89B2B] px-6 py-5 text-white">
+                  <p className="text-xs font-bold uppercase tracking-[0.24em]">Community in Action</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -53,12 +68,12 @@ export default function GetInvolvedPage() {
                     If you're ready to make an impact and become part of the Legacy Leaders community, we invite you to complete our Volunteer Interest Application below. A member of our team will follow up with you to discuss available opportunities and help you find the best fit for your interests and availability.
                   </p>
                 </div>
-                <a 
-                  href="#"
+                <Link 
+                  href="/contact-us"
                   className="inline-flex px-8 py-4 bg-[#D89B2B] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#344059] hover:!text-[#D89B2B] transition-colors items-center gap-3 group"
                 >
                   Apply Here to Become a Volunteer <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
               </div>
 
               {/* Volunteer Image Collage */}
@@ -104,28 +119,44 @@ export default function GetInvolvedPage() {
           <div className="mx-auto max-w-7xl grid md:grid-cols-2 gap-8">
             
             {/* Fellow Link Card */}
-            <div className="group relative overflow-hidden bg-white border border-[#344059]/10 min-h-[400px] flex flex-col justify-end p-10 hover:shadow-2xl transition-all duration-500">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gray-50 group-hover:bg-[#D89B2B] transition-colors duration-300 flex items-center justify-center rounded-bl-[2rem] z-20">
-                <ArrowUpRight size={32} className="text-[#344059] group-hover:text-white" />
+            <div className="group relative overflow-hidden border border-[#344059]/10 min-h-[400px] flex flex-col justify-end p-10 hover:shadow-2xl transition-all duration-500">
+              <Image
+                src="https://images.unsplash.com/photo-1543269664-76bc3997d9ea?auto=format&fit=crop&w=1200&q=80"
+                alt="Legacy Fellows collaborating during a leadership workshop"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-[#344059]/70" />
+              <div className="absolute top-0 right-0 w-20 h-20 bg-white/15 group-hover:bg-[#D89B2B] transition-colors duration-300 flex items-center justify-center rounded-bl-[2rem] z-20">
+                <ArrowUpRight size={32} className="text-white" />
               </div>
               <div className="relative z-20">
-                <h3 className="text-3xl font-black uppercase tracking-tight text-[#344059] mb-4">Become a Legacy Fellow</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">
+                <h3 className="text-3xl font-black uppercase tracking-tight text-white mb-4">Become a Legacy Fellow</h3>
+                <p className="text-white/90 mb-8 leading-relaxed">
                   Join our next cohort to gain the mentorship, network, and practical leadership skills necessary to maximize your potential.
                 </p>
                 <Link 
                   href="/our-programs#legacy-fellows" 
-                  className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#D89B2B] group-hover:text-[#344059] border-b-2 border-transparent group-hover:border-[#344059] pb-1 transition-all"
+                  className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#D89B2B] group-hover:text-white border-b-2 border-transparent group-hover:border-[#D89B2B] pb-1 transition-all"
                 >
                   View Program Details
                 </Link>
               </div>
               {/* Background accent */}
-              <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#f8f6f1] rounded-tl-full opacity-50 z-0 group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="absolute bottom-0 right-0 w-64 h-64 bg-white/10 rounded-tl-full opacity-50 z-0 group-hover:scale-150 transition-transform duration-700"></div>
             </div>
 
             {/* Mentor Link Card */}
-            <div className="group relative overflow-hidden bg-[#344059] min-h-[400px] flex flex-col justify-end p-10 hover:shadow-2xl transition-all duration-500">
+            <div className="group relative overflow-hidden min-h-[400px] flex flex-col justify-end p-10 hover:shadow-2xl transition-all duration-500">
+              <Image
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+                alt="Mentor and fellow discussing goals in a professional setting"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-[#344059]/78" />
               <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 group-hover:bg-[#D89B2B] transition-colors duration-300 flex items-center justify-center rounded-bl-[2rem] z-20">
                 <ArrowUpRight size={32} className="text-white" />
               </div>
@@ -229,39 +260,61 @@ export default function GetInvolvedPage() {
             {/* Support Tiers */}
             <div className="grid md:grid-cols-2 gap-8 mb-16">
               {/* Ambassador Card */}
-              <div className="bg-white/5 border border-white/10 p-10 lg:p-14 hover:bg-white/10 transition-colors flex flex-col">
-                <div className="w-16 h-16 bg-[#D89B2B] flex items-center justify-center mb-8">
-                  <Heart size={32} className="text-[#344059]" />
+              <div className="relative overflow-hidden border border-white/10 p-10 lg:p-14 transition-colors flex flex-col">
+                <Image
+                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
+                  alt="Volunteers mentoring youth during a community session"
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-[#344059]/80" />
+
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="w-16 h-16 bg-[#D89B2B] flex items-center justify-center mb-8">
+                    <Heart size={32} className="text-[#344059]" />
+                  </div>
+                  <h3 className="text-3xl font-black uppercase tracking-tight mb-4">Become a Legacy Ambassador</h3>
+                  <p className="text-sm font-bold uppercase tracking-widest text-[#D89B2B] mb-6 border-b border-white/20 pb-4">Monthly Donation</p>
+                  <p className="text-white/90 leading-relaxed mb-8 flex-1">
+                    Join a growing community of monthly supporters who are committed to developing the next generation of leaders. As a Legacy Ambassador, your recurring gift provides sustainable funding that allows us to expand our programs, strengthen mentorship opportunities, and increase our impact locally and globally. No matter the amount, your monthly investment helps create opportunities that change lives.
+                  </p>
+                  <Link 
+                    href="https://givebutter.com/Wq9pNa" 
+                    className="w-full text-center px-8 py-5 bg-[#D89B2B] !text-[#344059] font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] hover:!text-white transition-colors"
+                  >
+                    Give Monthly
+                  </Link>
                 </div>
-                <h3 className="text-3xl font-black uppercase tracking-tight mb-4">Become a Legacy Ambassador</h3>
-                <p className="text-sm font-bold uppercase tracking-widest text-[#D89B2B] mb-6 border-b border-white/10 pb-4">Monthly Donation</p>
-                <p className="text-white/80 leading-relaxed mb-8 flex-1">
-                  Join a growing community of monthly supporters who are committed to developing the next generation of leaders. As a Legacy Ambassador, your recurring gift provides sustainable funding that allows us to expand our programs, strengthen mentorship opportunities, and increase our impact locally and globally. No matter the amount, your monthly investment helps create opportunities that change lives.
-                </p>
-                <a 
-                  href="#" 
-                  className="w-full text-center px-8 py-5 bg-[#D89B2B] !text-[#344059] font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] hover:!text-white transition-colors"
-                >
-                  Give Monthly
-                </a>
               </div>
 
               {/* Partner Card */}
-              <div className="bg-white/5 border border-white/10 p-10 lg:p-14 hover:bg-white/10 transition-colors flex flex-col">
-                <div className="w-16 h-16 bg-white flex items-center justify-center mb-8">
-                  <Target size={32} className="text-[#344059]" />
+              <div className="relative overflow-hidden border border-white/10 p-10 lg:p-14 transition-colors flex flex-col">
+                <Image
+                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
+                  alt="Community supporters collaborating at a fundraising event"
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-[#344059]/82" />
+
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="w-16 h-16 bg-white flex items-center justify-center mb-8">
+                    <Target size={32} className="text-[#344059]" />
+                  </div>
+                  <h3 className="text-3xl font-black uppercase tracking-tight mb-4">Become a Legacy Partner</h3>
+                  <p className="text-sm font-bold uppercase tracking-widest text-[#D89B2B] mb-6 border-b border-white/20 pb-4">One-Time or Annual Donation</p>
+                  <p className="text-white/90 leading-relaxed mb-8 flex-1">
+                    Whether through a one-time, monthly, or annual contribution, your support directly fuels the mission of Legacy Leaders. Every gift helps us continue developing purpose-driven leaders who are equipped to make a difference for generations to come. Together, we can create a ripple effect of positive change that extends far beyond a single individual.
+                  </p>
+                  <Link 
+                    href="https://givebutter.com/Wq9pNa" 
+                    className="w-full text-center px-8 py-5 bg-[#D89B2B] !text-[#344059] font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] hover:!text-white transition-colors"
+                  >
+                    Give One Time
+                  </Link>
                 </div>
-                <h3 className="text-3xl font-black uppercase tracking-tight mb-4">Become a Legacy Partner</h3>
-                <p className="text-sm font-bold uppercase tracking-widest text-[#D89B2B] mb-6 border-b border-white/10 pb-4">One-Time or Annual Donation</p>
-                <p className="text-white/80 leading-relaxed mb-8 flex-1">
-                  Whether through a one-time, monthly, or annual contribution, your support directly fuels the mission of Legacy Leaders. Every gift helps us continue developing purpose-driven leaders who are equipped to make a difference for generations to come. Together, we can create a ripple effect of positive change that extends far beyond a single individual.
-                </p>
-                <a 
-                  href="#" 
-                  className="w-full text-center px-8 py-5 bg-[#D89B2B] !text-[#344059] font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] hover:!text-white transition-colors"
-                >
-                  Give One Time
-                </a>
               </div>
             </div>
 

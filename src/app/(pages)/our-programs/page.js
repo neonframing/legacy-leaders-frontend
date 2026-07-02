@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { ArrowRight, ChevronRight, PlayCircle, Target, Users, BookOpen, CheckCircle2, ArrowDown } from "lucide-react";
 
-export const runtime = 'edge';
-
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import InteractiveRequirements from "@/components/InteractiveRequirements";
