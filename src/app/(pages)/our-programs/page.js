@@ -273,7 +273,7 @@ export default function OurProgramsPage() {
                 </div>
               </div>
               
-              <div className="relative w-full aspect-[4/5] bg-gray-100 overflow-hidden">
+              <div className="relative w-full aspect-[4/5] lg:aspect-[16/10] bg-gray-100 overflow-hidden">
                  <Image 
                    src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80" 
                    alt="Mentor coaching a fellow" 
@@ -309,8 +309,16 @@ export default function OurProgramsPage() {
         </section>
 
         {/* --- 8. MENTOR QUALIFICATIONS --- */}
-        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-7xl">
+        <section className="relative overflow-hidden bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
+          <Image
+            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2200&q=80"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover grayscale opacity-55 pointer-events-none"
+          />
+          <div className="absolute inset-0 bg-white/65" />
+          <div className="mx-auto max-w-7xl relative z-10">
             <div className="max-w-3xl mb-12">
               <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Who We Look For</h4>
               <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] sm:text-4xl mb-5">
