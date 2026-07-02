@@ -79,7 +79,7 @@ const mentorQualifications = [
   "Embrace Growth & Problem Solving – Encourage Fellows through challenges while helping them identify solutions and opportunities.",
   "Serve with Passion – Are committed to helping others succeed and willing to go the extra mile to support Fellow development.",
   "Value Diversity & Inclusion – Respect and celebrate different backgrounds, experiences, and perspectives.",
-  "Invest in the Mission – Believe in developing future leaders and actively contribute to the success of the Legacy Fellows Program.",
+  "Education – Bachelor's degree preferred, but not required.",
   "Commit to Engagement – Participate in monthly mentor meetings, training opportunities, and ongoing communication with Fellows throughout the program year."
 ];
 
@@ -346,9 +346,9 @@ export default function OurProgramsPage() {
 
             <div className="bg-[#f8f6f1] p-8 border-l-4 border-[#D89B2B] flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="max-w-2xl">
-                <p className="text-[#344059] font-bold mb-2">Education: Bachelor's degree preferred, but not required.</p>
+                <p className="text-[#344059] font-bold mb-2">Invest in the Mission</p>
                 <p className="text-gray-600">
-                  Most importantly, we are looking for mentors who care deeply about people and are passionate about helping others discover their potential and achieve their goals.
+                  Believe in developing future leaders and actively contribute to the success of the Legacy Fellows Program.
                 </p>
               </div>
               <button className="whitespace-nowrap px-8 py-4 bg-[#344059] text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#D89B2B] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
