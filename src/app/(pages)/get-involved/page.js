@@ -32,7 +32,123 @@ export default function GetInvolvedPage() {
           </div>
         </section>
 
-        {/* --- 2. REQUEST AN INTERN --- */}
+        {/* --- 2. VOLUNTEER --- */}
+        <section id="volunteer" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
+              
+              <div>
+                <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Volunteer</h4>
+                <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl mb-8">
+                  Volunteer With Legacy Leaders.
+                </h2>
+                <div className="space-y-6 text-lg leading-relaxed text-gray-600 mb-10">
+                  <p>
+                    Every meaningful impact begins with someone willing to give their time, talents, and heart to serve others. At Legacy Leaders, volunteers play a vital role in helping us develop the next generation of leaders through mentorship, events, workshops, community service projects, fundraising efforts, and program support. Whether you can give a few hours a year or are looking for a more ongoing commitment, there are opportunities for individuals of all backgrounds and experience levels to get involved.
+                  </p>
+                  <p>
+                    Volunteering with Legacy Leaders is more than just serving—it's an opportunity to invest in the future of young people and emerging leaders while building meaningful connections with others who share a passion for making a difference. From event support and program facilitation to professional expertise and behind-the-scenes assistance, every volunteer helps create experiences that empower participants to discover their potential and pursue their purpose.
+                  </p>
+                  <p className="font-bold text-[#344059]">
+                    If you're ready to make an impact and become part of the Legacy Leaders community, we invite you to complete our Volunteer Interest Application below. A member of our team will follow up with you to discuss available opportunities and help you find the best fit for your interests and availability.
+                  </p>
+                </div>
+                <a 
+                  href="#"
+                  className="inline-flex px-8 py-4 bg-[#D89B2B] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#344059] hover:!text-[#D89B2B] transition-colors items-center gap-3 group"
+                >
+                  Apply Here to Become a Volunteer <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+
+              {/* Volunteer Image Collage */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="relative aspect-square overflow-hidden bg-gray-100">
+                  <Image
+                    src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80"
+                    alt="Volunteers with hands in"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="relative aspect-square overflow-hidden bg-gray-100 mt-8">
+                  <Image
+                    src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=800&q=80"
+                    alt="Mentorship event"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="relative aspect-square overflow-hidden bg-gray-100">
+                  <Image
+                    src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80"
+                    alt="Fellows working together"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="relative aspect-square overflow-hidden bg-[#344059] flex items-center justify-center p-6 text-center mt-8">
+                   <div className="space-y-2">
+                     <Users size={48} className="text-[#D89B2B] mx-auto" />
+                     <p className="font-bold text-white uppercase tracking-widest text-sm">Join The Community</p>
+                   </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* --- 3. FELLOWS & MENTORS LINKS --- */}
+        <section className="bg-[#f8f6f1] px-6 py-20 lg:px-12 lg:py-28 border-y border-[#344059]/10">
+          <div className="mx-auto max-w-7xl grid md:grid-cols-2 gap-8">
+            
+            {/* Fellow Link Card */}
+            <div className="group relative overflow-hidden bg-white border border-[#344059]/10 min-h-[400px] flex flex-col justify-end p-10 hover:shadow-2xl transition-all duration-500">
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gray-50 group-hover:bg-[#D89B2B] transition-colors duration-300 flex items-center justify-center rounded-bl-[2rem] z-20">
+                <ArrowUpRight size={32} className="text-[#344059] group-hover:text-white" />
+              </div>
+              <div className="relative z-20">
+                <h3 className="text-3xl font-black uppercase tracking-tight text-[#344059] mb-4">Become a Legacy Fellow</h3>
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  Join our next cohort to gain the mentorship, network, and practical leadership skills necessary to maximize your potential.
+                </p>
+                <Link 
+                  href="/our-programs#legacy-fellows" 
+                  className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#D89B2B] group-hover:text-[#344059] border-b-2 border-transparent group-hover:border-[#344059] pb-1 transition-all"
+                >
+                  View Program Details
+                </Link>
+              </div>
+              {/* Background accent */}
+              <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#f8f6f1] rounded-tl-full opacity-50 z-0 group-hover:scale-150 transition-transform duration-700"></div>
+            </div>
+
+            {/* Mentor Link Card */}
+            <div className="group relative overflow-hidden bg-[#344059] min-h-[400px] flex flex-col justify-end p-10 hover:shadow-2xl transition-all duration-500">
+              <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 group-hover:bg-[#D89B2B] transition-colors duration-300 flex items-center justify-center rounded-bl-[2rem] z-20">
+                <ArrowUpRight size={32} className="text-white" />
+              </div>
+              <div className="relative z-20">
+                <h3 className="text-3xl font-black uppercase tracking-tight text-white mb-4">Become a Legacy Mentor</h3>
+                <p className="text-white/80 mb-8 leading-relaxed">
+                  Share your expertise, expand your network, and guide a young adult through their leadership and professional development journey.
+                </p>
+                <Link 
+                  href="/our-programs#legacy-mentors" 
+                  className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest !text-[#D89B2B] group-hover:text-white border-b-2 border-transparent group-hover:border-[#D89B2B] pb-1 transition-all"
+                >
+                  View Program Details
+                </Link>
+              </div>
+              {/* Background accent */}
+              <div className="absolute bottom-0 right-0 w-64 h-64 bg-white/5 rounded-tl-full opacity-50 z-0 group-hover:scale-150 transition-transform duration-700"></div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* --- 4. REQUEST AN INTERN --- */}
         <section id="request-intern" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28 border-b border-[#344059]/10">
           <div className="mx-auto max-w-7xl">
             <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-16 items-center">
@@ -85,7 +201,7 @@ export default function GetInvolvedPage() {
           </div>
         </section>
 
-        {/* --- 3. DONATE TODAY --- */}
+        {/* --- 5. DONATE TODAY --- */}
         <section id="legacy-donor" className="bg-[#344059] text-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
           <div className="mx-auto max-w-7xl">
             
@@ -182,121 +298,6 @@ export default function GetInvolvedPage() {
           </div>
         </section>
 
-        {/* --- 4. VOLUNTEER --- */}
-        <section id="volunteer" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
-          <div className="mx-auto max-w-7xl">
-            <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
-              
-              <div>
-                <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Volunteer</h4>
-                <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl mb-8">
-                  Volunteer With Legacy Leaders.
-                </h2>
-                <div className="space-y-6 text-lg leading-relaxed text-gray-600 mb-10">
-                  <p>
-                    Every meaningful impact begins with someone willing to give their time, talents, and heart to serve others. At Legacy Leaders, volunteers play a vital role in helping us develop the next generation of leaders through mentorship, events, workshops, community service projects, fundraising efforts, and program support. Whether you can give a few hours a year or are looking for a more ongoing commitment, there are opportunities for individuals of all backgrounds and experience levels to get involved.
-                  </p>
-                  <p>
-                    Volunteering with Legacy Leaders is more than just serving—it's an opportunity to invest in the future of young people and emerging leaders while building meaningful connections with others who share a passion for making a difference. From event support and program facilitation to professional expertise and behind-the-scenes assistance, every volunteer helps create experiences that empower participants to discover their potential and pursue their purpose.
-                  </p>
-                  <p className="font-bold text-[#344059]">
-                    If you're ready to make an impact and become part of the Legacy Leaders community, we invite you to complete our Volunteer Interest Application below. A member of our team will follow up with you to discuss available opportunities and help you find the best fit for your interests and availability.
-                  </p>
-                </div>
-                <a 
-                  href="#" 
-                  className="inline-flex px-8 py-4 bg-[#D89B2B] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#344059] hover:!text-[#D89B2B] transition-colors items-center gap-3 group"
-                >
-                  Apply Here to Become a Volunteer <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
-
-              {/* Volunteer Image Collage */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="relative aspect-square overflow-hidden bg-gray-100">
-                  <Image
-                    src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80"
-                    alt="Volunteers with hands in"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="relative aspect-square overflow-hidden bg-gray-100 mt-8">
-                  <Image
-                    src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=800&q=80"
-                    alt="Mentorship event"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="relative aspect-square overflow-hidden bg-gray-100">
-                  <Image
-                    src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80"
-                    alt="Fellows working together"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="relative aspect-square overflow-hidden bg-[#344059] flex items-center justify-center p-6 text-center mt-8">
-                   <div className="space-y-2">
-                     <Users size={48} className="text-[#D89B2B] mx-auto" />
-                     <p className="font-bold text-white uppercase tracking-widest text-sm">Join The Community</p>
-                   </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* --- 5. FELLOWS & MENTORS LINKS --- */}
-        <section className="bg-[#f8f6f1] px-6 py-20 lg:px-12 lg:py-28 border-y border-[#344059]/10">
-          <div className="mx-auto max-w-7xl grid md:grid-cols-2 gap-8">
-            
-            {/* Fellow Link Card */}
-            <div className="group relative overflow-hidden bg-white border border-[#344059]/10 min-h-[400px] flex flex-col justify-end p-10 hover:shadow-2xl transition-all duration-500">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gray-50 group-hover:bg-[#D89B2B] transition-colors duration-300 flex items-center justify-center rounded-bl-[2rem] z-20">
-                <ArrowUpRight size={32} className="text-[#344059] group-hover:text-white" />
-              </div>
-              <div className="relative z-20">
-                <h3 className="text-3xl font-black uppercase tracking-tight text-[#344059] mb-4">Become a Legacy Fellow</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">
-                  Join our next cohort to gain the mentorship, network, and practical leadership skills necessary to maximize your potential.
-                </p>
-                <Link 
-                  href="/our-programs#legacy-fellows" 
-                  className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#D89B2B] group-hover:text-[#344059] border-b-2 border-transparent group-hover:border-[#344059] pb-1 transition-all"
-                >
-                  View Program Details
-                </Link>
-              </div>
-              {/* Background accent */}
-              <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#f8f6f1] rounded-tl-full opacity-50 z-0 group-hover:scale-150 transition-transform duration-700"></div>
-            </div>
-
-            {/* Mentor Link Card */}
-            <div className="group relative overflow-hidden bg-[#344059] min-h-[400px] flex flex-col justify-end p-10 hover:shadow-2xl transition-all duration-500">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 group-hover:bg-[#D89B2B] transition-colors duration-300 flex items-center justify-center rounded-bl-[2rem] z-20">
-                <ArrowUpRight size={32} className="text-white" />
-              </div>
-              <div className="relative z-20">
-                <h3 className="text-3xl font-black uppercase tracking-tight text-white mb-4">Become a Legacy Mentor</h3>
-                <p className="text-white/80 mb-8 leading-relaxed">
-                  Share your expertise, expand your network, and guide a young adult through their leadership and professional development journey.
-                </p>
-                <Link 
-                  href="/our-programs#legacy-mentors" 
-                  className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest !text-[#D89B2B] group-hover:text-white border-b-2 border-transparent group-hover:border-[#D89B2B] pb-1 transition-all"
-                >
-                  View Program Details
-                </Link>
-              </div>
-              {/* Background accent */}
-              <div className="absolute bottom-0 right-0 w-64 h-64 bg-white/5 rounded-tl-full opacity-50 z-0 group-hover:scale-150 transition-transform duration-700"></div>
-            </div>
-
-          </div>
-        </section>
 
         {/* --- 6. FINAL CTA --- */}
         <section className="bg-white">

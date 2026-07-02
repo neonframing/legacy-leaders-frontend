@@ -36,6 +36,7 @@ export default async function Home() {
       <SiteHeader />
 
       <main className="flex-1 bg-[var(--color-sand)] text-[var(--color-ink)]">
+        {/* Hero Section */}
         <section className="relative overflow-hidden bg-[#fafafa] pt-28 pb-12 lg:pt-32 lg:pb-16">
           <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-50 -skew-x-12 translate-x-20 opacity-50 pointer-events-none"></div>
 
@@ -128,8 +129,7 @@ export default async function Home() {
               </Link>
             </div>
 
-<div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-              
+            <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
               {/* Legacy Fellows Card */}
               <div className="group relative overflow-hidden border border-gray-200 bg-white transition-all duration-300 hover:border-[#344059] hover:shadow-2xl flex flex-col">
                 <div className="relative h-48 w-full bg-[#344059] overflow-hidden">
@@ -246,7 +246,6 @@ export default async function Home() {
                   </Link>
                 </div>
               </div>
-
             </div>
           </div>
         </section>
@@ -258,43 +257,52 @@ export default async function Home() {
           </div>
         </section>
 
-        <section id="get-involved" className="bg-white py-20 md:py-24">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        {/* Rich Banner Treatment for Get Involved Section */}
+        <section id="get-involved" className="relative overflow-hidden bg-[#344059] py-20 md:py-28 text-white">
+          <Image
+            src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1920&q=80"
+            alt="Get Involved Banner Background"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-15 mix-blend-luminosity pointer-events-none"
+          />
+          
+          <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10">
             <div className="mb-12 md:mb-16">
               <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#D89B2B]">Take Action</h4>
-              <h2 className="text-4xl font-extrabold leading-tight text-[#344059] md:text-5xl">GET INVOLVED.</h2>
+              <h2 className="text-4xl font-extrabold leading-tight text-white md:text-5xl tracking-tight">GET INVOLVED.</h2>
             </div>
 
-            <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-3">
-              <div>
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-none bg-[#344059]">
-                  <Heart className="h-8 w-8 text-[#D89B2B]" />
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+              <div className="group bg-white/5 border border-white/10 p-8 backdrop-blur-sm transition-all duration-300 hover:border-[#D89B2B] hover:bg-white/[0.08]">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center bg-white transition-transform duration-300 group-hover:scale-105">
+                  <Heart className="h-8 w-8 text-[#344059]" />
                 </div>
-                <h3 className="mb-3 text-2xl font-bold text-[#344059]">Donate Today</h3>
-                <p className="mb-6 text-gray-600">Your contributions directly fund our fellowship programs and expand our reach.</p>
-                <Link href="/get-involved#legacy-donor" className="inline-flex items-center border-b-2 border-[#D89B2B] pb-1 text-sm font-bold uppercase tracking-widest text-[#344059] transition-colors hover:text-[#D89B2B]">
+                <h3 className="mb-3 text-2xl font-bold text-white">Donate Today</h3>
+                <p className="mb-6 text-gray-300 text-sm leading-relaxed">Your contributions directly fund our fellowship programs and expand our reach.</p>
+                <Link href="/get-involved#legacy-donor" className="inline-flex items-center border-b-2 border-[#D89B2B] pb-1 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:text-[#D89B2B]">
                   Make a Donation <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </div>
 
-              <div>
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-none bg-[#344059]">
-                  <Briefcase className="h-8 w-8 text-[#D89B2B]" />
+              <div className="group bg-white/5 border border-white/10 p-8 backdrop-blur-sm transition-all duration-300 hover:border-[#D89B2B] hover:bg-white/[0.08]">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center bg-white transition-transform duration-300 group-hover:scale-105">
+                  <Briefcase className="h-8 w-8 text-[#344059]" />
                 </div>
-                <h3 className="mb-3 text-2xl font-bold text-[#344059]">Request an Intern</h3>
-                <p className="mb-6 text-gray-600">Partner with us to bring highly-trained Legacy Fellows into your organization.</p>
-                <Link href="/get-involved#request-intern" className="inline-flex items-center border-b-2 border-[#D89B2B] pb-1 text-sm font-bold uppercase tracking-widest text-[#344059] transition-colors hover:text-[#D89B2B]">
+                <h3 className="mb-3 text-2xl font-bold text-white">Request an Intern</h3>
+                <p className="mb-6 text-gray-300 text-sm leading-relaxed">Partner with us to bring highly-trained Legacy Fellows into your organization.</p>
+                <Link href="/get-involved#request-intern" className="inline-flex items-center border-b-2 border-[#D89B2B] pb-1 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:text-[#D89B2B]">
                   Partner With Us <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </div>
 
-              <div>
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-none bg-[#344059]">
-                  <Users className="h-8 w-8 text-[#D89B2B]" />
+              <div className="group bg-white/5 border border-white/10 p-8 backdrop-blur-sm transition-all duration-300 hover:border-[#D89B2B] hover:bg-white/[0.08]">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center bg-white transition-transform duration-300 group-hover:scale-105">
+                  <Users className="h-8 w-8 text-[#344059]" />
                 </div>
-                <h3 className="mb-3 text-2xl font-bold text-[#344059]">Volunteer Now</h3>
-                <p className="mb-6 text-gray-600">Support events, mentor rising leaders, and help deliver meaningful programs across our communities.</p>
-                <Link href="/get-involved#volunteer" className="inline-flex items-center border-b-2 border-[#D89B2B] pb-1 text-sm font-bold uppercase tracking-widest text-[#344059] transition-colors hover:text-[#D89B2B]">
+                <h3 className="mb-3 text-2xl font-bold text-white">Volunteer Now</h3>
+                <p className="mb-6 text-gray-300 text-sm leading-relaxed">Support events, mentor rising leaders, and help deliver meaningful programs across our communities.</p>
+                <Link href="/get-involved#volunteer" className="inline-flex items-center border-b-2 border-[#D89B2B] pb-1 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:text-[#D89B2B]">
                   Apply Now <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </div>
