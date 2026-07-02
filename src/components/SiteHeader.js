@@ -191,7 +191,7 @@ export default function SiteHeader() {
               </div>
             )}
           </div>
-          <HeaderButton variant="primary" href={{ pathname: 'https://givebutter.com/Wq9pNa', hash: 'legacy-donor' }}>
+          <HeaderButton variant="primary" href={{ pathname: '/get-involved', hash: 'legacy-donor' }}>
             Donate Today
           </HeaderButton>
         </div>
