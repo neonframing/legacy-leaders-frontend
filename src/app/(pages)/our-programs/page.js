@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, ChevronRight, PlayCircle, Target, Users, BookOpen, CheckCircle2, ArrowDown } from "lucide-react";
 
 import SiteHeader from "@/components/SiteHeader";
@@ -351,7 +352,7 @@ export default function OurProgramsPage() {
                   Believe in developing future leaders and actively contribute to the success of the Legacy Fellows Program.
                 </p>
               </div>
-              <button className="whitespace-nowrap px-8 py-4 bg-[#344059] text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#D89B2B] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
+              <button className="whitespace-nowrap px-8 py-4 bg-[#344059] !text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#D89B2B] hover:!text-white transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
                 Become a Legacy Mentor
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
@@ -462,16 +463,16 @@ export default function OurProgramsPage() {
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-[#f8f6f1] p-8 md:p-10 text-center border border-[#344059]/10 hover:border-[#D89B2B] transition-colors">
                 <Users className="w-10 h-10 text-[#D89B2B] mx-auto mb-5" />
                 <h3 className="text-xl font-black uppercase tracking-tight text-[#344059] mb-3">Become a Legacy Fellow</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   Join our next cohort to gain the mentorship, network, and skills necessary to maximize your potential.
                 </p>
-                <button className="mx-auto px-7 py-3 bg-[#344059] text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
+                <Link href="#" className="mx-auto inline-flex px-7 py-3 bg-[#344059] !text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] hover:!text-white transition-all items-center justify-center gap-3 group rounded-none">
                   Apply Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
               </div>
 
               <div className="bg-[#f8f6f1] p-8 md:p-10 text-center border border-[#344059]/10 hover:border-[#D89B2B] transition-colors">
@@ -480,9 +481,20 @@ export default function OurProgramsPage() {
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   Share your expertise and guide a young adult through their leadership and professional development journey.
                 </p>
-                <button className="mx-auto px-7 py-3 bg-[#344059] text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
+                <Link href="#" className="mx-auto inline-flex px-7 py-3 bg-[#344059] !text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] hover:!text-white transition-all items-center justify-center gap-3 group rounded-none">
                   Apply Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
+              </div>
+
+              <div className="bg-[#f8f6f1] p-8 md:p-10 text-center border border-[#344059]/10 hover:border-[#D89B2B] transition-colors">
+                <BookOpen className="w-10 h-10 text-[#D89B2B] mx-auto mb-5" />
+                <h3 className="text-xl font-black uppercase tracking-tight text-[#344059] mb-3">Get Coaching</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Gain clarity, align your goals, and build practical leadership habits through the Legacy Coaching Model.
+                </p>
+                <Link href="/contact-us" className="mx-auto inline-flex px-7 py-3 bg-[#344059] !text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] hover:!text-white transition-all items-center justify-center gap-3 group rounded-none">
+                  Get Coaching <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
           </div>
