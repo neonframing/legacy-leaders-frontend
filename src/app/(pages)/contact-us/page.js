@@ -73,10 +73,10 @@ export default function ContactUsPage() {
     <div className="min-h-screen bg-[#f8f6f1] font-sans text-[#344059] selection:bg-[#D89B2B] selection:text-white">
       <SiteHeader />
 
-      <main className="pt-32 pb-20 lg:pt-48 lg:pb-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+      <main className="pt-28 pb-16 lg:pt-40 lg:pb-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
           
-          <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-16 lg:gap-24">
+          <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16">
             
             {/* Left Column: Contact Info & Copy */}
             <div>
@@ -84,17 +84,17 @@ export default function ContactUsPage() {
                 <span className="w-12 h-[2px] bg-[#D89B2B]"></span>
                 <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Connect With Us</p>
               </div>
-              <h1 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter text-[#344059] mb-8 leading-[1.1]">
+              <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tighter text-[#344059] mb-6 leading-[1.1]">
                 Let's build a <br />legacy together.
               </h1>
-              <p className="text-lg leading-relaxed text-gray-600 mb-12">
+              <p className="text-base leading-relaxed text-gray-600 mb-10">
                 Whether you are looking to accelerate your own growth, invest in the leaders of tomorrow, or explore partnership opportunities, we would love to connect with you. Please fill out the form, and a member of our team will be in touch within two business days.
               </p>
 
-              <div className="space-y-8 border-t border-[#344059]/10 pt-12">
+              <div className="space-y-6 border-t border-[#344059]/10 pt-10">
                 <div className="flex items-start gap-4 group">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-white shadow-sm border border-[#344059]/10 group-hover:bg-[#344059] transition-colors duration-300">
-                    <Mail className="text-[#D89B2B] group-hover:text-white transition-colors duration-300" size={24} />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-white shadow-sm border border-[#344059]/10 group-hover:bg-[#344059] transition-colors duration-300">
+                    <Mail className="text-[#D89B2B] group-hover:text-white transition-colors duration-300" size={20} />
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-[#D89B2B] mb-1">Email</p>
@@ -103,8 +103,8 @@ export default function ContactUsPage() {
                 </div>
 
                 <div className="flex items-start gap-4 group">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-white shadow-sm border border-[#344059]/10 group-hover:bg-[#344059] transition-colors duration-300">
-                    <Phone className="text-[#D89B2B] group-hover:text-white transition-colors duration-300" size={24} />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-white shadow-sm border border-[#344059]/10 group-hover:bg-[#344059] transition-colors duration-300">
+                    <Phone className="text-[#D89B2B] group-hover:text-white transition-colors duration-300" size={20} />
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-[#D89B2B] mb-1">Phone</p>
@@ -113,8 +113,8 @@ export default function ContactUsPage() {
                 </div>
 
                 <div className="flex items-start gap-4 group">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-white shadow-sm border border-[#344059]/10 group-hover:bg-[#344059] transition-colors duration-300">
-                    <MapPin className="text-[#D89B2B] group-hover:text-white transition-colors duration-300" size={24} />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-white shadow-sm border border-[#344059]/10 group-hover:bg-[#344059] transition-colors duration-300">
+                    <MapPin className="text-[#D89B2B] group-hover:text-white transition-colors duration-300" size={20} />
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-[#D89B2B] mb-1">Headquarters</p>
@@ -127,29 +127,29 @@ export default function ContactUsPage() {
             </div>
 
             {/* Right Column: The Form */}
-            <div className="bg-white p-8 sm:p-12 shadow-[0_24px_80px_rgba(52,64,89,0.08)] border border-[#344059]/5">
+            <div className="bg-white p-6 sm:p-10 shadow-[0_24px_80px_rgba(52,64,89,0.08)] border border-[#344059]/5">
               {isSubmitted ? (
-                <div className="flex flex-col items-center justify-center h-full min-h-[400px] text-center animate-in fade-in zoom-in duration-500">
-                  <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6 border border-green-100">
-                    <Check size={40} className="text-green-600" />
+                <div className="flex flex-col items-center justify-center h-full min-h-[360px] text-center animate-in fade-in zoom-in duration-500">
+                  <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-5 border border-green-100">
+                    <Check size={32} className="text-green-600" />
                   </div>
-                  <h3 className="text-3xl font-black uppercase tracking-tight text-[#344059] mb-4">Request Received</h3>
-                  <p className="text-gray-600 text-lg max-w-md mx-auto">
+                  <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059] mb-3">Request Received</h3>
+                  <p className="text-gray-600 text-base max-w-md mx-auto">
                     Thank you for reaching out to Legacy Leaders. A member of our team will review your information and follow up with you shortly.
                   </p>
                   <button 
                     onClick={() => setIsSubmittingSuccess(false)}
-                    className="mt-10 text-sm font-bold uppercase tracking-widest text-[#D89B2B] hover:text-[#344059] transition-colors"
+                    className="mt-8 text-sm font-bold uppercase tracking-widest text-[#D89B2B] hover:text-[#344059] transition-colors"
                   >
                     Submit another request
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-8 animate-in fade-in duration-500">
+                <form onSubmit={handleSubmit} className="space-y-6 animate-in fade-in duration-500">
                   
                   {/* General Info */}
-                  <div className="space-y-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <input
                           type="text"
@@ -158,7 +158,7 @@ export default function ContactUsPage() {
                           required
                           value={formData.firstName}
                           onChange={handleInputChange}
-                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
+                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
                         />
                       </div>
                       <div>
@@ -169,12 +169,12 @@ export default function ContactUsPage() {
                           required
                           value={formData.lastName}
                           onChange={handleInputChange}
-                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
+                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <input
                           type="text"
@@ -183,7 +183,7 @@ export default function ContactUsPage() {
                           required
                           value={formData.profession}
                           onChange={handleInputChange}
-                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
+                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
                         />
                       </div>
                       <div>
@@ -194,12 +194,12 @@ export default function ContactUsPage() {
                           required
                           value={formData.employer}
                           onChange={handleInputChange}
-                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
+                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <input
                           type="email"
@@ -208,7 +208,7 @@ export default function ContactUsPage() {
                           required
                           value={formData.email}
                           onChange={handleInputChange}
-                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
+                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
                         />
                       </div>
                       <div>
@@ -219,14 +219,14 @@ export default function ContactUsPage() {
                           required
                           value={formData.phone}
                           onChange={handleInputChange}
-                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
+                          className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
                         />
                       </div>
                     </div>
                   </div>
 
                   {/* Address Block */}
-                  <div className="space-y-6 pt-4">
+                  <div className="space-y-5 pt-3">
                     <h3 className="text-sm font-bold uppercase tracking-widest text-[#344059]">
                       <span className="text-[#D89B2B]">*</span> Address
                     </h3>
@@ -237,7 +237,7 @@ export default function ContactUsPage() {
                       required
                       value={formData.streetAddress}
                       onChange={handleInputChange}
-                      className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
+                      className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
                     />
                     <input
                       type="text"
@@ -245,9 +245,9 @@ export default function ContactUsPage() {
                       placeholder="Address line 2"
                       value={formData.addressLine2}
                       onChange={handleInputChange}
-                      className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
+                      className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
                     />
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <input
                         type="text"
                         name="city"
@@ -255,7 +255,7 @@ export default function ContactUsPage() {
                         required
                         value={formData.city}
                         onChange={handleInputChange}
-                        className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
+                        className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
                       />
                       <input
                         type="text"
@@ -264,10 +264,10 @@ export default function ContactUsPage() {
                         required
                         value={formData.state}
                         onChange={handleInputChange}
-                        className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
+                        className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
                       />
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <input
                         type="text"
                         name="postalCode"
@@ -275,14 +275,14 @@ export default function ContactUsPage() {
                         required
                         value={formData.postalCode}
                         onChange={handleInputChange}
-                        className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
+                        className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400"
                       />
                       <select
                         name="country"
                         required
                         value={formData.country}
                         onChange={handleInputChange}
-                        className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all appearance-none"
+                        className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all appearance-none"
                       >
                         <option value="" disabled className="text-gray-400">- *Country -</option>
                         <option value="US">United States</option>
@@ -294,24 +294,24 @@ export default function ContactUsPage() {
                   </div>
 
                   {/* Open Questions */}
-                  <div className="pt-4">
+                  <div className="pt-3">
                     <textarea
                       name="questions"
                       placeholder="Questions or Comments?"
                       rows={4}
                       value={formData.questions}
                       onChange={handleInputChange}
-                      className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-5 py-4 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400 resize-y"
+                      className="w-full bg-[#f8f6f1] border border-[#344059]/10 px-4 py-3 text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B] transition-all placeholder:text-gray-400 resize-y"
                     ></textarea>
                   </div>
 
                   {/* Checkbox Interests */}
-                  <div className="space-y-5 pt-4">
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-[#344059] mb-6">
+                  <div className="space-y-4 pt-3">
+                    <h3 className="text-sm font-bold uppercase tracking-widest text-[#344059] mb-4">
                       <span className="text-[#D89B2B]">*</span> I am interested in (check all that apply):
                     </h3>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-5">
                       {interestOptions.map((option) => (
                         <label key={option} className="flex items-center gap-3 cursor-pointer group">
                           <div className={`w-5 h-5 flex items-center justify-center border transition-colors ${
@@ -327,7 +327,7 @@ export default function ContactUsPage() {
                     </div>
 
                     {/* "Other" Text Input */}
-                    <div className="flex items-center gap-3 mt-4">
+                    <div className="flex items-center gap-3 mt-3">
                       <label className="text-sm text-gray-700 whitespace-nowrap">Other:</label>
                       <input
                         type="text"
@@ -340,14 +340,14 @@ export default function ContactUsPage() {
                   </div>
 
                   {/* Submit Button */}
-                  <div className="pt-8">
+                  <div className="pt-6">
                     <button
                       type="submit"
                       disabled={isSubmitting || formData.interests.length === 0}
-                      className="w-full sm:w-auto px-12 py-5 bg-[#344059] text-white font-bold uppercase tracking-widest text-sm hover:bg-[#D89B2B] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 group"
+                      className="w-full sm:w-auto px-10 py-4 bg-[#344059] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 group"
                     >
                       {isSubmitting ? "Submitting..." : "Submit Application"}
-                      {!isSubmitting && <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+                      {!isSubmitting && <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
                     </button>
                     {formData.interests.length === 0 && (
                       <p className="text-xs text-red-500 mt-3">Please select at least one area of interest.</p>

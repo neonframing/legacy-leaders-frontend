@@ -117,18 +117,18 @@ export default function OurProgramsPage() {
 
       <main>
         {/* --- 1. LEGACY FELLOWS HERO --- */}
-        <section id="fellows" className="relative overflow-hidden bg-[#f6f1e8] px-6 pb-20 pt-36 sm:pt-40 lg:px-12 lg:pb-28 lg:pt-48">
+        <section id="fellows" className="relative overflow-hidden bg-[#f6f1e8] px-6 pb-16 pt-32 sm:pt-36 lg:px-10 lg:pb-24 lg:pt-40">
           <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-white/40 lg:block" />
-          <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-6">
                 <span className="w-12 h-[2px] bg-[#D89B2B]"></span>
               </div>
-              <h1 className="text-5xl font-black uppercase tracking-tighter text-[#344059] sm:text-6xl lg:text-[5rem] lg:leading-[0.92]">
+              <h1 className="text-4xl font-black uppercase tracking-tighter text-[#344059] sm:text-5xl lg:text-[4.4rem] lg:leading-[0.95]">
                 Legacy <br />Fellows.
               </h1>
-              <p className="mt-8 text-lg leading-relaxed text-gray-600 sm:text-xl">
+              <p className="mt-6 text-base leading-relaxed text-gray-600 sm:text-lg">
                 Legacy Fellows (ages 21-30) help leaders of color achieve financial independence and life balance by discovering their purpose, developing business opportunities, and creating a network of success that generates generational wealth. We elevate young adults to become the best version of themselves and teach them to share their stories with the world!
               </p>
               {/* <div className="mt-10 flex flex-col sm:flex-row gap-5">
@@ -153,21 +153,21 @@ export default function OurProgramsPage() {
         </section>
 
         {/* --- 2. WHAT YOU'LL GAIN --- */}
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28 border-t border-gray-100">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24 border-t border-gray-100">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-16">
+            <div className="mb-12">
               <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">What Am I Getting Out Of It?</h4>
-              <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl max-w-3xl">
+              <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] sm:text-4xl max-w-3xl">
                 What You'll Gain
               </h2>
-              <p className="mt-6 text-lg leading-relaxed text-gray-600 max-w-3xl">
+              <p className="mt-5 text-base leading-relaxed text-gray-600 max-w-3xl">
                 As a Legacy Fellow, you'll gain access to meaningful experiences, valuable relationships, and practical leadership development opportunities designed to help you grow with purpose, confidence, and impact. Here's what you can expect:
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6">
               {fellowsGains.map((gain, idx) => (
-                <div key={idx} className="group relative border border-[#344059]/10 overflow-hidden min-h-[400px] flex flex-col justify-end p-10 lg:p-12">
+                <div key={idx} className="group relative border border-[#344059]/10 overflow-hidden min-h-[300px] flex flex-col justify-end p-5 lg:p-6">
                   <Image 
                     src={gain.image} 
                     alt={gain.title}
@@ -175,16 +175,15 @@ export default function OurProgramsPage() {
                     sizes="(min-width: 768px) 50vw, 100vw"
                     className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[800ms] scale-100 group-hover:scale-105 z-0" 
                   />
-                  <div className="absolute inset-0 bg-[#344059]/90 group-hover:bg-[#344059]/75 transition-colors duration-500 z-10" />
                   
-                  <div className="relative z-20">
-                    <span className="block text-5xl font-black text-white/10 mb-4 transition-colors group-hover:text-[#D89B2B]/20">
+                  <div className="relative z-20 bg-white/90 p-4 sm:p-5">
+                    <span className="block text-3xl font-black text-[#344059]/20 mb-2">
                       0{idx + 1}
                     </span>
-                    <h3 className="text-2xl font-black uppercase tracking-tight text-white mb-4">
+                    <h3 className="text-lg font-black uppercase tracking-tight text-[#344059] mb-2">
                       {gain.title}
                     </h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-sm text-gray-700 leading-relaxed">
                       {gain.desc}
                     </p>
                   </div>
@@ -195,14 +194,14 @@ export default function OurProgramsPage() {
         </section>
 
         {/* --- 3. WHAT WE ASK OF YOU --- */}
-        <section className="bg-[#f8f6f1] px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        <section className="bg-[#f8f6f1] px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-16 max-w-3xl">
+            <div className="mb-12 max-w-3xl">
               <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">What Am I Putting In?</h4>
-              <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl mb-6">
+              <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] sm:text-4xl mb-5">
                 What We Ask of You
               </h2>
-              <p className="text-lg leading-relaxed text-gray-600">
+              <p className="text-base leading-relaxed text-gray-600">
                 Great leaders aren't developed by chance—they are shaped through commitment, growth, and meaningful experiences. As a Legacy Fellow, you'll have the opportunity to invest in yourself, build authentic relationships, embrace new challenges, and actively engage in the learning process. We ask Fellows to bring their best effort, an open mind, and a willingness to grow. 
               </p>
             </div>
@@ -223,10 +222,10 @@ export default function OurProgramsPage() {
               <div className="absolute inset-0 bg-[#344059]/40 mix-blend-multiply" />
               <div className="absolute inset-0 flex items-center justify-center p-6">
                  <div className="text-center">
-                    <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-4 drop-shadow-lg">
+                    <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white mb-3 drop-shadow-lg">
                       Fellows Leadership Model
                     </h2>
-                    <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-widest text-[#D89B2B] drop-shadow-md">
+                    <h3 className="text-xl md:text-2xl font-bold uppercase tracking-widest text-[#D89B2B] drop-shadow-md">
                       + Personal Leadership Model
                     </h3>
                  </div>
@@ -236,16 +235,16 @@ export default function OurProgramsPage() {
 
         {/* --- 5. FELLOWS CTA SECTION --- */}
         <section className="bg-white border-y border-[#344059]/10">
-          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-18 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="max-w-2xl">
-              <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] mb-4">
+              <h2 className="text-2xl font-black uppercase tracking-tight text-[#344059] mb-3">
                 Ready to accelerate your leadership journey?
               </h2>
-              <p className="text-gray-600 text-lg">
+              <p className="text-gray-600 text-base">
                 Join the next cohort of Legacy Fellows and start building the foundation for your future impact.
               </p>
             </div>
-            <button className="whitespace-nowrap px-10 py-5 bg-[#D89B2B] text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#344059] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
+            <button className="whitespace-nowrap px-8 py-4 bg-[#D89B2B] text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#344059] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
               Apply for Fellowship
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </button>
@@ -253,16 +252,16 @@ export default function OurProgramsPage() {
         </section>
 
         {/* --- 6. LEGACY MENTORS (Intro) --- */}
-        <section id="legacy-mentors" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        <section id="legacy-mentors" className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Preferred Age 35+</p>
-                <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl mb-8">
+                <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] sm:text-4xl mb-6">
                   Legacy Mentors.
                 </h2>
-                <div className="space-y-6 text-lg leading-relaxed text-gray-600">
-                  <p className="font-bold text-[#344059] text-2xl mb-2">
+                <div className="space-y-5 text-base leading-relaxed text-gray-600">
+                  <p className="font-bold text-[#344059] text-xl mb-1">
                     One conversation can change a life.
                   </p>
                   <p>
@@ -288,19 +287,19 @@ export default function OurProgramsPage() {
         </section>
 
         {/* --- 7. YOUR INVESTMENT (4 Pathways) --- */}
-        <section className="bg-[#344059] text-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        <section className="bg-[#344059] text-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-16">
+            <div className="mb-12">
               <h4 className="uppercase tracking-[0.2em] text-[#D89B2B] text-sm font-bold mb-4">Your Investment</h4>
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white">
+              <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white">
                 How Mentors Make An Impact.
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-left divide-y md:divide-y-0 md:divide-x divide-white/20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left divide-y md:divide-y-0 md:divide-x divide-white/20">
               {mentorPathways.map((pathway, idx) => (
-                <div key={idx} className={`pt-8 md:pt-0 ${idx !== 0 ? 'md:pl-12' : ''}`}>
-                  <span className="block text-6xl font-black text-white/10 mb-4">0{idx + 1}</span>
+                <div key={idx} className={`pt-6 md:pt-0 ${idx !== 0 ? 'md:pl-8' : ''}`}>
+                  <span className="block text-5xl font-black text-white/10 mb-3">0{idx + 1}</span>
                   <h3 className="text-xl font-bold mb-4 text-[#D89B2B] uppercase tracking-wide">{pathway.title}</h3>
                   <p className="text-gray-300 leading-relaxed text-sm lg:text-base">{pathway.desc}</p>
                 </div>
@@ -310,26 +309,26 @@ export default function OurProgramsPage() {
         </section>
 
         {/* --- 8. MENTOR QUALIFICATIONS --- */}
-        <section className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        <section className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-7xl">
-            <div className="max-w-3xl mb-16">
+            <div className="max-w-3xl mb-12">
               <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Who We Look For</h4>
-              <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl mb-6">
+              <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] sm:text-4xl mb-5">
                 Ideal Mentor Qualifications.
               </h2>
-              <p className="text-lg leading-relaxed text-gray-600">
+              <p className="text-base leading-relaxed text-gray-600">
                 We are seeking mentors who are committed to investing in the next generation of leaders. 
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-6 mb-16">
+            <div className="grid md:grid-cols-2 gap-x-8 gap-y-5 mb-12">
               {mentorQualifications.map((qual, idx) => {
                 const [title, desc] = qual.split(" – ");
                 return (
-                  <div key={idx} className="flex gap-4 items-start p-6 bg-gray-50 border border-gray-100 hover:border-[#D89B2B]/50 transition-colors">
+                  <div key={idx} className="flex gap-4 items-start p-5 bg-gray-50 border border-gray-100 hover:border-[#D89B2B]/50 transition-colors">
                     <CheckCircle2 className="text-[#D89B2B] w-6 h-6 shrink-0 mt-1" />
                     <div>
-                      <p className="font-bold text-[#344059] text-lg mb-1">{title}</p>
+                      <p className="font-bold text-[#344059] text-base mb-1">{title}</p>
                       {desc && <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>}
                     </div>
                   </div>
@@ -337,14 +336,14 @@ export default function OurProgramsPage() {
               })}
             </div>
 
-            <div className="bg-[#f8f6f1] p-10 border-l-4 border-[#D89B2B] flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div className="bg-[#f8f6f1] p-8 border-l-4 border-[#D89B2B] flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="max-w-2xl">
                 <p className="text-[#344059] font-bold mb-2">Education: Bachelor's degree preferred, but not required.</p>
                 <p className="text-gray-600">
                   Most importantly, we are looking for mentors who care deeply about people and are passionate about helping others discover their potential and achieve their goals.
                 </p>
               </div>
-              <button className="whitespace-nowrap px-10 py-5 bg-[#344059] text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#D89B2B] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
+              <button className="whitespace-nowrap px-8 py-4 bg-[#344059] text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#D89B2B] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
                 Become a Legacy Mentor
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
@@ -353,18 +352,18 @@ export default function OurProgramsPage() {
         </section>
 
         {/* --- 9. LEGACY COACHING WITH CONNECTING ARROWS --- */}
-        <section id="legacy-coaching" className="bg-[#f6f1e8] px-6 py-20 sm:py-24 lg:px-12 lg:py-28 relative overflow-hidden">
+        <section id="legacy-coaching" className="bg-[#f6f1e8] px-6 py-16 sm:py-20 lg:px-10 lg:py-24 relative overflow-hidden">
           <div className="mx-auto max-w-7xl relative">
             
-            <div className="text-center mb-20">
+            <div className="text-center mb-14">
               <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-4">Professional Development</h4>
-              <h2 className="text-4xl md:text-5xl font-black text-[#344059] tracking-tight mb-8">
+              <h2 className="text-3xl md:text-4xl font-black text-[#344059] tracking-tight mb-6">
                 THE LEGACY COACHING MODEL™
               </h2>
             </div>
 
             {/* Desktop SVG Connecting Arrow Overlay */}
-            <div className="hidden xl:block absolute top-[250px] left-0 right-0 z-0 h-40 pointer-events-none">
+            <div className="hidden xl:block absolute top-[220px] left-0 right-0 z-0 h-32 pointer-events-none">
               <svg width="100%" height="100%" preserveAspectRatio="none" className="stroke-[#D89B2B]/30" strokeWidth="2" fill="none" strokeDasharray="8 8">
                 <path d="M 12% 0 Q 30% 120 38% 0" />
                 <path d="M 38% 0 Q 55% 120 62% 0" />
@@ -373,24 +372,24 @@ export default function OurProgramsPage() {
             </div>
 
             {/* The 4 Steps */}
-            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8 mb-24 relative z-10">
+            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 mb-16 relative z-10">
               {coachingSteps.map((step, idx) => (
                 <div key={idx} className="flex flex-col">
                   {/* Step Card */}
-                  <div className="bg-white p-10 border border-[#344059]/10 shadow-sm relative overflow-hidden group flex-1">
-                    <div className="absolute top-0 right-0 w-16 h-16 bg-[#f8f6f1] group-hover:bg-[#D89B2B] transition-colors duration-300 flex items-center justify-center rounded-bl-3xl z-10">
+                  <div className="bg-white p-8 border border-[#344059]/10 shadow-sm relative overflow-hidden group flex-1">
+                    <div className="absolute top-0 right-0 w-14 h-14 bg-[#f8f6f1] group-hover:bg-[#D89B2B] transition-colors duration-300 flex items-center justify-center rounded-bl-3xl z-10">
                       <span className="text-xl font-black text-[#344059] group-hover:text-white">
                         {idx + 1}
                       </span>
                     </div>
                     
-                    <h3 className="text-3xl font-black uppercase text-[#344059] mb-2">{step.title}</h3>
-                    <p className="text-sm font-bold uppercase tracking-widest text-[#D89B2B] mb-6 min-h-[40px]">{step.subtitle}</p>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-8">{step.desc}</p>
+                    <h3 className="text-2xl font-black uppercase text-[#344059] mb-2">{step.title}</h3>
+                    <p className="text-sm font-bold uppercase tracking-widest text-[#D89B2B] mb-5 min-h-[36px]">{step.subtitle}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-6">{step.desc}</p>
                     
                     <div>
                       <p className="text-xs font-bold uppercase tracking-widest text-[#344059] mb-4 border-b pb-2">Outcomes</p>
-                      <ul className="space-y-3">
+                      <ul className="space-y-2">
                         {step.outcomes.map((outcome, oIdx) => (
                           <li key={oIdx} className="flex items-start gap-2 text-sm text-gray-600">
                             <span className="text-[#D89B2B] mt-0.5">•</span>
@@ -403,8 +402,8 @@ export default function OurProgramsPage() {
 
                   {/* Mobile Downward Arrow (Shows only on smaller screens between cards) */}
                   {idx < coachingSteps.length - 1 && (
-                    <div className="xl:hidden flex justify-center py-6">
-                      <ArrowDown size={32} className="text-[#D89B2B]/50 animate-bounce" />
+                    <div className="xl:hidden flex justify-center py-4">
+                      <ArrowDown size={28} className="text-[#D89B2B]/50 animate-bounce" />
                     </div>
                   )}
                 </div>
@@ -412,10 +411,10 @@ export default function OurProgramsPage() {
             </div>
 
             {/* Promise & Services Split */}
-            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 bg-[#344059] text-white p-10 md:p-16 relative z-10">
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 bg-[#344059] text-white p-8 md:p-12 relative z-10">
                <div>
                   <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-6">Legacy Coaching Promise</h4>
-                  <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-8">
+                  <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight mb-6">
                     Discover who you are. <br/>
                     <span className="text-gray-400">Align with where you're going.</span> <br/>
                     Grow into the leader you're meant to become. <br/>
@@ -423,9 +422,9 @@ export default function OurProgramsPage() {
                   </h3>
                </div>
                
-               <div className="lg:border-l border-white/20 lg:pl-12">
+               <div className="lg:border-l border-white/20 lg:pl-8">
                   <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-6">Services Included in the Model</h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-4">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
                     {[
                       "Executive Coaching", "Leadership Coaching", "Career Coaching", 
                       "Entrepreneur Coaching", "DISC Assessments", "360 Feedback Assessments", 
@@ -445,35 +444,35 @@ export default function OurProgramsPage() {
 
         {/* --- 10. FINAL DUAL CTA SECTION --- */}
         <section className="bg-white border-t border-[#344059]/10">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12 lg:py-28">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-[#344059] mb-6">
+          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-22">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-[#344059] mb-5">
                 Take Your Next Step
               </h2>
-              <p className="text-xl text-gray-600">
+              <p className="text-lg text-gray-600">
                 Whether you are looking to accelerate your own growth or invest in the leaders of tomorrow, there is a place for you at Legacy Leaders.
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-[#f8f6f1] p-10 md:p-14 text-center border border-[#344059]/10 hover:border-[#D89B2B] transition-colors">
-                <Users className="w-12 h-12 text-[#D89B2B] mx-auto mb-6" />
-                <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059] mb-4">Become a Legacy Fellow</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-[#f8f6f1] p-8 md:p-10 text-center border border-[#344059]/10 hover:border-[#D89B2B] transition-colors">
+                <Users className="w-10 h-10 text-[#D89B2B] mx-auto mb-5" />
+                <h3 className="text-xl font-black uppercase tracking-tight text-[#344059] mb-3">Become a Legacy Fellow</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   Join our next cohort to gain the mentorship, network, and skills necessary to maximize your potential.
                 </p>
-                <button className="mx-auto px-8 py-4 bg-[#344059] text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
+                <button className="mx-auto px-7 py-3 bg-[#344059] text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
                   Apply Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
 
-              <div className="bg-[#f8f6f1] p-10 md:p-14 text-center border border-[#344059]/10 hover:border-[#D89B2B] transition-colors">
-                <Target className="w-12 h-12 text-[#D89B2B] mx-auto mb-6" />
-                <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059] mb-4">Become a Legacy Mentor</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">
+              <div className="bg-[#f8f6f1] p-8 md:p-10 text-center border border-[#344059]/10 hover:border-[#D89B2B] transition-colors">
+                <Target className="w-10 h-10 text-[#D89B2B] mx-auto mb-5" />
+                <h3 className="text-xl font-black uppercase tracking-tight text-[#344059] mb-3">Become a Legacy Mentor</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   Share your expertise and guide a young adult through their leadership and professional development journey.
                 </p>
-                <button className="mx-auto px-8 py-4 bg-[#344059] text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
+                <button className="mx-auto px-7 py-3 bg-[#344059] text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none">
                   Apply Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
