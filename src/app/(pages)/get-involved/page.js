@@ -362,12 +362,12 @@ export default function GetInvolvedPage() {
               Whether you are looking to accelerate your own growth or invest in the leaders of tomorrow, there is a place for you at Legacy Leaders.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a 
-                href="/contact" 
+              <Link 
+                href="/contact-us" 
                 className="px-8 py-4 bg-[#D89B2B] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#344059] hover:!text-[#D89B2B] transition-all flex items-center justify-center gap-3 group rounded-none"
               >
                 <Mail size={16} className="group-hover:-translate-y-1 transition-transform" /> Contact Our Team
-              </a>
+              </Link>
             </div>
           </div>
         </section>
