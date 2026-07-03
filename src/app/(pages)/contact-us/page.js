@@ -346,7 +346,7 @@ export default function ContactUsPage() {
                       disabled={isSubmitting || formData.interests.length === 0}
                       className="w-full sm:w-auto px-10 py-4 bg-[#344059] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 group"
                     >
-                      {isSubmitting ? "Submitting..." : "Submit Application"}
+                      {isSubmitting ? "Submitting..." : "Submit"}
                       {!isSubmitting && <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
                     </button>
                     {formData.interests.length === 0 && (

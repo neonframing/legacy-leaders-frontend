@@ -138,7 +138,7 @@ export default function GetInvolvedPage() {
                 </p>
                 <Link 
                   href="/our-programs#legacy-fellows" 
-                  className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#D89B2B] group-hover:text-white border-b-2 border-transparent group-hover:border-[#D89B2B] pb-1 transition-all"
+                  className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest !text-[#D89B2B] group-hover:text-white border-b-2 border-transparent group-hover:border-[#D89B2B] pb-1 transition-all"
                 >
                   View Program Details
                 </Link>
@@ -340,7 +340,7 @@ export default function GetInvolvedPage() {
                 <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Questions?</h4>
                 <p className="text-sm text-white/70 mb-6">We would love to connect with you.</p>
                 <Link 
-                  href="/contact" 
+                  href="/contact-us" 
                   className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white hover:!text-[#D89B2B] transition-colors"
                 >
                   Contact Us <ArrowRight size={16} />
