@@ -4,6 +4,7 @@ import { ArrowRight, Heart, Users, Mail, ShieldCheck, CheckCircle2, ArrowUpRight
 
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import InteractiveBoardCards from "@/components/InteractiveBoardCards";
 
 export default function GetInvolvedPage() {
   return (
@@ -179,7 +180,24 @@ export default function GetInvolvedPage() {
           </div>
         </section>
 
-        {/* --- 4. REQUEST AN INTERN --- */}
+        {/* --- 4. ADVISORY & YOUNG PROFESSIONALS BOARDS --- */}
+        <section id="board-opportunities" className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24 border-b border-[#344059]/10">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-10 max-w-3xl">
+              <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Board Opportunities</h4>
+              <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] sm:text-4xl mb-5">
+                Legacy Advisory & Young Professionals Boards.
+              </h2>
+              <p className="text-base leading-relaxed text-gray-600">
+                If you are ready to contribute your expertise and leadership, explore our board opportunities and connect with a network committed to impact.
+              </p>
+            </div>
+
+            <InteractiveBoardCards />
+          </div>
+        </section>
+
+        {/* --- 5. REQUEST AN INTERN --- */}
         <section id="request-intern" className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24 border-b border-[#344059]/10">
           <div className="mx-auto max-w-7xl">
             <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-12 items-center">
@@ -232,7 +250,7 @@ export default function GetInvolvedPage() {
           </div>
         </section>
 
-        {/* --- 5. DONATE TODAY --- */}
+        {/* --- 6. DONATE TODAY --- */}
         <section id="legacy-donor" className="bg-[#344059] text-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-7xl">
             
@@ -352,7 +370,7 @@ export default function GetInvolvedPage() {
         </section>
 
 
-        {/* --- 6. FINAL CTA --- */}
+        {/* --- 7. FINAL CTA --- */}
         <section className="bg-white">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-24 text-center">
             <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-[#344059] mb-6">

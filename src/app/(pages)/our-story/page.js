@@ -1,11 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, Quote, Sparkles, Users } from "lucide-react";
 
 export const runtime = 'edge';
 
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import InteractiveBoardCards from "@/components/InteractiveBoardCards";
 import FellowsCarousel from "@/components/FellowsCarousel";
 import GalaCarousel from "@/components/GalaCarousel";
 import { client, urlFor } from "@/lib/sanityClient";
@@ -407,14 +407,12 @@ export default async function OurStoryPage() {
                 <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">The Leadership</p>
                 <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl">Experience, imagination, and conviction.</h2>
               </div>
-              <a
+              <Link
                 href="#"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-[#344059] transition-colors hover:text-[#D89B2B]"
+                className="inline-flex items-center gap-3 px-7 py-3 bg-[#344059] !text-white text-xs font-bold uppercase tracking-[0.18em] transition-colors hover:bg-[#D89B2B] hover:!text-white"
               >
                 Sign up to be a board member <ArrowRight size={16} />
-              </a>
+              </Link>
             </div>
 
             <div className="mb-24 grid gap-x-8 gap-y-14 md:grid-cols-2 xl:grid-cols-4">
@@ -440,9 +438,6 @@ export default async function OurStoryPage() {
                 </article>
               ))}
             </div>
-
-            {/* Sub-Boards Interactive Component */}
-            <InteractiveBoardCards />
           </div>
         </section>
 
@@ -452,7 +447,7 @@ export default async function OurStoryPage() {
             <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
               <div className="relative min-h-[22rem] lg:min-h-full">
                 <Image
-                  src="/chief.webp"
+                  src="/Fam-64.jpeg"
                   alt="President and founder portrait placeholder"
                   fill
                   sizes="(min-width: 1024px) 38vw, 100vw"
