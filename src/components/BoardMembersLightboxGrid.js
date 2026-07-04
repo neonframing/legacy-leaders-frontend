@@ -53,7 +53,7 @@ export default function BoardMembersLightboxGrid({ boardMembers = [] }) {
             <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-[#D89B2B]">{member.role}</p>
             <p className="mt-2 text-sm leading-7 text-gray-500">{member.company}</p>
             <p className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#344059] group-hover:text-[#D89B2B] transition-colors">
-              Click to view bio <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              Learn More <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
             </p>
           </article>
         ))}
