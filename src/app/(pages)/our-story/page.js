@@ -8,6 +8,7 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import FellowsCarousel from "@/components/FellowsCarousel";
 import GalaCarousel from "@/components/GalaCarousel";
+import BoardMembersLightboxGrid from "@/components/BoardMembersLightboxGrid";
 import { client, urlFor } from "@/lib/sanityClient";
 
 // Simplified array for CSS Columns Masonry
@@ -415,29 +416,7 @@ export default async function OurStoryPage() {
               </Link>
             </div>
 
-            <div className="mb-24 grid gap-x-8 gap-y-14 md:grid-cols-2 xl:grid-cols-4">
-              {boardMembers.map((member) => (
-                <article key={member._id} className="group flex flex-col">
-                  <div className="relative mb-6 overflow-hidden bg-[#e8ebf1] rounded-none">
-                    <div className="relative aspect-[3/4] w-full">
-                      {member.imageUrl ? (
-                        <Image
-                          src={member.imageUrl}
-                          alt={member.name}
-                          fill
-                          sizes="(min-width: 1280px) 22vw, (min-width: 768px) 40vw, 100vw"
-                          className="object-cover grayscale transition-all duration-700 group-hover:scale-[1.03] group-hover:grayscale-0"
-                        />
-                      ) : null}
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059]">{member.name}</h3>
-                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-[#D89B2B]">{member.role}</p>
-                  <p className="mt-2 text-sm leading-7 text-gray-500">{member.company}</p>
-                  <p className="mt-4 text-sm leading-7 text-gray-600 whitespace-pre-wrap">{member.bio}</p>
-                </article>
-              ))}
-            </div>
+            <BoardMembersLightboxGrid boardMembers={boardMembers} />
           </div>
         </section>
 
