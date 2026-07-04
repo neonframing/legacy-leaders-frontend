@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, X } from "lucide-react";
 
 export default function GalaCarousel({ editions }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const nextEdition = () => {
     setActiveIndex((prev) => (prev === editions.length - 1 ? 0 : prev + 1));
@@ -17,18 +18,68 @@ export default function GalaCarousel({ editions }) {
     setActiveIndex((prev) => (prev === 0 ? editions.length - 1 : prev - 1));
   };
 
+  const openLightbox = (index) => {
+    setLightboxIndex(index);
+    setIsLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+  };
+
+  const nextLightboxImage = () => {
+    setLightboxIndex((prev) => (prev === activeEdition.images.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevLightboxImage = () => {
+    setLightboxIndex((prev) => (prev === 0 ? activeEdition.images.length - 1 : prev - 1));
+  };
+
   // Auto-cycle logic
   useEffect(() => {
     let interval;
-    if (!isHovered) {
+    if (!isHovered && !isLightboxOpen) {
       interval = setInterval(() => {
         nextEdition();
       }, 5000); // Swaps every 5 seconds
     }
     return () => clearInterval(interval);
-  }, [isHovered, activeIndex]);
+  }, [isHovered, activeIndex, isLightboxOpen]);
 
   const activeEdition = editions[activeIndex];
+
+  useEffect(() => {
+    if (isLightboxOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isLightboxOpen]);
+
+  useEffect(() => {
+    if (!isLightboxOpen) {
+      return;
+    }
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+      if (event.key === "ArrowRight") {
+        nextLightboxImage();
+      }
+      if (event.key === "ArrowLeft") {
+        prevLightboxImage();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isLightboxOpen, activeEdition.images.length]);
 
   return (
     <div 
@@ -59,13 +110,13 @@ export default function GalaCarousel({ editions }) {
           </div>
         </div>
         
-        <Link 
-          href="/gallery" 
-          className="group inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-[#D89B2B] transition-colors hover:text-white"
+        <button
+          onClick={() => openLightbox(0)}
+          className="group inline-flex items-center cursor-pointer gap-3 text-sm font-bold uppercase tracking-widest text-[#D89B2B] transition-colors hover:text-white"
         >
-          View Full Media Gallery 
+          View Gala Gallery
           <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-        </Link>
+        </button>
       </div>
 
       {/* This relative wrapper ensures all grids stack perfectly.
@@ -82,7 +133,10 @@ export default function GalaCarousel({ editions }) {
                 isActive ? "opacity-100 relative z-10" : "opacity-0 absolute inset-0 z-0 pointer-events-none"
               }`}
             >
-              <div className="relative aspect-square md:aspect-auto md:col-span-8 overflow-hidden bg-gray-800">
+              <div
+                className="relative aspect-square md:aspect-auto md:col-span-8 overflow-hidden bg-gray-800 cursor-pointer"
+                onClick={() => openLightbox(0)}
+              >
                 <Image
                   src={edition.images[0].src}
                   alt={edition.images[0].alt}
@@ -100,7 +154,11 @@ export default function GalaCarousel({ editions }) {
               </div>
               <div className="flex flex-col gap-6 md:col-span-4">
                 {edition.images.slice(1).map((img, imgIdx) => (
-                  <div key={imgIdx} className="relative aspect-[4/3] w-full overflow-hidden bg-gray-800 group">
+                  <div
+                    key={imgIdx}
+                    className="relative aspect-[4/3] w-full overflow-hidden bg-gray-800 group cursor-pointer"
+                    onClick={() => openLightbox(imgIdx + 1)}
+                  >
                     <Image
                       src={img.src}
                       alt={img.alt}
@@ -123,6 +181,77 @@ export default function GalaCarousel({ editions }) {
           );
         })}
       </div>
+
+      {isLightboxOpen ? (
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6">
+          <div className="absolute inset-0 bg-black/90" onClick={closeLightbox} />
+
+          <div className="relative z-10 w-full max-w-6xl">
+            <button
+              onClick={closeLightbox}
+              className="absolute right-2 top-2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white transition-colors hover:bg-white hover:text-[#344059]"
+              aria-label="Close gala lightbox"
+            >
+              <X size={20} />
+            </button>
+
+            <div className="relative aspect-[16/10] w-full overflow-hidden bg-black sm:aspect-[16/9]">
+              <Image
+                src={activeEdition.images[lightboxIndex].src}
+                alt={activeEdition.images[lightboxIndex].alt}
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+
+            <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+              {activeEdition.images.map((img, idx) => {
+                const isActiveThumb = idx === lightboxIndex;
+
+                return (
+                  <button
+                    key={`${img.src}-${idx}`}
+                    onClick={() => setLightboxIndex(idx)}
+                    className={`relative h-16 w-24 shrink-0 overflow-hidden border-2 transition-all ${
+                      isActiveThumb
+                        ? "border-[#D89B2B] opacity-100"
+                        : "border-white/30 opacity-70 hover:opacity-100"
+                    }`}
+                    aria-label={`View gala image ${idx + 1}`}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-3 flex items-center justify-between text-white">
+              <button
+                onClick={prevLightboxImage}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 transition-colors hover:bg-white hover:text-[#344059]"
+                aria-label="Previous gala image"
+              >
+                <ArrowLeft size={18} />
+              </button>
+
+              <button
+                onClick={nextLightboxImage}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 transition-colors hover:bg-white hover:text-[#344059]"
+                aria-label="Next gala image"
+              >
+                <ArrowRight size={18} />
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

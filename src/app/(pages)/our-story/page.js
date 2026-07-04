@@ -47,9 +47,9 @@ const historyImages = [
 
 const fellowsByYear = [
   {
-    label: "2021",
-    title: "Foundations of confidence",
-    description: "The first fellowship cohort centered identity, confidence, and career clarity for emerging leaders ready to take purposeful first steps.",
+    label: "2010-2020",
+    title: "High School Impact",
+    description: "Supporting 3,652 students through leadership development, mentorship, and community engagement opportunities.",
     image: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=80",
     individuals: [
       { name: "Marcus Johnson", role: "Software Engineer", image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=400&q=80" },
