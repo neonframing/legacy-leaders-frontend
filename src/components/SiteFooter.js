@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Facebook, Twitter, Youtube, Instagram } from "lucide-react";
 
 import Link from "next/link";
 
@@ -55,7 +55,21 @@ export default function SiteFooter() {
 
         <div className="flex flex-col items-center justify-between border-t border-gray-700 pt-8 text-sm text-gray-500 md:flex-row">
           <p>&copy; {new Date().getFullYear()} Legacy Leaders. All rights reserved.</p>
-          <div className="mt-4 flex space-x-6 md:mt-0">
+          <div className="mt-4 flex items-center gap-6 md:mt-0">
+            <div className="flex items-center gap-3">
+              <a href="#" aria-label="Legacy Leaders Facebook" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="#" aria-label="Legacy Leaders Twitter" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a href="#" aria-label="Legacy Leaders YouTube" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
+                <Youtube className="h-5 w-5" />
+              </a>
+              <a href="#" aria-label="Legacy Leaders Instagram" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
+                <Instagram className="h-5 w-5" />
+              </a>
+            </div>
             <a href="#" className="transition-colors hover:text-white">Privacy Policy</a>
             <a href="#" className="transition-colors hover:text-white">Terms of Service</a>
           </div>
