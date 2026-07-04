@@ -1,4 +1,4 @@
-import { ArrowRight, Facebook, Twitter, Youtube, Instagram } from "lucide-react";
+import { ArrowRight, Facebook, Youtube, Instagram } from "lucide-react";
 
 import Link from "next/link";
 
@@ -57,18 +57,20 @@ export default function SiteFooter() {
           <p>&copy; {new Date().getFullYear()} Legacy Leaders. All rights reserved.</p>
           <div className="mt-4 flex items-center gap-6 md:mt-0">
             <div className="flex items-center gap-3">
-              <a href="#" aria-label="Legacy Leaders Facebook" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
+              <Link href="https://www.facebook.com/mylegacyleaders" aria-label="Legacy Leaders Facebook" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
                 <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" aria-label="Legacy Leaders Twitter" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" aria-label="Legacy Leaders YouTube" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
+              </Link>
+              <Link href="https://x.com/mylegacyleaders" aria-label="Legacy Leaders X" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
+                  <path d="M18.901 1.153h3.68l-8.043 9.19L24 22.847h-7.406l-5.8-7.584-6.64 7.584H.473l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.933zm-1.292 19.5h2.04L6.486 3.24H4.298z" />
+                </svg>
+              </Link>
+              <Link href="https://www.youtube.com/user/legacyleaderstv" aria-label="Legacy Leaders YouTube" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
                 <Youtube className="h-5 w-5" />
-              </a>
-              <a href="#" aria-label="Legacy Leaders Instagram" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
+              </Link>
+              <Link href="https://www.instagram.com/mylegacyleaders" aria-label="Legacy Leaders Instagram" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#D89B2B] hover:scale-105">
                 <Instagram className="h-5 w-5" />
-              </a>
+              </Link>
             </div>
             <a href="#" className="transition-colors hover:text-white">Privacy Policy</a>
             <a href="#" className="transition-colors hover:text-white">Terms of Service</a>
