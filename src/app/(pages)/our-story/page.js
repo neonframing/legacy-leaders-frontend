@@ -14,32 +14,32 @@ import { client, urlFor } from "@/lib/sanityClient";
 // Simplified array for CSS Columns Masonry
 const historyImages = [
   {
-    src: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1600&q=80",
+    src: "/DSC06564.jpg",
     alt: "Legacy Leaders wide group session",
     aspect: "aspect-[16/9]", 
   },
   {
-    src: "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80",
+    src: "/DSC06539.jpg",
     alt: "Mentor leading a workshop",
     aspect: "aspect-[4/5]", 
   },
   {
-    src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
+    src: "/IMG_3950.jpg",
     alt: "Community event with young adults",
     aspect: "aspect-[4/3]", 
   },
   {
-    src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
+    src: "/IMG_1067.jpg",
     alt: "Professionals collaborating wide",
     aspect: "aspect-[16/9]", 
   },
   {
-    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    src: "/IMG_6789.jpg",
     alt: "Leadership seminar",
     aspect: "aspect-[3/4]", 
   },
   {
-    src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
+    src: "/IMG_0740.jpg",
     alt: "Community outreach event",
     aspect: "aspect-[4/5]", 
   },
@@ -275,7 +275,7 @@ export default async function OurStoryPage() {
             <div className="relative overflow-hidden rounded-none bg-[#344059] shadow-[0_24px_70px_rgba(52,64,89,0.18)]">
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1400&q=80"
+                  src="/IMG_1611.jpg"
                   alt="Legacy Leaders fellows celebrating together"
                   fill
                   sizes="(min-width: 1024px) 48vw, 100vw"
