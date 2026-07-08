@@ -162,7 +162,7 @@ export default async function Home() {
               <div className="group relative overflow-hidden border border-gray-200 bg-[#344059] transition-all duration-300 hover:border-[#344059] hover:shadow-2xl flex flex-col">
                 <div className="relative h-44 w-full bg-[#344059] overflow-hidden">
                   <Image 
-                    src="/IMG_7346.jpg" 
+                    src="/MGP06460.jpg" 
                     alt="Legacy Mentors" 
                     fill 
                     sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
