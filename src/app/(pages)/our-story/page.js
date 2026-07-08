@@ -24,17 +24,17 @@ const historyImages = [
     aspect: "aspect-[4/5]", 
   },
   {
-    src: "/IMG_3950.jpg",
+    src: "/DSC06822.jpg",
     alt: "Community event with young adults",
     aspect: "aspect-[4/3]", 
   },
   {
-    src: "/IMG_1067.jpg",
+    src: "/IMG_1172.jpg",
     alt: "Professionals collaborating wide",
     aspect: "aspect-[16/9]", 
   },
   {
-    src: "/IMG_6789.jpg",
+    src: "/IMG_9531-2.jpg",
     alt: "Leadership seminar",
     aspect: "aspect-[3/4]", 
   },
@@ -267,9 +267,9 @@ export default async function OurStoryPage() {
               <h1 className="text-5xl font-black uppercase tracking-tighter text-[#344059] sm:text-6xl lg:text-[5.5rem] lg:leading-[0.92]">
                 Developing leaders who shape what comes next.
               </h1>
-              <p className="mt-8 max-w-2xl border-l-2 border-[#D89B2B] pl-6 text-lg leading-relaxed text-gray-600 sm:text-xl">
+              {/* <p className="mt-8 max-w-2xl border-l-2 border-[#D89B2B] pl-6 text-lg leading-relaxed text-gray-600 sm:text-xl">
                 Legacy Leaders equips youth and adults with the tools to develop their maximum potential and become purposeful leaders in their communities and beyond.
-              </p>
+              </p> */}
             </div>
 
             <div className="relative overflow-hidden rounded-none bg-[#344059] shadow-[0_24px_70px_rgba(52,64,89,0.18)]">
@@ -286,7 +286,7 @@ export default async function OurStoryPage() {
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white sm:p-10">
                 <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#D89B2B]">Since 2010</p>
                 <p className="mt-3 max-w-xl text-lg leading-relaxed text-white/90">
-                  What started in Chicago as a commitment to mentoring youth has become a multi-stage leadership development community with local and global reach.
+                  What started in Chicago as a commitment to mentoring youth has become a multi-stage leadership development community with local and global reach to young adults everywhere.
                 </p>
               </div>
             </div>

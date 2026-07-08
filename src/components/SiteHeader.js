@@ -47,7 +47,6 @@ const navLinks = [
     name: "Our Programs", 
     href: "/our-programs",
     subLinks: [
-      { name: "Overview", href: "/our-programs" },
       { name: "Legacy Fellows", href: "/our-programs#legacy-fellows" },
       { name: "Legacy Mentors", href: "/our-programs#legacy-mentors" },
       { name: "Legacy Coaching", href: "/our-programs#legacy-coaching" },
@@ -57,10 +56,9 @@ const navLinks = [
     name: "Get Involved", 
     href: "/get-involved",
     subLinks: [
-      { name: "Overview", href: "/get-involved" },
-      { name: "Donate", href: "/get-involved#legacy-donor" },
-      { name: "Request an Intern", href: "/get-involved#request-intern" },
       { name: "Volunteer", href: "/get-involved#volunteer" },
+      { name: "Request an Intern", href: "/get-involved#request-intern" },
+      { name: "Donate", href: "/get-involved#legacy-donor" },
     ]
   },
   { 

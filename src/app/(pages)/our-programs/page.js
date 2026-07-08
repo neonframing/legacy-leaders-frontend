@@ -18,12 +18,12 @@ const fellowsGains = [
   {
     title: "A Strong Professional Network",
     desc: "Connect with mentors, leaders, and peers who can support your growth.",
-    image: "/IMG_1573.jpg"
+    image: "/IMG_1907.jpg"
   },
   {
     title: "A Credential That Sets You Apart",
     desc: "Receive a certificate of completion that highlights your leadership experience and helps distinguish you in academic, professional, and career opportunities.",
-    image: "/IMG_1732.jpg"
+    image: "/DSC06875.jpg"
   },
   {
     title: "Accelerate Your Career or Business",

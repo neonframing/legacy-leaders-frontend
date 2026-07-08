@@ -134,7 +134,7 @@ export default async function Home() {
               <div className="group relative overflow-hidden border border-gray-200 bg-white transition-all duration-300 hover:border-[#344059] hover:shadow-2xl flex flex-col">
                 <div className="relative h-44 w-full bg-[#344059] overflow-hidden">
                   <Image 
-                    src="/DSC06660.jpg" 
+                    src="/MGP06528.jpg" 
                     alt="Legacy Fellows" 
                     fill 
                     sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
@@ -195,7 +195,7 @@ export default async function Home() {
               <div className="group relative overflow-hidden border border-gray-200 bg-white transition-all duration-300 hover:border-[#344059] hover:shadow-2xl flex flex-col">
                 <div className="relative h-44 w-full bg-[#344059] overflow-hidden">
                   <Image 
-                    src="/IMG_7098.jpg" 
+                    src="/IMG_7586.jpg" 
                     alt="Legacy Development" 
                     fill 
                     sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
@@ -223,7 +223,7 @@ export default async function Home() {
               <div className="group relative overflow-hidden border border-gray-200 bg-white transition-all duration-300 hover:border-[#344059] hover:shadow-2xl flex flex-col">
                 <div className="relative h-44 w-full bg-[#344059] overflow-hidden">
                   <Image 
-                    src="/IMG_4951.jpg" 
+                    src="/IMG_5111(2).jpg" 
                     alt="Legacy Donor" 
                     fill 
                     sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
