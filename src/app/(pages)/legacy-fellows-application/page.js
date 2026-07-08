@@ -39,6 +39,8 @@ const developmentAreas = [
 ];
 
 export default function LegacyFellowsApplicationPage() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="min-h-screen bg-[#f8f6f1] font-sans text-[#344059] selection:bg-[#D89B2B] selection:text-white">
       <SiteHeader />
@@ -46,7 +48,7 @@ export default function LegacyFellowsApplicationPage() {
       <main className="pt-28 pb-16 lg:pt-40 lg:pb-24">
         <div className="mx-auto max-w-5xl px-6 lg:px-10">
           <div className="mb-10 border-l-4 border-[#D89B2B] bg-white p-6 sm:p-8">
-            <p className="mb-3 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Legacy Fellows 2025 Application</p>
+            <p className="mb-3 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Legacy Fellows {currentYear} Application</p>
             <h1 className="text-3xl font-black uppercase tracking-tight text-[#344059] sm:text-4xl">
               Legacy Fellows Application
             </h1>
@@ -170,14 +172,16 @@ export default function LegacyFellowsApplicationPage() {
                   <label className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#344059]" htmlFor="headshot">
                     Share one great headshot or selfie that we can share on our website and social media outlets if you are selected as a Fellow.
                   </label>
-                  <input
-                    id="headshot"
-                    name="headshot"
-                    type="file"
-                    accept="image/*"
-                    required
-                    className="w-full border border-[#344059]/20 bg-[#f8f6f1] px-3 py-2 text-sm text-[#344059] file:mr-4 file:cursor-pointer file:border-0 file:bg-[#344059] file:px-4 file:py-2 file:text-xs file:font-bold file:uppercase file:tracking-wider file:text-white file:transition-colors hover:file:bg-[#D89B2B]"
-                  />
+                  <div className="rounded-xl border border-dashed border-[#344059]/30 bg-[#f8f6f1] px-4 py-4 sm:px-5 sm:py-5">
+                    <input
+                      id="headshot"
+                      name="headshot"
+                      type="file"
+                      accept="image/*"
+                      className="w-full cursor-pointer text-sm text-[#344059] file:mr-4 file:rounded-md file:border file:border-[#344059] file:bg-white file:px-4 file:py-2 file:text-sm file:font-semibold file:normal-case file:tracking-normal file:text-[#344059] file:transition-colors hover:file:border-[#D89B2B] hover:file:text-[#D89B2B]"
+                    />
+                    <p className="mt-3 text-xs text-gray-600">Upload a file, or drag and drop an image here. Accepted: JPG, PNG, HEIC.</p>
+                  </div>
                 </div>
               </div>
 
