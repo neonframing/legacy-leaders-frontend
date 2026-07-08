@@ -5,6 +5,7 @@ import { ArrowRight, ChevronRight, PlayCircle, Target, Users, BookOpen, CheckCir
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import InteractiveRequirements from "@/components/InteractiveRequirements";
+import HeroVideo from "@/components/HeroVideo";
 
 // --- Content Data ---
 
@@ -119,7 +120,6 @@ export default function OurProgramsPage() {
       <main>
         {/* --- 1. LEGACY FELLOWS HERO --- */}
         <section id="fellows" className="relative overflow-hidden bg-[#f6f1e8] px-6 pb-16 pt-32 sm:pt-36 lg:px-10 lg:pb-24 lg:pt-40">
-          <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-white/40 lg:block" />
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             
             <div className="relative z-10">
@@ -141,13 +141,10 @@ export default function OurProgramsPage() {
             </div>
 
             {/* Video Player */}
-            <div className="relative overflow-hidden bg-black shadow-[0_24px_80px_rgba(52,64,89,0.15)] aspect-video w-full group border border-[#344059]/10">
-              <iframe 
-                src="https://www.youtube.com/embed/BLSYwYzxt7Y?rel=0" 
-                title="Legacy Leaders Fellowship Highlights" 
-                className="w-full h-full absolute inset-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
+            <div className="overflow-hidden rounded-sm border border-gray-200 bg-white shadow-sm">
+              <HeroVideo
+                videoId="BLSYwYzxt7Y"
+                thumbnailSrc="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
               />
             </div>
           </div>
@@ -212,26 +209,34 @@ export default function OurProgramsPage() {
         </section>
 
         {/* --- 4. LEADERSHIP MODELS IMAGE BREAK --- */}
-        <section className="w-full bg-[#344059]">
-           <div className="relative w-full aspect-[21/9] md:aspect-[21/7] overflow-hidden">
-              <Image 
-                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=2000&q=80" 
-                alt="Fellows Leadership Model"
-                fill
-                className="object-cover opacity-60"
-              />
-              <div className="absolute inset-0 bg-[#344059]/40 mix-blend-multiply" />
-              <div className="absolute inset-0 flex items-center justify-center p-6">
-                 <div className="text-center">
-                    <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white mb-3 drop-shadow-lg">
-                      Fellows Leadership Model
-                    </h2>
-                    <h3 className="text-xl md:text-2xl font-bold uppercase tracking-widest text-[#D89B2B] drop-shadow-md">
-                      + Personal Leadership Model
-                    </h3>
-                 </div>
+        <section className="w-full bg-[#344059] px-6 py-14 sm:py-16 lg:px-10 lg:py-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-8 text-center">
+              <h2 className="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">Fellows Leadership Model</h2>
+              <p className="mt-2 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">+ Personal Leadership Model</p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="overflow-hidden border border-white/20 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
+                <Image
+                  src="/Fellows-Leadership-Model.png"
+                  alt="Fellows Leadership Model"
+                  width={1400}
+                  height={900}
+                  className="h-full w-full object-contain bg-white"
+                />
               </div>
-           </div>
+              <div className="overflow-hidden border border-white/20 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
+                <Image
+                  src="/Whole-Personal-Leadership-Model.png"
+                  alt="Personal Leadership Model"
+                  width={1400}
+                  height={900}
+                  className="h-full w-full object-contain bg-white"
+                />
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* --- 5. FELLOWS CTA SECTION --- */}
