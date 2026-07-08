@@ -352,10 +352,10 @@ export default function OurProgramsPage() {
                   Believe in developing future leaders and actively contribute to the success of the Legacy Fellows Program.
                 </p>
               </div>
-              <button className="whitespace-nowrap px-8 py-4 bg-[#344059] !text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#D89B2B] hover:!text-white transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
+              <Link href="/become-a-legacy-mentor" className="whitespace-nowrap px-8 py-4 bg-[#344059] !text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#D89B2B] hover:!text-white transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
                 Become a Legacy Mentor
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
             </div>
           </div>
         </section>
