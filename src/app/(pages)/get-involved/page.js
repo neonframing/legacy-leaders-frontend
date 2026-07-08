@@ -32,7 +32,7 @@ export default function GetInvolvedPage() {
 
               <div className="relative hidden h-[460px] overflow-hidden shadow-[0_24px_80px_rgba(52,64,89,0.14)] lg:block">
                 <Image
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80"
+                  src="/IMG_7599.jpg"
                   alt="Legacy Leaders volunteers and mentors gathered in community"
                   fill
                   priority
@@ -81,7 +81,7 @@ export default function GetInvolvedPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative aspect-square overflow-hidden bg-gray-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80"
+                    src="/IMG_7619.jpg"
                     alt="Volunteers with hands in"
                     fill
                     className="object-cover"
@@ -89,7 +89,7 @@ export default function GetInvolvedPage() {
                 </div>
                 <div className="relative aspect-square overflow-hidden bg-gray-100 mt-8">
                   <Image
-                    src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=800&q=80"
+                    src="/IMG_7672.jpg"
                     alt="Mentorship event"
                     fill
                     className="object-cover"
@@ -97,7 +97,7 @@ export default function GetInvolvedPage() {
                 </div>
                 <div className="relative aspect-square overflow-hidden bg-gray-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80"
+                    src="/IMG_7704.jpg"
                     alt="Fellows working together"
                     fill
                     className="object-cover"
@@ -122,7 +122,7 @@ export default function GetInvolvedPage() {
             {/* Fellow Link Card */}
             <div className="group relative overflow-hidden border border-[#344059]/10 min-h-[360px] flex flex-col justify-end p-8 hover:shadow-2xl transition-all duration-500">
               <Image
-                src="https://images.unsplash.com/photo-1543269664-76bc3997d9ea?auto=format&fit=crop&w=1200&q=80"
+                src="/DSC06511.jpg"
                 alt="Legacy Fellows collaborating during a leadership workshop"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
@@ -151,7 +151,7 @@ export default function GetInvolvedPage() {
             {/* Mentor Link Card */}
             <div className="group relative overflow-hidden min-h-[360px] flex flex-col justify-end p-8 hover:shadow-2xl transition-all duration-500">
               <Image
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+                src="/IMG_7702.jpg"
                 alt="Mentor and fellow discussing goals in a professional setting"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
@@ -204,7 +204,7 @@ export default function GetInvolvedPage() {
               
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-100 shadow-[0_24px_80px_rgba(52,64,89,0.12)]">
                 <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+                  src="/DSC06643.jpg"
                   alt="Professionals collaborating in an office"
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
@@ -280,7 +280,7 @@ export default function GetInvolvedPage() {
               {/* Ambassador Card */}
               <div className="relative overflow-hidden border border-white/10 p-8 lg:p-10 transition-colors flex flex-col">
                 <Image
-                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
+                  src="/DSC06700.jpg"
                   alt="Volunteers mentoring youth during a community session"
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
@@ -309,7 +309,7 @@ export default function GetInvolvedPage() {
               {/* Partner Card */}
               <div className="relative overflow-hidden border border-white/10 p-8 lg:p-10 transition-colors flex flex-col">
                 <Image
-                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
+                  src="/DSC06795.jpg"
                   alt="Community supporters collaborating at a fundraising event"
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
