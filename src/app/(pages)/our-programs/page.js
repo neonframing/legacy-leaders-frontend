@@ -13,22 +13,22 @@ const fellowsGains = [
   {
     title: "Discover Your Purpose",
     desc: "Gain greater clarity about who you are, what you value, and how your unique gifts can make a meaningful impact in the world through DISC and other assessments.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
+    image: "/IMG_7142.jpg"
   },
   {
     title: "A Strong Professional Network",
     desc: "Connect with mentors, leaders, and peers who can support your growth.",
-    image: "https://images.unsplash.com/photo-1515168833906-d2a3b82b302a?auto=format&fit=crop&w=800&q=80"
+    image: "/IMG_1573.jpg"
   },
   {
     title: "A Credential That Sets You Apart",
     desc: "Receive a certificate of completion that highlights your leadership experience and helps distinguish you in academic, professional, and career opportunities.",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80"
+    image: "/IMG_1732.jpg"
   },
   {
     title: "Accelerate Your Career or Business",
     desc: "Gain practical leadership, communication, and professional skills that can help you earn greater responsibilities, pursue new opportunities, or launch and grow your own business.",
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
+    image: "/IMG_1837.jpg"
   }
 ];
 
@@ -36,22 +36,22 @@ const fellowsRequirements = [
   {
     title: "Monthly Training",
     desc: "Legacy Fellows (ages 21-30) meet every last Saturday of the month from August through May in Chicago (8am to 3pm).",
-    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80"
+    image: "/IMG_6733.jpg"
   },
   {
     title: "Out-of-State Retreat",
     desc: "This will take place in Lake Geneva, Wisconsin from October 8th to the 11th.",
-    image: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=800&q=80"
+    image: "/IMG_6936.jpg"
   },
   {
     title: "Mentor Coaching",
     desc: "You will be partnered with a professional mentor coach throughout the program cycle to meet with virtually.",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
+    image: "/IMG_7260.jpg"
   },
   {
     title: "Capstone Event",
     desc: "This is designed to bring all of your learnings together with all your other Fellows at the end of the program.",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80"
+    image: "/IMG_1619.jpg"
   }
 ];
 
@@ -144,7 +144,7 @@ export default function OurProgramsPage() {
             <div className="overflow-hidden rounded-sm border border-gray-200 bg-white shadow-sm">
               <HeroVideo
                 videoId="BLSYwYzxt7Y"
-                thumbnailSrc="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+                thumbnailSrc="/IMG_6995.jpg"
               />
             </div>
           </div>
@@ -281,7 +281,7 @@ export default function OurProgramsPage() {
               
               <div className="relative w-full aspect-[4/5] lg:aspect-[16/10] bg-gray-100 overflow-hidden">
                  <Image 
-                   src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80" 
+                   src="/IMG_7560.jpg" 
                    alt="Mentor coaching a fellow" 
                    fill
                    className="object-cover"
@@ -317,7 +317,7 @@ export default function OurProgramsPage() {
         {/* --- 8. MENTOR QUALIFICATIONS --- */}
         <section className="relative overflow-hidden bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <Image
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2200&q=80"
+            src="/DSC06564.jpg"
             alt=""
             fill
             sizes="100vw"
