@@ -245,10 +245,10 @@ export default function OurProgramsPage() {
                 Join the next cohort of Legacy Fellows and start building the foundation for your future impact.
               </p>
             </div>
-            <button className="whitespace-nowrap px-8 py-4 bg-[#D89B2B] text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#344059] transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
+            <Link href="/legacy-fellows-application" className="whitespace-nowrap px-8 py-4 bg-[#D89B2B] !text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#344059] hover:!text-white transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
               Apply for Fellowship
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
           </div>
         </section>
 
@@ -470,7 +470,7 @@ export default function OurProgramsPage() {
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   Join our next cohort to gain the mentorship, network, and skills necessary to maximize your potential.
                 </p>
-                <Link href="#" className="mx-auto inline-flex px-7 py-3 bg-[#344059] !text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] hover:!text-white transition-all items-center justify-center gap-3 group rounded-none">
+                <Link href="/legacy-fellows-application" className="mx-auto inline-flex px-7 py-3 bg-[#344059] !text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] hover:!text-white transition-all items-center justify-center gap-3 group rounded-none">
                   Apply Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
