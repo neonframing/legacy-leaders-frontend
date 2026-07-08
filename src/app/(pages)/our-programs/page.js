@@ -36,22 +36,22 @@ const fellowsRequirements = [
   {
     title: "Monthly Training",
     desc: "Legacy Fellows (ages 21-30) meet every last Saturday of the month from August through May in Chicago (8am to 3pm).",
-    image: "/IMG_6733.jpg"
+    image: "/IMG_7277(1).jpg"
   },
   {
     title: "Out-of-State Retreat",
     desc: "This will take place in Lake Geneva, Wisconsin from October 8th to the 11th.",
-    image: "/IMG_6936.jpg"
+    image: "/Retreatimg.png"
   },
   {
     title: "Mentor Coaching",
     desc: "You will be partnered with a professional mentor coach throughout the program cycle to meet with virtually.",
-    image: "/IMG_7260.jpg"
+    image: "/MGP06992.jpg"
   },
   {
     title: "Capstone Event",
     desc: "This is designed to bring all of your learnings together with all your other Fellows at the end of the program.",
-    image: "/IMG_1619.jpg"
+    image: "/IMG_1966.jpg"
   }
 ];
 
