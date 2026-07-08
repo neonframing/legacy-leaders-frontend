@@ -237,12 +237,12 @@ export default function GetInvolvedPage() {
                   <p className="text-[#344059] font-bold">
                     If you are interested in offering an internship opportunity through the Legacy Fellows Program, we invite you to complete the application.
                   </p>
-                  <a 
-                    href="#" 
+                  <Link 
+                    href="/legacy-intern-application" 
                     className="whitespace-nowrap px-7 py-3 bg-[#344059] !text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-colors flex items-center gap-3 group"
                   >
                     Apply to Host <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </div>
               </div>
 

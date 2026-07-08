@@ -6,9 +6,9 @@ const preferredContactOptions = ["Email", "Phone", "Text"];
 const bestContactTimes = ["Morning", "Afternoon", "Evening"];
 
 const internshipAvailabilityOptions = [
-  "Yes (Paid internship)",
-  "Yes (Unpaid internship)",
-  "No (Not at this time)",
+  "Paid internship",
+  "Unpaid internship",
+  "None (Not at this time)",
   "Other",
 ];
 
