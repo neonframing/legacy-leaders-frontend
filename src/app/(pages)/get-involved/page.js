@@ -32,7 +32,7 @@ export default function GetInvolvedPage() {
 
               <div className="relative hidden h-[460px] overflow-hidden shadow-[0_24px_80px_rgba(52,64,89,0.14)] lg:block">
                 <Image
-                  src="/IMG_7599.jpg"
+                  src="/MGP06494.jpg"
                   alt="Legacy Leaders volunteers and mentors gathered in community"
                   fill
                   priority
@@ -81,7 +81,7 @@ export default function GetInvolvedPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative aspect-square overflow-hidden bg-gray-100">
                   <Image
-                    src="/IMG_7619.jpg"
+                    src="/IMG_1164.jpg"
                     alt="Volunteers with hands in"
                     fill
                     className="object-cover"
@@ -97,7 +97,7 @@ export default function GetInvolvedPage() {
                 </div>
                 <div className="relative aspect-square overflow-hidden bg-gray-100">
                   <Image
-                    src="/IMG_7704.jpg"
+                    src="/IMG_7588.jpg"
                     alt="Fellows working together"
                     fill
                     className="object-cover"
@@ -184,9 +184,9 @@ export default function GetInvolvedPage() {
         <section id="board-opportunities" className="bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24 border-b border-[#344059]/10">
           <div className="mx-auto max-w-7xl">
             <div className="mb-10 max-w-3xl">
-              <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Board Opportunities</h4>
+              <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Volunteer Opportunities</h4>
               <h2 className="text-3xl font-black uppercase tracking-tight text-[#344059] sm:text-4xl mb-5">
-                Legacy Advisory & Young Professionals Boards.
+                Legacy Fundraising, Advisory, & Young Professionals Board.
               </h2>
               <p className="text-base leading-relaxed text-gray-600">
                 If you are ready to contribute your expertise and leadership, explore our board opportunities and connect with a network committed to impact.
@@ -280,7 +280,7 @@ export default function GetInvolvedPage() {
               {/* Ambassador Card */}
               <div className="relative overflow-hidden border border-white/10 p-8 lg:p-10 transition-colors flex flex-col">
                 <Image
-                  src="/DSC06700.jpg"
+                  src="/IMG_7677.jpg"
                   alt="Volunteers mentoring youth during a community session"
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"

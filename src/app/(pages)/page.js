@@ -62,10 +62,10 @@ export default async function Home() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="px-8 py-4 bg-[#344059] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all duration-300 flex items-center cursor-pointer justify-center gap-3 group rounded-sm">
+                  <Link href="/our-programs" className="px-8 py-4 bg-[#344059] !text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all duration-300 flex items-center cursor-pointer justify-center gap-3 group rounded-sm">
                     Sign Up Now
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -213,9 +213,9 @@ export default async function Home() {
                       The best leaders never stop growing. Whether you're seeking personal clarity, professional development, stronger relationships, or greater impact, our coaching, retreats, trainings, and conferences are designed to help you reach your next level of leadership.
                     </p>
                   </div>
-                  <a href="#" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#D89B2B] group-hover:text-[#344059]">
+                  <Link href="/our-programs" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#D89B2B] group-hover:text-[#344059]">
                     Start Developing <ArrowUpRight size={16} />
-                  </a>
+                  </Link>
                 </div>
               </div>
 

@@ -132,12 +132,12 @@ export default function OurProgramsPage() {
               <p className="mt-6 text-base leading-relaxed text-gray-600 sm:text-lg">
                 Legacy Fellows (ages 21-30) help leaders of color achieve financial independence and life balance by discovering their purpose, developing business opportunities, and creating a network of success that generates generational wealth. We elevate young adults to become the best version of themselves and teach them to share their stories with the world!
               </p>
-              {/* <div className="mt-10 flex flex-col sm:flex-row gap-5">
+              <div className="mt-10 flex flex-col sm:flex-row gap-5">
                 <button className="px-10 py-5 bg-[#344059] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] cursor-pointer transition-all duration-300 flex items-center justify-center gap-3 group rounded-none">
                   Apply for Fellowship
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </button>
-              </div> */}
+              </div>
             </div>
 
             {/* Video Player */}
@@ -219,7 +219,7 @@ export default function OurProgramsPage() {
             <div className="grid gap-6 md:grid-cols-2">
               <div className="overflow-hidden border border-white/20 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
                 <Image
-                  src="/Fellows-Leadership-Model.png"
+                  src="/Leadershipmodel.png"
                   alt="Fellows Leadership Model"
                   width={1400}
                   height={900}
@@ -228,7 +228,7 @@ export default function OurProgramsPage() {
               </div>
               <div className="overflow-hidden border border-white/20 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
                 <Image
-                  src="/Whole-Personal-Leadership-Model.png"
+                  src="/PersonalLeadershipModel.png"
                   alt="Personal Leadership Model"
                   width={1400}
                   height={900}
@@ -281,7 +281,7 @@ export default function OurProgramsPage() {
               
               <div className="relative w-full aspect-[4/5] lg:aspect-[16/10] bg-gray-100 overflow-hidden">
                  <Image 
-                   src="/IMG_7560.jpg" 
+                   src="/MGP06481.jpg" 
                    alt="Mentor coaching a fellow" 
                    fill
                    className="object-cover"
@@ -357,7 +357,7 @@ export default function OurProgramsPage() {
                   Believe in developing future leaders and actively contribute to the success of the Legacy Fellows Program.
                 </p>
               </div>
-              <Link href="/become-a-legacy-mentor" className="whitespace-nowrap px-8 py-4 bg-[#344059] !text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#D89B2B] hover:!text-white transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
+              <Link href="/legacy-mentors-application" className="whitespace-nowrap px-8 py-4 bg-[#344059] !text-white font-bold uppercase tracking-widest cursor-pointer text-xs hover:bg-[#D89B2B] hover:!text-white transition-all duration-300 flex items-center justify-center gap-3 group rounded-none shrink-0">
                 Become a Legacy Mentor
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
