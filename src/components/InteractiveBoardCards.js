@@ -5,40 +5,15 @@ import Image from "next/image";
 import { Globe2, Handshake, Target, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-// Mock data for the sub-boards (replace with real data or Sanity queries later)
-const advisoryMembers = [
-  { name: "Marcus Thorne", role: "Corporate Strategy", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" },
-  { name: "Elena Rostova", role: "Philanthropy Director", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" },
-  { name: "David Chen", role: "Legal Counsel", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80" },
-  { name: "Sophia Carter", role: "Finance Executive", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" },
-  { name: "Jackson Wright", role: "Technology Officer", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" },
-];
-
-const ypbMembers = [
-  { name: "Sarah Jenkins", role: "Alumni Relations", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80" },
-  { name: "Jameson Locke", role: "Events Chair", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" },
-  { name: "Aisha Patel", role: "Community Outreach", image: "https://images.unsplash.com/photo-1531123897727-8f129e1b4dce?auto=format&fit=crop&w=800&q=80" },
-  { name: "William Harris", role: "Marketing Lead", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80" },
-];
-
-const fundraisingMembers = [
-  { name: "Maya Brooks", role: "Board Chair", image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80" },
-  { name: "Derrick Collins", role: "Corporate Partnerships", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" },
-  { name: "Lauren Kim", role: "Donor Engagement", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80" },
-  { name: "Noah Price", role: "Events & Campaigns", image: "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=800&q=80" },
-];
-
 const boardModalContent = {
   advisory: {
-    members: advisoryMembers,
     title: "Advisory Board",
     label: "Legacy Leaders",
-    flyerSrc: "/AdvisoryBoardPage.png",
+    flyerSrc: "/AdvisoryBoardPage.webp",
     flyerAlt: "Legacy Advisory Board flyer",
     flyerAspectRatio: "1101 / 1332",
   },
   ypb: {
-    members: ypbMembers,
     title: "Young Professionals Board",
     label: "Alumni Network",
     flyerSrc: "/YoungProfessionals.PNG",
@@ -46,7 +21,6 @@ const boardModalContent = {
     flyerAspectRatio: "1024 / 1433",
   },
   fundraising: {
-    members: fundraisingMembers,
     title: "Fundraising Board",
     label: "Legacy Leaders",
     flyerSrc: "/FundraisingCommitteePage.png",
@@ -71,7 +45,6 @@ export default function InteractiveBoardCards({ applicationLink }) {
   }, [activeModal]);
 
   const activeContent = activeModal ? boardModalContent[activeModal] : null;
-  const activeData = activeContent?.members || [];
   const activeTitle = activeContent?.title || "";
   const activeLabel = activeContent?.label || "";
   const activeFlyerSrc = activeContent?.flyerSrc || "";
@@ -176,27 +149,6 @@ export default function InteractiveBoardCards({ applicationLink }) {
                     className="object-contain"
                   />
                 </div>
-              </div>
-
-              <p className="mb-6 text-xs font-bold uppercase tracking-[0.22em] text-[#D89B2B]">Board Members</p>
-              <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:grid-cols-4">
-                {activeData.map((person, idx) => (
-                  <div key={idx} className="group flex flex-col">
-                    <div className="relative mb-4 aspect-[4/5] w-full overflow-hidden bg-gray-200">
-                      {person.image && (
-                        <Image
-                          src={person.image}
-                          alt={person.name}
-                          fill
-                          sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
-                          className="object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                        />
-                      )}
-                    </div>
-                    <h4 className="text-lg font-black uppercase tracking-tight text-[#344059]">{person.name}</h4>
-                    <p className="mt-1 text-xs font-bold uppercase tracking-widest text-[#D89B2B]">{person.role}</p>
-                  </div>
-                ))}
               </div>
               
               {/* Application Link Footer inside the scrolling area */}
