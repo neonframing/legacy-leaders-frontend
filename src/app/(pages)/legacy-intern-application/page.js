@@ -41,20 +41,6 @@ export default function LegacyInternApplicationPage() {
 
               <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#344059]" htmlFor="email">
-                    Email *
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full border border-[#344059]/15 bg-[#f8f6f1] px-4 py-3 text-sm"
-                    placeholder="your-email@example.com"
-                  />
-                </div>
-
-                <div className="sm:col-span-2">
                   <label className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#344059]" htmlFor="fullName">
                     First and Last Name *
                   </label>
@@ -167,7 +153,7 @@ export default function LegacyInternApplicationPage() {
 
                 <div>
                   <label className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#344059]" htmlFor="socialHandles">
-                    Please provide all social media handles for you and your company (Facebook / Instagram / TikTok / etc.) *
+                    Please provide your company website *
                   </label>
                   <textarea
                     id="socialHandles"

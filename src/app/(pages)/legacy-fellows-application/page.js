@@ -72,29 +72,6 @@ export default function LegacyFellowsApplicationPage() {
 
           <form className="space-y-10" action="#" method="post" encType="multipart/form-data">
             <section className="bg-white p-6 sm:p-8 border border-[#344059]/10">
-              <h2 className="text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">General</h2>
-              <div className="mt-5 space-y-5">
-                <div>
-                  <label className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#344059]" htmlFor="email">
-                    Email *
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full border border-[#344059]/15 bg-[#f8f6f1] px-4 py-3 text-sm text-[#344059] focus:outline-none focus:border-[#D89B2B] focus:ring-1 focus:ring-[#D89B2B]"
-                    placeholder="your-email@example.com"
-                  />
-                </div>
-                <label className="flex items-start gap-3 text-sm text-gray-600">
-                  <input type="checkbox" name="recordEmail" className="mt-1 h-4 w-4 accent-[#D89B2B]" />
-                  <span>Record my email with my response.</span>
-                </label>
-              </div>
-            </section>
-
-            <section className="bg-white p-6 sm:p-8 border border-[#344059]/10">
               <h2 className="text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Contact Information</h2>
               <p className="mt-3 text-sm text-gray-600">Please provide your detailed contact information below.</p>
 
@@ -168,28 +145,6 @@ export default function LegacyFellowsApplicationPage() {
                   </label>
                   <input id="shirtSize" name="shirtSize" type="text" required className="w-full border border-[#344059]/15 bg-[#f8f6f1] px-4 py-3 text-sm" />
                 </div>
-                <div>
-                  <label className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#344059]" htmlFor="headshot">
-                    Share one great headshot or selfie that we can share on our website and social media outlets if you are selected as a Fellow.
-                  </label>
-                  <div className="rounded-xl border border-dashed border-[#344059]/30 bg-[#f8f6f1] px-4 py-4 sm:px-5 sm:py-5">
-                    <input
-                      id="headshot"
-                      name="headshot"
-                      type="file"
-                      accept="image/*"
-                      className="w-full cursor-pointer text-sm text-[#344059] file:mr-4 file:rounded-md file:border file:border-[#344059] file:bg-white file:px-4 file:py-2 file:text-sm file:font-semibold file:normal-case file:tracking-normal file:text-[#344059] file:transition-colors hover:file:border-[#D89B2B] hover:file:text-[#D89B2B]"
-                    />
-                    <p className="mt-3 text-xs text-gray-600">Upload a file, or drag and drop an image here. Accepted: JPG, PNG, HEIC.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <label className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#344059]" htmlFor="socialHandles">
-                  Please provide all of your social media handles (Facebook / Instagram / TikTok / LinkedIn, etc.) *
-                </label>
-                <textarea id="socialHandles" name="socialHandles" rows={3} required className="w-full border border-[#344059]/15 bg-[#f8f6f1] px-4 py-3 text-sm" />
               </div>
             </section>
 

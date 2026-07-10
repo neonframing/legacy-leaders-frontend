@@ -201,37 +201,6 @@ export default function LegacyMentorsApplicationPage() {
               <p className="mt-4 text-xs text-gray-500">
                 You can also complete an internship request by visiting the Request an Intern form.
               </p>
-
-              <div className="mt-6">
-                <label className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#344059]" htmlFor="socialHandles">
-                  Please provide all your social media handles (Facebook / Instagram / TikTok / LinkedIn / etc.)*
-                </label>
-                <textarea
-                  id="socialHandles"
-                  name="socialHandles"
-                  rows={3}
-                  required
-                  className="w-full border border-[#344059]/15 bg-[#f8f6f1] px-4 py-3 text-sm"
-                />
-              </div>
-
-              <div className="mt-6">
-                <label className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#344059]" htmlFor="headshot">
-                  Share one great headshot or selfie that we can share on our website and social media outlets if you are
-                  selected as a Mentor. *
-                </label>
-                <div className="rounded-xl border border-dashed border-[#344059]/30 bg-[#f8f6f1] px-4 py-4 sm:px-5 sm:py-5">
-                  <input
-                    id="headshot"
-                    name="headshot"
-                    type="file"
-                    accept="image/*"
-                    required
-                    className="w-full cursor-pointer text-sm text-[#344059] file:mr-4 file:rounded-md file:border file:border-[#344059] file:bg-white file:px-4 file:py-2 file:text-sm file:font-semibold file:normal-case file:tracking-normal file:text-[#344059] file:transition-colors hover:file:border-[#D89B2B] hover:file:text-[#D89B2B]"
-                  />
-                  <p className="mt-3 text-xs text-gray-600">Upload one image file, or drag and drop it here.</p>
-                </div>
-              </div>
             </section>
 
             <section className="border border-[#344059]/10 bg-white p-6 sm:p-8">
@@ -254,7 +223,7 @@ export default function LegacyMentorsApplicationPage() {
 
                 <div>
                   <label className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#344059]" htmlFor="industry">
-                    What industry do you work in? (Please explain) *
+                    What industry do you work in? *
                   </label>
                   <input
                     id="industry"

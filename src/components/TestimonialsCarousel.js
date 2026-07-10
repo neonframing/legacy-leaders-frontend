@@ -78,14 +78,15 @@ export default function TestimonialsCarousel({ testimonials = [] }) {
               index === activeIndex ? "relative opacity-100" : "pointer-events-none absolute inset-0 opacity-0"
             }`}
           >
-            {/* Image section adjusted from 5/12 width to 4/12 for compactness */}
-            <div className="relative w-full overflow-hidden bg-[#344059] aspect-[4/3] sm:aspect-[2/1] lg:w-4/12 lg:aspect-auto lg:min-h-full">
+{/* Locked to a strict portrait aspect ratio across all devices */}
+            <div className="relative w-full overflow-hidden bg-[#344059] aspect-[3/4] sm:mx-auto sm:max-w-[300px] lg:mx-0 lg:w-4/12 lg:max-w-none">
               {testimonial.imageUrl ? (
                 <Image
                   src={testimonial.imageUrl}
                   alt={`${testimonial.name} testimonial`}
                   fill
-                  className="absolute inset-0 h-full w-full object-cover object-center"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 300px, 33vw"
+                  className="absolute inset-0 h-full w-full object-cover object-top"
                 />
               ) : (
                 <div className="absolute inset-0 h-full w-full bg-[#344059]" />

@@ -1,8 +1,7 @@
 import { ArrowRight, Facebook, Youtube, Instagram } from "lucide-react";
 
+import Image from "next/image";
 import Link from "next/link";
-
-import BrandLogo from "@/components/BrandLogo";
 
 export default function SiteFooter() {
   return (
@@ -10,8 +9,15 @@ export default function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="col-span-1 md:col-span-1">
-            <div className="mb-6 inline-block bg-white p-4">
-              <BrandLogo />
+            <div className="mb-6 inline-block">
+              <Image
+                src="/image.png"
+                alt="Legacy Leaders logo"
+                width={180}
+                height={64}
+                className="h-auto w-auto max-w-[180px]"
+                priority={false}
+              />
             </div>
             <p className="text-sm leading-relaxed text-gray-400">
               Empowering the next generation of leaders through mentorship, fellowship, and corporate coaching.

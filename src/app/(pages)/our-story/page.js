@@ -444,7 +444,7 @@ export default async function OurStoryPage() {
         </section>
 
         {/* 5. LEADERSHIP */}
-        <section id="leadership" className="bg-white px-6 py-20 sm:py-24 lg:px-12 lg:py-28">
+        <section id="leadership" className="bg-white px-6 pt-20 pb-8 sm:pt-24 sm:pb-12 lg:px-12 lg:pt-28 lg:pb-14">
           <div className="mx-auto max-w-7xl">
             <div className="mb-16 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between border-b border-[#344059]/10 pb-12">
               <div>
@@ -452,7 +452,7 @@ export default async function OurStoryPage() {
                 <h2 className="text-4xl font-black uppercase tracking-tight text-[#344059] sm:text-5xl">Experience, imagination, and conviction.</h2>
               </div>
               <Link
-                href="#"
+                href="/contact-us"
                 className="inline-flex items-center gap-3 px-7 py-3 bg-[#344059] !text-white text-xs font-bold uppercase tracking-[0.18em] transition-colors hover:bg-[#D89B2B] hover:!text-white"
               >
                 Sign up to be a board member <ArrowRight size={16} />
@@ -512,7 +512,7 @@ export default async function OurStoryPage() {
               <div>
                 <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Legacy Sneaker Gala</p>
                 <h2 className="text-5xl font-black uppercase tracking-tight sm:text-6xl md:text-[5.5rem] md:leading-[0.9]">
-                  A celebration <br />of purpose.
+                  Celebration of purpose.
                 </h2>
               </div>
               <p className="text-lg leading-relaxed text-white/80 max-w-lg md:ml-auto">
