@@ -133,10 +133,10 @@ export default function OurProgramsPage() {
                 Legacy Fellows (ages 21-30) help leaders of color achieve financial independence and life balance by discovering their purpose, developing business opportunities, and creating a network of success that generates generational wealth. We elevate young adults to become the best version of themselves and teach them to share their stories with the world!
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-5">
-                <button className="px-10 py-5 bg-[#344059] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] cursor-pointer transition-all duration-300 flex items-center justify-center gap-3 group rounded-none">
+                <Link href="/legacy-fellows-application" className="px-10 py-5 bg-[#344059] !text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] cursor-pointer transition-all duration-300 flex items-center justify-center gap-3 group rounded-none">
                   Apply for Fellowship
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -205,6 +205,16 @@ export default function OurProgramsPage() {
             </div>
 
             <InteractiveRequirements items={fellowsRequirements} />
+
+            <div className="mt-10 flex justify-center sm:justify-start">
+              <Link
+                href="/legacy-fellows-application"
+                className="group inline-flex items-center justify-center gap-3 bg-[#344059] px-8 py-4 text-xs font-bold uppercase tracking-widest !text-white transition-all duration-300 hover:bg-[#D89B2B] hover:!text-white"
+              >
+                Apply for Fellowship
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -276,6 +286,16 @@ export default function OurProgramsPage() {
                   <p>
                     Through meaningful relationships and intentional guidance, mentors help participants discover their potential, navigate challenges, and pursue their goals with greater confidence. Whether you're a seasoned professional, entrepreneur, or community leader, your influence can create a lasting impact that extends far beyond the program.
                   </p>
+                </div>
+
+                <div className="mt-8">
+                  <Link
+                    href="/legacy-mentors-application"
+                    className="group inline-flex items-center justify-center gap-3 bg-[#344059] px-8 py-4 text-xs font-bold uppercase tracking-widest !text-white transition-all duration-300 hover:bg-[#D89B2B] hover:!text-white"
+                  >
+                    Apply as a Mentor
+                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                  </Link>
                 </div>
               </div>
               
@@ -397,12 +417,32 @@ export default function OurProgramsPage() {
                   </ul>
                </div>
             </div>
+
+            <div className="mb-10 flex justify-center">
+              <Link
+                href="/contact-us"
+                className="group inline-flex items-center justify-center gap-3 bg-[#D89B2B] px-8 py-4 text-xs font-bold uppercase tracking-widest !text-white transition-all duration-300 hover:bg-[#344059] hover:!text-white"
+              >
+                Get Coaching
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
             
-            <div className="text-center mb-14">
-              <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-4">Professional Development</h4>
-              <h2 className="text-3xl md:text-4xl font-black text-[#344059] tracking-tight mb-6">
-                THE LEGACY COACHING MODEL™
-              </h2>
+            <div className="relative overflow-hidden bg-[#344059] py-14 mb-14 text-white">
+              <Image
+                src="/DSC06617.jpg"
+                alt="Professional development background"
+                fill
+                sizes="100vw"
+                className="object-cover opacity-15 mix-blend-luminosity pointer-events-none"
+              />
+
+              <div className="relative z-10 text-center px-6">
+                <h4 className="uppercase tracking-[0.24em] text-[#D89B2B] text-sm font-bold mb-4">Professional Development</h4>
+                <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-6">
+                  THE LEGACY COACHING MODEL™
+                </h2>
+              </div>
             </div>
 
             {/* Desktop SVG Connecting Arrow Overlay */}
@@ -486,7 +526,7 @@ export default function OurProgramsPage() {
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   Share your expertise and guide a young adult through their leadership and professional development journey.
                 </p>
-                <Link href="#" className="mx-auto inline-flex px-7 py-3 bg-[#344059] !text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] hover:!text-white transition-all items-center justify-center gap-3 group rounded-none">
+                <Link href="/legacy-mentors-application" className="mx-auto inline-flex px-7 py-3 bg-[#344059] !text-white cursor-pointer font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] hover:!text-white transition-all items-center justify-center gap-3 group rounded-none">
                   Apply Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
