@@ -66,7 +66,7 @@ export default function BoardMembersLightboxGrid({ boardMembers = [] }) {
             onClick={() => setActiveMember(null)}
           />
 
-          <div className="relative z-10 w-full max-w-5xl overflow-hidden bg-white shadow-2xl">
+          <div className="relative z-10 max-h-[95vh] w-full max-w-5xl overflow-y-auto bg-white shadow-2xl">
             <button
               onClick={() => setActiveMember(null)}
               className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#344059] transition-colors hover:bg-[#D89B2B] hover:text-white"
@@ -76,7 +76,7 @@ export default function BoardMembersLightboxGrid({ boardMembers = [] }) {
             </button>
 
             <div className="grid md:grid-cols-[0.9fr_1.1fr]">
-              <div className="relative min-h-[20rem] bg-[#e8ebf1]">
+              <div className="relative aspect-[3/4] bg-[#e8ebf1] md:min-h-[20rem] md:aspect-auto">
                 {activeMember.imageUrl ? (
                   <Image
                     src={activeMember.imageUrl}
