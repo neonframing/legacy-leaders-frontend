@@ -11,6 +11,7 @@ const interestOptions = [
   "Join the Board",
   "Join the Advisory Board",
   "Join the Young Professionals Board",
+  "Join the Fundraising Board",
   "Sign up for Coaching",
   "Request a Trainer",
   "Become a Partner",

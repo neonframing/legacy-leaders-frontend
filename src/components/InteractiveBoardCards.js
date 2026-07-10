@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Globe2, Handshake, X, ArrowRight } from "lucide-react";
+import { Globe2, Handshake, Target, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 // Mock data for the sub-boards (replace with real data or Sanity queries later)
@@ -21,8 +21,42 @@ const ypbMembers = [
   { name: "William Harris", role: "Marketing Lead", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80" },
 ];
 
+const fundraisingMembers = [
+  { name: "Maya Brooks", role: "Board Chair", image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80" },
+  { name: "Derrick Collins", role: "Corporate Partnerships", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" },
+  { name: "Lauren Kim", role: "Donor Engagement", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80" },
+  { name: "Noah Price", role: "Events & Campaigns", image: "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=800&q=80" },
+];
+
+const boardModalContent = {
+  advisory: {
+    members: advisoryMembers,
+    title: "Advisory Board",
+    label: "Legacy Leaders",
+    flyerSrc: "/AdvisoryBoardPage.png",
+    flyerAlt: "Legacy Advisory Board flyer",
+    flyerAspectRatio: "1101 / 1332",
+  },
+  ypb: {
+    members: ypbMembers,
+    title: "Young Professionals Board",
+    label: "Alumni Network",
+    flyerSrc: "/YoungProfessionals.PNG",
+    flyerAlt: "Young Professionals Board flyer",
+    flyerAspectRatio: "1024 / 1433",
+  },
+  fundraising: {
+    members: fundraisingMembers,
+    title: "Fundraising Board",
+    label: "Legacy Leaders",
+    flyerSrc: "/FundraisingCommitteePage.png",
+    flyerAlt: "Fundraising Board flyer",
+    flyerAspectRatio: "1024 / 1360",
+  },
+};
+
 export default function InteractiveBoardCards({ applicationLink }) {
-  const [activeModal, setActiveModal] = useState(null); // 'advisory' | 'ypb' | null
+  const [activeModal, setActiveModal] = useState(null); // 'advisory' | 'ypb' | 'fundraising' | null
 
   // Prevent background scrolling when the modal is open
   useEffect(() => {
@@ -36,13 +70,18 @@ export default function InteractiveBoardCards({ applicationLink }) {
     };
   }, [activeModal]);
 
-  const activeData = activeModal === 'advisory' ? advisoryMembers : ypbMembers;
-  const activeTitle = activeModal === 'advisory' ? "Advisory Board" : "Young Professionals Board";
-  const activeLabel = activeModal === 'advisory' ? "Legacy Leaders" : "Alumni Network";
+  const activeContent = activeModal ? boardModalContent[activeModal] : null;
+  const activeData = activeContent?.members || [];
+  const activeTitle = activeContent?.title || "";
+  const activeLabel = activeContent?.label || "";
+  const activeFlyerSrc = activeContent?.flyerSrc || "";
+  const activeFlyerAlt = activeContent?.flyerAlt || "";
+  const activeFlyerAspectRatio = activeContent?.flyerAspectRatio || "8.5 / 11";
+  const applyHref = applicationLink || "/join-board-application";
 
   return (
     <>
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {/* Advisory Board Card */}
         <div 
           onClick={() => setActiveModal('advisory')}
@@ -56,7 +95,7 @@ export default function InteractiveBoardCards({ applicationLink }) {
             </p>
           </div>
           <p className="mt-8 inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-[#D89B2B]">
-            View Members <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            Learn More <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </p>
         </div>
 
@@ -73,7 +112,24 @@ export default function InteractiveBoardCards({ applicationLink }) {
             </p>
           </div>
           <p className="mt-8 inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-[#D89B2B]">
-            View Members <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            Learn More <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+          </p>
+        </div>
+
+        {/* Fundraising Board Card */}
+        <div
+          onClick={() => setActiveModal('fundraising')}
+          className="group cursor-pointer rounded-none border border-[#344059]/10 bg-[#f8f6f1] p-8 sm:p-10 transition-all hover:bg-[#344059] hover:shadow-xl flex flex-col"
+        >
+          <div className="flex-1">
+            <Target className="h-8 w-8 text-[#D89B2B] transition-transform group-hover:scale-110" />
+            <p className="mt-6 text-sm font-bold uppercase tracking-[0.24em] text-[#344059] group-hover:text-white transition-colors">Fundraising Board</p>
+            <p className="mt-4 text-base leading-relaxed text-gray-600 group-hover:text-gray-300 transition-colors">
+              The Fundraising Board helps advance Legacy Leaders' mission by building relationships, identifying fundraising opportunities, and engaging supporters who believe in developing the next generation of leaders. Members serve as ambassadors for the organization, helping ensure the resources needed to create lasting impact in our communities.
+            </p>
+          </div>
+          <p className="mt-8 inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-[#D89B2B]">
+            Learn More <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </p>
         </div>
       </div>
@@ -106,6 +162,23 @@ export default function InteractiveBoardCards({ applicationLink }) {
 
             {/* Modal Body (Scrollable Grid) */}
             <div className="flex-1 overflow-y-auto p-6 sm:p-10">
+              <div className="mb-12">
+                <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-[#D89B2B]">Board Flyer</p>
+                <div
+                  className="relative w-full overflow-hidden border border-[#344059]/10 bg-white"
+                  style={{ aspectRatio: activeFlyerAspectRatio }}
+                >
+                  <Image
+                    src={activeFlyerSrc}
+                    alt={activeFlyerAlt}
+                    fill
+                    sizes="(min-width: 1024px) 896px, 100vw"
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              <p className="mb-6 text-xs font-bold uppercase tracking-[0.22em] text-[#D89B2B]">Board Members</p>
               <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:grid-cols-4">
                 {activeData.map((person, idx) => (
                   <div key={idx} className="group flex flex-col">
@@ -129,7 +202,7 @@ export default function InteractiveBoardCards({ applicationLink }) {
               {/* Application Link Footer inside the scrolling area */}
               <div className="mt-16 border-t border-[#344059]/10 pt-10 text-center">
                 <Link
-                  href="/get-involved"
+                  href={applyHref}
                   onClick={() => setActiveModal(null)}
                   className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-[#344059] transition-colors hover:text-[#D89B2B] group"
                 >
