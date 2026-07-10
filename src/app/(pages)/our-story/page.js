@@ -188,6 +188,44 @@ const fellowsByYear = [
   },
 ];
 
+const fellowshipCohortsQuery = `*[_type == "fellowshipCohort"] | order(yearLabel asc) {
+  _id,
+  yearLabel,
+  title,
+  description,
+  coverImage,
+  showViewClass,
+  showBio,
+  fellowsList[] {
+    name,
+    role,
+    bio,
+    headshot
+  }
+}`;
+
+const normalizeFellowsTimeline = (cohorts = []) =>
+  cohorts.map((cohort) => ({
+    label: cohort.yearLabel || cohort.label || "",
+    title: cohort.title || "",
+    description: cohort.description || "",
+    image: cohort.coverImage
+      ? urlFor(cohort.coverImage).width(1200).quality(85).url()
+      : cohort.image || "",
+    showViewClass: cohort.showViewClass ?? true,
+    showBio: cohort.showBio ?? false,
+    individuals: (cohort.fellowsList || cohort.individuals || []).map((person) => ({
+      name: person.name || "",
+      role: person.role || "",
+      image: person.headshot
+        ? urlFor(person.headshot).width(800).quality(85).url()
+        : person.image || "",
+      bio: person.bio || "",
+    })),
+  }));
+
+const fallbackFellowsTimeline = normalizeFellowsTimeline(fellowsByYear);
+
 // Grouped for the new Gala Component
 const galaEditions = [
   {
@@ -249,10 +287,15 @@ const boardMembersQuery = `*[_type == "boardMember"] | order(orderRank) {
 }`;
 
 export default async function OurStoryPage() {
-  // Fetch the ordered array directly from Sanity
-  const boardMembers = await client.fetch(boardMembersQuery, {}, {
-    cache: "no-store",
-  }) || []; // Fallback to empty array if nothing is returned
+  // Fetch board members and timeline cohorts from Sanity.
+  const [boardMembers, fellowshipCohorts] = await Promise.all([
+    client.fetch(boardMembersQuery, {}, { cache: "no-store" }),
+    client.fetch(fellowshipCohortsQuery, {}, { cache: "no-store" }),
+  ]);
+
+  const fellowsTimeline = fellowshipCohorts?.length
+    ? normalizeFellowsTimeline(fellowshipCohorts)
+    : fallbackFellowsTimeline;
 
   return (
     <div className="min-h-screen bg-white font-sans text-[#344059] selection:bg-[#D89B2B] selection:text-white">
@@ -396,7 +439,7 @@ export default async function OurStoryPage() {
           </div>
 
           <div className="mx-auto max-w-[1400px]">
-            <FellowsCarousel fellows={fellowsByYear} />
+            <FellowsCarousel fellows={fellowsTimeline} />
           </div>
         </section>
 

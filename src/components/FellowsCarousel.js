@@ -80,34 +80,46 @@ export default function FellowsCarousel({ fellows }) {
           ref={carouselRef}
           className="flex w-full overflow-x-auto px-6 lg:px-12 pb-12 gap-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
-          {fellows.map((fellow) => (
-            <article 
-              key={fellow.label}
-              onClick={() => setActiveModal(fellow)}
-              className="w-[85vw] sm:w-[450px] shrink-0 overflow-hidden rounded-none border border-[#344059]/10 bg-white shadow-sm transition-all hover:shadow-xl flex flex-col cursor-pointer group/card"
-            >
-              <div className="relative aspect-[4/3] w-full bg-gray-100 overflow-hidden">
-                <Image
-                  src={fellow.image}
-                  alt={`${fellow.label} fellows`}
-                  fill
-                  sizes="(min-width: 768px) 450px, 85vw"
-                  className="object-cover transition-transform duration-700 group-hover/card:scale-105"
-                />
-                <div className="absolute inset-0 bg-[#344059]/0 transition-colors duration-300 group-hover/card:bg-[#344059]/20" />
-              </div>
-              <div className="space-y-2 p-8 flex-1 flex flex-col">
-                <div className="flex items-center justify-between">
-                  <p className="text-xl font-bold uppercase tracking-[0.22em] text-[#D89B2B]">{fellow.label}</p>
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#344059] opacity-0 transition-opacity duration-300 group-hover/card:opacity-100">
-                    View Class
-                  </span>
+          {fellows.map((fellow) => {
+            const canViewClass = fellow.showViewClass !== false;
+
+            return (
+              <article
+                key={fellow.label}
+                onClick={() => {
+                  if (canViewClass) {
+                    setActiveModal(fellow);
+                  }
+                }}
+                className={`w-[85vw] sm:w-[450px] shrink-0 overflow-hidden rounded-none border border-[#344059]/10 bg-white shadow-sm transition-all flex flex-col group/card ${
+                  canViewClass ? "cursor-pointer hover:shadow-xl" : "cursor-default"
+                }`}
+              >
+                <div className="relative aspect-[4/3] w-full bg-gray-100 overflow-hidden">
+                  <Image
+                    src={fellow.image}
+                    alt={`${fellow.label} fellows`}
+                    fill
+                    sizes="(min-width: 768px) 450px, 85vw"
+                    className="object-cover transition-transform duration-700 group-hover/card:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-[#344059]/0 transition-colors duration-300 group-hover/card:bg-[#344059]/20" />
                 </div>
-                <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059]">{fellow.title}</h3>
-                <p className="text-base leading-relaxed text-gray-600 flex-1">{fellow.description}</p>
-              </div>
-            </article>
-          ))}
+                <div className="space-y-2 p-8 flex-1 flex flex-col">
+                  <div className="flex items-center justify-between">
+                    <p className="text-xl font-bold uppercase tracking-[0.22em] text-[#D89B2B]">{fellow.label}</p>
+                    {canViewClass && (
+                      <span className="text-xs font-bold uppercase tracking-widest text-[#344059] opacity-0 transition-opacity duration-300 group-hover/card:opacity-100">
+                        View Class
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059]">{fellow.title}</h3>
+                  <p className="text-base leading-relaxed text-gray-600 flex-1">{fellow.description}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
 
@@ -157,6 +169,9 @@ export default function FellowsCarousel({ fellows }) {
                     </div>
                     <h4 className="text-lg font-black uppercase tracking-tight text-[#344059]">{person.name}</h4>
                     <p className="mt-1 text-xs font-bold uppercase tracking-widest text-[#D89B2B]">{person.role}</p>
+                    {activeModal.showBio && person.bio && (
+                      <p className="mt-2 text-sm leading-relaxed text-gray-600">{person.bio}</p>
+                    )}
                   </div>
                 ))}
               </div>
