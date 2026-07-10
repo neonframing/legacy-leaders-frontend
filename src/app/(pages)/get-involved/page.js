@@ -16,27 +16,35 @@ export default function GetInvolvedPage() {
         <section className="relative overflow-hidden bg-[#f6f1e8] px-6 pb-16 pt-32 sm:pt-36 lg:px-10 lg:pb-24 lg:pt-40">
           <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-white/40 lg:block" />
           <div className="mx-auto max-w-7xl relative z-10">
-            <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_420px]">
-              <div className="max-w-3xl">
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="w-12 h-[2px] bg-[#D89B2B]"></span>
-                  <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Take Action</p>
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] items-start">
+              <div className="max-w-3xl flex flex-col gap-8 lg:min-h-[460px]">
+                <div>
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="w-12 h-[2px] bg-[#D89B2B]"></span>
+                    <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Take Action</p>
+                  </div>
+                  <h1 className="text-4xl font-black uppercase tracking-tighter text-[#344059] sm:text-5xl lg:text-[4.75rem] lg:leading-[0.95]">
+                    Get <br />Involved.
+                  </h1>
+                  <p className="mt-7 max-w-2xl border-l-2 border-[#D89B2B] pl-5 text-base leading-relaxed text-gray-600 sm:text-lg">
+                    It takes a village to provide the resources and support needed to transform a life. Discover how you can partner with Legacy Leaders to create lasting impact.
+                  </p>
                 </div>
-                <h1 className="text-4xl font-black uppercase tracking-tighter text-[#344059] sm:text-5xl lg:text-[4.75rem] lg:leading-[0.95]">
-                  Get <br />Involved.
-                </h1>
-                <p className="mt-6 text-base leading-relaxed text-gray-600 sm:text-lg border-l-2 border-[#D89B2B] pl-5">
-                  It takes a village to provide the resources and support needed to transform a life. Discover how you can partner with Legacy Leaders to create lasting impact.
-                </p>
+                <Link
+                  href="#volunteer"
+                  className="inline-flex self-start items-center gap-3 bg-[#D89B2B] px-7 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#344059] hover:!text-[#D89B2B] group lg:mt-auto"
+                >
+                  Volunteer With Us <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                </Link>
               </div>
 
-              <div className="relative hidden h-[460px] overflow-hidden shadow-[0_24px_80px_rgba(52,64,89,0.14)] lg:block">
+              <div className="relative w-full aspect-[42/46] overflow-hidden shadow-[0_24px_80px_rgba(52,64,89,0.14)] lg:h-[460px] lg:aspect-auto">
                 <Image
                   src="/MGP06494.jpg"
                   alt="Legacy Leaders volunteers and mentors gathered in community"
                   fill
                   priority
-                  sizes="(min-width: 1024px) 460px, 100vw"
+                  sizes="(min-width: 1024px) 420px, 100vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#344059]/45 via-[#344059]/10 to-transparent" />
