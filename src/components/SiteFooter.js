@@ -27,7 +27,7 @@ export default function SiteFooter() {
           <div>
             <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-[#D89B2B]">Quick Links</h4>
             <ul className="space-y-4">
-              <li><Link href="/our-story" className="text-gray-400 transition-colors hover:text-white">About Us</Link></li>
+              <li><Link href="/our-story" className="text-gray-400 transition-colors hover:text-white">Our Story</Link></li>
               <li><Link href="/our-programs" className="text-gray-400 transition-colors hover:text-white">Our Programs</Link></li>
               <li><Link href="/get-involved" className="text-gray-400 transition-colors hover:text-white">Get Involved</Link></li>
               <li><Link href="#" className="text-gray-400 transition-colors hover:text-white">Blog</Link></li>
