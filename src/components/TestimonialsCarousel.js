@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 export default function TestimonialsCarousel({ testimonials = [] }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -132,6 +132,28 @@ export default function TestimonialsCarousel({ testimonials = [] }) {
                 />
               ))}
             </div>
+          </div>
+        )}
+
+        {total > 1 && (
+          <div className="pointer-events-none absolute inset-y-0 left-2 right-2 z-20 flex items-center justify-between sm:left-3 sm:right-3">
+            <button
+              type="button"
+              onClick={goPrev}
+              className="pointer-events-auto flex h-9 w-9 items-center justify-center rounded-full border border-[#344059]/20 bg-white/90 text-[#344059] shadow-sm transition-colors hover:bg-[#344059] hover:text-white sm:h-10 sm:w-10"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft size={18} />
+            </button>
+
+            <button
+              type="button"
+              onClick={goNext}
+              className="pointer-events-auto flex h-9 w-9 items-center justify-center rounded-full border border-[#344059]/20 bg-white/90 text-[#344059] shadow-sm transition-colors hover:bg-[#344059] hover:text-white sm:h-10 sm:w-10"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight size={18} />
+            </button>
           </div>
         )}
       </div>

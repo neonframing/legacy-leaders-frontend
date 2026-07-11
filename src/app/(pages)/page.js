@@ -12,7 +12,7 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 
 export default async function Home() {
-  const query = `*[_type == "testimonial"]{
+  const query = `*[_type == "testimonial"] | order(orderRank){
     _id,
     name,
     role,
