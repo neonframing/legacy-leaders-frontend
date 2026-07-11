@@ -72,7 +72,7 @@ export default async function Home() {
               <div id="hero-video" className="overflow-hidden rounded-sm border border-gray-200 bg-white shadow-sm">
                 <HeroVideo 
                   videoId="WOVMEkUkCHQ" 
-                  thumbnailSrc="/DSC06555.jpg"
+                  thumbnailSrc="/DSC06555.webp"
                 />
               </div>
             </div>
@@ -134,7 +134,7 @@ export default async function Home() {
               <div className="group relative overflow-hidden border border-gray-200 bg-white transition-all duration-300 hover:border-[#344059] hover:shadow-2xl flex flex-col">
                 <div className="relative aspect-[12/7] w-full bg-[#344059] overflow-hidden">
                   <Image 
-                    src="/MGP06528.jpg" 
+                    src="/MGP06528.webp"
                     alt="Legacy Fellows" 
                     fill 
                     sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
@@ -162,7 +162,7 @@ export default async function Home() {
               <div className="group relative overflow-hidden border border-gray-200 bg-[#344059] transition-all duration-300 hover:border-[#344059] hover:shadow-2xl flex flex-col">
                 <div className="relative aspect-[12/7] w-full bg-[#344059] overflow-hidden">
                   <Image 
-                    src="/MGP06460.jpg" 
+                    src="/MGP06460.webp"
                     alt="Legacy Mentors" 
                     fill 
                     sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
@@ -195,7 +195,7 @@ export default async function Home() {
               <div className="group relative overflow-hidden border border-gray-200 bg-white transition-all duration-300 hover:border-[#344059] hover:shadow-2xl flex flex-col">
                 <div className="relative aspect-[12/7] w-full bg-[#344059] overflow-hidden">
                   <Image 
-                    src="/IMG_7586.jpg" 
+                    src="/IMG_7586.webp"
                     alt="Legacy Development" 
                     fill 
                     sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
@@ -223,7 +223,7 @@ export default async function Home() {
               <div className="group relative overflow-hidden border border-gray-200 bg-white transition-all duration-300 hover:border-[#344059] hover:shadow-2xl flex flex-col">
                 <div className="relative aspect-[12/7] w-full bg-[#344059] overflow-hidden">
                   <Image 
-                    src="/IMG_5111(2).jpg" 
+                    src="/IMG_5111(2).webp"
                     alt="Legacy Donor" 
                     fill 
                     sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
@@ -260,7 +260,7 @@ export default async function Home() {
         {/* Rich Banner Treatment for Get Involved Section */}
         <section id="get-involved" className="relative overflow-hidden bg-[#344059] py-16 md:py-20 text-white">
           <Image
-            src="/DSC06617.jpg"
+            src="/DSC06617.webp"
             alt="Get Involved Banner Background"
             fill
             sizes="100vw"

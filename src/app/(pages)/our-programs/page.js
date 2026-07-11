@@ -13,22 +13,22 @@ const fellowsGains = [
   {
     title: "Discover Your Purpose",
     desc: "Gain greater clarity about who you are, what you value, and how your unique gifts can make a meaningful impact in the world through DISC and other assessments.",
-    image: "/IMG_7142.jpg"
+    image: "/IMG_7142.webp"
   },
   {
     title: "A Strong Professional Network",
     desc: "Connect with mentors, leaders, and peers who can support your growth.",
-    image: "/IMG_1907.jpg"
+    image: "/IMG_1907.webp"
   },
   {
     title: "A Credential That Sets You Apart",
     desc: "Receive a certificate of completion that highlights your leadership experience and helps distinguish you in academic, professional, and career opportunities.",
-    image: "/DSC06875.jpg"
+    image: "/DSC06875.webp"
   },
   {
     title: "Accelerate Your Career or Business",
     desc: "Gain practical leadership, communication, and professional skills that can help you earn greater responsibilities, pursue new opportunities, or launch and grow your own business.",
-    image: "/IMG_1837.jpg"
+    image: "/IMG_1837.webp"
   }
 ];
 
@@ -36,22 +36,22 @@ const fellowsRequirements = [
   {
     title: "Monthly Training",
     desc: "Legacy Fellows (ages 21-30) meet every last Saturday of the month from August through May in Chicago (8am to 3pm).",
-    image: "/IMG_7277(1).jpg"
+    image: "/IMG_7277(1).webp"
   },
   {
     title: "Out-of-State Retreat",
     desc: "This will take place in Lake Geneva, Wisconsin from October 8th to the 11th.",
-    image: "/Retreatimg.png"
+    image: "/Retreatimg.webp"
   },
   {
     title: "Mentor Coaching",
     desc: "You will be partnered with a professional mentor coach throughout the program cycle to meet with virtually.",
-    image: "/MGP06992.jpg"
+    image: "/MGP06992.webp"
   },
   {
     title: "Capstone Event",
     desc: "This is designed to bring all of your learnings together with all your other Fellows at the end of the program.",
-    image: "/IMG_1966.jpg"
+    image: "/IMG_1966.webp"
   }
 ];
 
@@ -144,7 +144,7 @@ export default function OurProgramsPage() {
             <div className="overflow-hidden rounded-sm border border-gray-200 bg-white shadow-sm">
               <HeroVideo
                 videoId="BLSYwYzxt7Y"
-                thumbnailSrc="/IMG_6995.jpg"
+                thumbnailSrc="/IMG_6995.webp"
               />
             </div>
           </div>
@@ -229,7 +229,7 @@ export default function OurProgramsPage() {
             <div className="grid gap-6 md:grid-cols-2">
               <div className="overflow-hidden border border-white/20 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
                 <Image
-                  src="/Leadershipmodel.png"
+                  src="/Leadershipmodel.webp"
                   alt="Fellows Leadership Model"
                   width={1400}
                   height={900}
@@ -238,7 +238,7 @@ export default function OurProgramsPage() {
               </div>
               <div className="overflow-hidden border border-white/20 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
                 <Image
-                  src="/PersonalLeadershipModel.png"
+                  src="/PersonalLeadershipModel.webp"
                   alt="Personal Leadership Model"
                   width={1400}
                   height={900}
@@ -301,7 +301,7 @@ export default function OurProgramsPage() {
               
               <div className="relative w-full aspect-[4/5] lg:aspect-[16/10] bg-gray-100 overflow-hidden">
                  <Image 
-                   src="/MGP06481.jpg" 
+                   src="/MGP06481.webp"
                    alt="Mentor coaching a fellow" 
                    fill
                    className="object-cover"
@@ -337,7 +337,7 @@ export default function OurProgramsPage() {
         {/* --- 8. MENTOR QUALIFICATIONS --- */}
         <section className="relative overflow-hidden bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-24">
           <Image
-            src="/DSC06564.jpg"
+            src="/DSC06564.webp"
             alt=""
             fill
             sizes="100vw"
@@ -430,7 +430,7 @@ export default function OurProgramsPage() {
             
             <div className="relative overflow-hidden bg-[#344059] py-14 mb-14 text-white">
               <Image
-                src="/DSC06617.jpg"
+                src="/DSC06617.webp"
                 alt="Professional development background"
                 fill
                 sizes="100vw"

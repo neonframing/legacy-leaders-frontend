@@ -14,32 +14,32 @@ import { client, urlFor } from "@/lib/sanityClient";
 // Simplified array for CSS Columns Masonry
 const historyImages = [
   {
-    src: "/DSC06564.jpg",
+    src: "/DSC06564.webp",
     alt: "Legacy Leaders wide group session",
     aspect: "aspect-[16/9]", 
   },
   {
-    src: "/DSC06539.jpg",
+    src: "/DSC06539.webp",
     alt: "Mentor leading a workshop",
     aspect: "aspect-[4/5]", 
   },
   {
-    src: "/DSC06822.jpg",
+    src: "/DSC06822.webp",
     alt: "Community event with young adults",
     aspect: "aspect-[4/3]", 
   },
   {
-    src: "/IMG_1172.jpg",
+    src: "/IMG_1172.webp",
     alt: "Professionals collaborating wide",
     aspect: "aspect-[16/9]", 
   },
   {
-    src: "/IMG_9531-2.jpg",
+    src: "/IMG_9531-2.webp",
     alt: "Leadership seminar",
     aspect: "aspect-[3/4]", 
   },
   {
-    src: "/IMG_0740.jpg",
+    src: "/IMG_0740.webp",
     alt: "Community outreach event",
     aspect: "aspect-[4/5]", 
   },
@@ -318,7 +318,7 @@ export default async function OurStoryPage() {
             <div className="relative overflow-hidden rounded-none bg-[#344059] shadow-[0_24px_70px_rgba(52,64,89,0.18)]">
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/IMG_1611.jpg"
+                  src="/IMG_1611.webp"
                   alt="Legacy Leaders fellows celebrating together"
                   fill
                   sizes="(min-width: 1024px) 48vw, 100vw"
@@ -469,7 +469,7 @@ export default async function OurStoryPage() {
             <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
               <div className="relative min-h-[22rem] lg:min-h-full">
                 <Image
-                  src="/Fam-64.jpeg"
+                  src="/Fam-64.webp"
                   alt="President and founder portrait placeholder"
                   fill
                   sizes="(min-width: 1024px) 38vw, 100vw"

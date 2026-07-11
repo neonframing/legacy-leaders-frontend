@@ -16,14 +16,14 @@ const boardModalContent = {
   ypb: {
     title: "Young Professionals Board",
     label: "Alumni Network",
-    flyerSrc: "/YoungProfessionals.PNG",
+    flyerSrc: "/YoungProfessionals.webp",
     flyerAlt: "Young Professionals Board flyer",
     flyerAspectRatio: "1024 / 1433",
   },
   fundraising: {
     title: "Fundraising Board",
     label: "Legacy Leaders",
-    flyerSrc: "/FundraisingCommitteePage.png",
+    flyerSrc: "/FundraisingCommitteePage.webp",
     flyerAlt: "Fundraising Board flyer",
     flyerAspectRatio: "1024 / 1360",
   },

@@ -40,7 +40,7 @@ export default function GetInvolvedPage() {
 
               <div className="relative w-full aspect-[42/46] overflow-hidden shadow-[0_24px_80px_rgba(52,64,89,0.14)] lg:h-[460px] lg:aspect-auto">
                 <Image
-                  src="/MGP06494.jpg"
+                  src="/MGP06494.webp"
                   alt="Legacy Leaders volunteers and mentors gathered in community"
                   fill
                   priority
@@ -89,7 +89,7 @@ export default function GetInvolvedPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative aspect-square overflow-hidden bg-gray-100">
                   <Image
-                    src="/IMG_1164.jpg"
+                    src="/IMG_1164.webp"
                     alt="Volunteers with hands in"
                     fill
                     className="object-cover"
@@ -97,7 +97,7 @@ export default function GetInvolvedPage() {
                 </div>
                 <div className="relative aspect-square overflow-hidden bg-gray-100 mt-8">
                   <Image
-                    src="/IMG_7672.jpg"
+                    src="/IMG_7672.webp"
                     alt="Mentorship event"
                     fill
                     className="object-cover"
@@ -105,7 +105,7 @@ export default function GetInvolvedPage() {
                 </div>
                 <div className="relative aspect-square overflow-hidden bg-gray-100">
                   <Image
-                    src="/IMG_7588.jpg"
+                    src="/IMG_7588.webp"
                     alt="Fellows working together"
                     fill
                     className="object-cover"
@@ -130,7 +130,7 @@ export default function GetInvolvedPage() {
             {/* Fellow Link Card */}
             <div className="group relative overflow-hidden border border-[#344059]/10 min-h-[360px] flex flex-col justify-end p-8 hover:shadow-2xl transition-all duration-500">
               <Image
-                src="/DSC06511.jpg"
+                src="/DSC06511.webp"
                 alt="Legacy Fellows collaborating during a leadership workshop"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
@@ -159,7 +159,7 @@ export default function GetInvolvedPage() {
             {/* Mentor Link Card */}
             <div className="group relative overflow-hidden min-h-[360px] flex flex-col justify-end p-8 hover:shadow-2xl transition-all duration-500">
               <Image
-                src="/IMG_7702.jpg"
+                src="/IMG_7702.webp"
                 alt="Mentor and fellow discussing goals in a professional setting"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
@@ -212,7 +212,7 @@ export default function GetInvolvedPage() {
               
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-100 shadow-[0_24px_80px_rgba(52,64,89,0.12)]">
                 <Image
-                  src="/DSC06643.jpg"
+                  src="/DSC06643.webp"
                   alt="Professionals collaborating in an office"
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
@@ -288,7 +288,7 @@ export default function GetInvolvedPage() {
               {/* Ambassador Card */}
               <div className="relative overflow-hidden border border-white/10 p-8 lg:p-10 transition-colors flex flex-col">
                 <Image
-                  src="/IMG_7677.jpg"
+                  src="/IMG_7677.webp"
                   alt="Volunteers mentoring youth during a community session"
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
@@ -317,7 +317,7 @@ export default function GetInvolvedPage() {
               {/* Partner Card */}
               <div className="relative overflow-hidden border border-white/10 p-8 lg:p-10 transition-colors flex flex-col">
                 <Image
-                  src="/DSC06795.jpg"
+                  src="/DSC06795.webp"
                   alt="Community supporters collaborating at a fundraising event"
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"

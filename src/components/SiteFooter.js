@@ -11,7 +11,7 @@ export default function SiteFooter() {
           <div className="col-span-1 md:col-span-1">
             <div className="mb-6 inline-block">
               <Image
-                src="/image.png"
+                src="/image.webp"
                 alt="Legacy Leaders logo"
                 width={180}
                 height={64}
