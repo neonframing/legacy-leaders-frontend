@@ -286,16 +286,53 @@ const boardMembersQuery = `*[_type == "boardMember"] | order(orderRank) {
   "imageUrl": image.asset->url
 }`;
 
+const galaEventsQuery = `*[_type == "galaEvent"] | order(year desc) {
+  _id,
+  year,
+  eventLabel,
+  eventCaption,
+  "images": galleryImages[] {
+    "src": asset->url,
+    "alt": altText
+  }
+}`;
+
 export default async function OurStoryPage() {
-  // Fetch board members and timeline cohorts from Sanity.
-  const [boardMembers, fellowshipCohorts] = await Promise.all([
+  // Fetch all CMS data concurrently
+  const [boardMembers, fellowshipCohorts, rawGalaEvents] = await Promise.all([
     client.fetch(boardMembersQuery, {}, { cache: "no-store" }),
     client.fetch(fellowshipCohortsQuery, {}, { cache: "no-store" }),
+    client.fetch(galaEventsQuery, {}, { cache: "no-store" }), // New Fetch
   ]);
 
   const fellowsTimeline = fellowshipCohorts?.length
     ? normalizeFellowsTimeline(fellowshipCohorts)
     : fallbackFellowsTimeline;
+
+  // Transform Sanity Gala data to match the component's expected prop structure
+  const galaEditions = rawGalaEvents?.map((gala) => {
+    return {
+      year: gala.year,
+      images: gala.images?.map((img, index) => {
+        // Only the first image gets the label and caption based on the current Sanity schema
+        if (index === 0) {
+          return {
+            src: img.src,
+            alt: img.alt || `Legacy Leaders ${gala.year} Gala Photo`,
+            label: gala.eventLabel,
+            caption: gala.eventCaption,
+          };
+        }
+        // Secondary images in the grid just need the image source
+        return {
+          src: img.src,
+          alt: img.alt || `Legacy Leaders ${gala.year} Gala Photo`,
+          label: "", 
+          caption: "",
+        };
+      }) || [], // Fallback to empty array if no images exist
+    };
+  }) || [];
 
   return (
     <div className="min-h-screen bg-white font-sans text-[#344059] selection:bg-[#D89B2B] selection:text-white">
@@ -467,13 +504,13 @@ export default async function OurStoryPage() {
         <section className="bg-white px-6 pb-20 sm:pb-24 lg:px-12 lg:pb-28">
           <div className="mx-auto max-w-7xl overflow-hidden rounded-none border border-[#344059]/10 bg-[#f8f6f1] shadow-[0_24px_80px_rgba(52,64,89,0.05)]">
             <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
-              <div className="relative min-h-[22rem] lg:min-h-full">
+              <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:min-h-full">
                 <Image
                   src="/Fam-64.webp"
                   alt="President and founder portrait placeholder"
                   fill
                   sizes="(min-width: 1024px) 38vw, 100vw"
-                  className="object-cover grayscale"
+                  className="object-cover object-top grayscale"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(52,64,89,0.12),rgba(52,64,89,0.45))]" />
               </div>
@@ -505,7 +542,7 @@ export default async function OurStoryPage() {
           </div>
         </section>
 
-        {/* 7. GALA (Replaced with Dynamic Carousel) */}
+{/* 7. GALA */}
         <section id='sneaker-gala' className="bg-[#344059] px-6 py-20 text-white sm:py-24 lg:px-12 lg:py-32">
           <div className="mx-auto max-w-7xl">
             <div className="mb-20 grid gap-6 md:grid-cols-2 md:items-end">
@@ -519,8 +556,13 @@ export default async function OurStoryPage() {
                 Our signature biannual event brings together mentors, supporters, and emerging leaders for an evening of inspiration. More than a fundraiser, it is a reminder that leadership can be both authentic and accessible.
               </p>
             </div>
-
-            <GalaCarousel editions={galaEditions} />
+            
+            {/* Pass the live CMS data here. You can also delete the static galaEditions array at the top of the file now. */}
+            {galaEditions.length > 0 ? (
+              <GalaCarousel editions={galaEditions} />
+            ) : (
+              <p className="text-white/60">Gala highlights coming soon.</p>
+            )}
           </div>
         </section>
       </main>

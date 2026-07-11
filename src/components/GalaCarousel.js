@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 
@@ -9,6 +9,8 @@ export default function GalaCarousel({ editions }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const thumbnailStripRef = useRef(null);
+  const thumbnailRefs = useRef([]);
 
   const nextEdition = () => {
     setActiveIndex((prev) => (prev === editions.length - 1 ? 0 : prev + 1));
@@ -80,6 +82,23 @@ export default function GalaCarousel({ editions }) {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isLightboxOpen, activeEdition.images.length]);
+
+  useEffect(() => {
+    if (!isLightboxOpen) {
+      return;
+    }
+
+    const activeThumbnail = thumbnailRefs.current[lightboxIndex];
+    if (!activeThumbnail) {
+      return;
+    }
+
+    activeThumbnail.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "nearest",
+    });
+  }, [lightboxIndex, isLightboxOpen, activeIndex]);
 
   return (
     <div 
@@ -153,7 +172,7 @@ export default function GalaCarousel({ editions }) {
                 </div>
               </div>
               <div className="flex flex-col gap-6 md:col-span-4">
-                {edition.images.slice(1).map((img, imgIdx) => (
+                {edition.images.slice(1, 3).map((img, imgIdx) => (
                   <div
                     key={imgIdx}
                     className="relative aspect-[4/3] w-full overflow-hidden bg-gray-800 group cursor-pointer"
@@ -205,7 +224,7 @@ export default function GalaCarousel({ editions }) {
               />
             </div>
 
-            <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+            <div ref={thumbnailStripRef} className="mt-3 flex gap-2 overflow-x-auto pb-1">
               {activeEdition.images.map((img, idx) => {
                 const isActiveThumb = idx === lightboxIndex;
 
@@ -213,6 +232,9 @@ export default function GalaCarousel({ editions }) {
                   <button
                     key={`${img.src}-${idx}`}
                     onClick={() => setLightboxIndex(idx)}
+                    ref={(el) => {
+                      thumbnailRefs.current[idx] = el;
+                    }}
                     className={`relative h-16 w-24 shrink-0 overflow-hidden border-2 transition-all ${
                       isActiveThumb
                         ? "border-[#D89B2B] opacity-100"
