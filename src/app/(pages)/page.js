@@ -257,6 +257,22 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Yacht Flyer Section */}
+        <section className="bg-white py-8 sm:py-10">
+          <div className="mx-auto max-w-5xl px-6 lg:px-10">
+            <div className="overflow-hidden border border-gray-200 shadow-sm">
+              <Image
+                src="/yacht.webp"
+                alt="Yacht event flyer"
+                width={1600}
+                height={2000}
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="h-auto w-full"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Rich Banner Treatment for Get Involved Section */}
         <section id="get-involved" className="relative overflow-hidden bg-[#344059] py-16 md:py-20 text-white">
           <Image

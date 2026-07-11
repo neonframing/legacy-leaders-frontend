@@ -70,11 +70,9 @@ const navLinks = [
 export default function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [loginMenuOpen, setLoginMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // Tracks which desktop dropdown is open
   const [expandedMobileSection, setExpandedMobileSection] = useState(null); // Tracks which mobile accordion is open
   
-  const loginMenuRef = useRef(null);
   const navMenuRef = useRef(null);
 
   // Handle Navbar styling on scroll
@@ -87,9 +85,6 @@ export default function SiteHeader() {
   // Handle clicking outside of dropdowns to close them
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (loginMenuRef.current && !loginMenuRef.current.contains(event.target)) {
-        setLoginMenuOpen(false);
-      }
       if (navMenuRef.current && !navMenuRef.current.contains(event.target)) {
         setActiveDropdown(null);
       }
@@ -155,40 +150,6 @@ export default function SiteHeader() {
 
         {/* --- DESKTOP LOGIN & CTA --- */}
         <div className="hidden items-center space-x-4 lg:flex">
-          <div
-            ref={loginMenuRef}
-            className="relative mr-4"
-            onMouseEnter={() => setLoginMenuOpen(true)}
-            onMouseLeave={() => setLoginMenuOpen(false)}
-          >
-            <button
-              type="button"
-              className="flex items-center gap-1 cursor-pointer text-sm font-semibold uppercase tracking-wider transition-colors hover:text-[#D89B2B]"
-              onClick={() => setLoginMenuOpen((open) => !open)}
-              aria-haspopup="menu"
-              aria-expanded={loginMenuOpen}
-            >
-              Login <ChevronDown size={14} className={`transition-transform duration-200 ${loginMenuOpen ? "rotate-180 text-[#D89B2B]" : ""}`} />
-            </button>
-            {loginMenuOpen && (
-              <div className="absolute right-0 top-full min-w-[210px] pt-6">
-                <div className="overflow-hidden border border-gray-200 bg-white shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
-                  <a
-                    href="#"
-                    className="block cursor-pointer px-5 py-3 text-xs font-semibold uppercase tracking-widest text-[#344059] transition-colors hover:bg-[#f8f6f1] hover:text-[#D89B2B]"
-                  >
-                    Fellows Login
-                  </a>
-                  <a
-                    href="#"
-                    className="block cursor-pointer border-t border-gray-100 px-5 py-3 text-xs font-semibold uppercase tracking-widest text-[#344059] transition-colors hover:bg-[#f8f6f1] hover:text-[#D89B2B]"
-                  >
-                    Mentors Login
-                  </a>
-                </div>
-              </div>
-            )}
-          </div>
           <HeaderButton variant="primary" href={{ pathname: '/get-involved', hash: 'legacy-donor' }}>
             Donate Today
           </HeaderButton>
@@ -265,25 +226,6 @@ export default function SiteHeader() {
                 )}
               </div>
             ))}
-
-            {/* Mobile Login Accordion */}
-            <div className="flex flex-col border-b border-gray-100 pb-4">
-              <div className="flex items-center justify-between">
-                <span className="text-2xl font-black uppercase tracking-tight text-[#344059]">Login</span>
-                <button 
-                  onClick={() => setExpandedMobileSection('login')}
-                  className="p-2 text-[#D89B2B]"
-                >
-                  <ChevronDown size={24} className={`transition-transform duration-300 ${expandedMobileSection === 'login' ? "rotate-180" : ""}`} />
-                </button>
-              </div>
-              {expandedMobileSection === 'login' && (
-                <div className="mt-4 flex flex-col space-y-4 pl-4 border-l-2 border-[#D89B2B] animate-in slide-in-from-top-2">
-                  <a href="#" className="text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-[#D89B2B]">Fellows Login</a>
-                  <a href="#" className="text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-[#D89B2B]">Mentors Login</a>
-                </div>
-              )}
-            </div>
 
             <div className="pt-6">
               <HeaderButton 
