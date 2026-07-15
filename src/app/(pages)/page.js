@@ -270,6 +270,17 @@ export default async function Home() {
                 className="h-auto w-full"
               />
             </div>
+            <div className="mt-6 flex justify-center">
+              <Link
+                href="https://givebutter.com/legacy-on-the-lakefront-a-yacht-party-experience-v1wdhu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-[#344059] !text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all duration-300 inline-flex items-center cursor-pointer gap-3 rounded-sm"
+              >
+                Buy Event Tickets
+                <ArrowUpRight size={16} />
+              </Link>
+            </div>
           </div>
         </section>
 
