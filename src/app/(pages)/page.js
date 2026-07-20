@@ -262,7 +262,7 @@ export default async function Home() {
           <div className="mx-auto max-w-5xl px-6 lg:px-10">
             <div className="overflow-hidden border border-gray-200 shadow-sm">
               <Image
-                src="/yacht.webp"
+                src="/yacht.png"
                 alt="Yacht event flyer"
                 width={1600}
                 height={2000}
