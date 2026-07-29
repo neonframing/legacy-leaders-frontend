@@ -258,7 +258,7 @@ export default async function Home() {
         </section>
 
         {/* Yacht Flyer Section */}
-        <section className="bg-white py-8 sm:py-10">
+        {/* <section className="bg-white py-8 sm:py-10">
           <div className="mx-auto max-w-5xl px-6 lg:px-10">
             <div className="overflow-hidden border border-gray-200 shadow-sm">
               <Image
@@ -282,7 +282,7 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Rich Banner Treatment for Get Involved Section */}
         <section id="get-involved" className="relative overflow-hidden bg-[#344059] py-16 md:py-20 text-white">
