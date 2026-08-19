@@ -41,10 +41,12 @@ export default function ContactUsPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmittingSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errorMessage) setErrorMessage("");
   };
 
   const handleCheckboxChange = (option) => {
@@ -56,18 +58,54 @@ export default function ContactUsPage() {
         return { ...prev, interests: [...currentInterests, option] };
       }
     });
+    if (errorMessage) setErrorMessage("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage("");
     
-    // Simulate an API call / webhook to Make.com or Sanity
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmittingSuccess(true);
-    // In a real implementation, you would route this data to your backend here
+    try {
+      const webhookUrl = "https://hook.us2.make.com/kmh8blkl5mp2k5gmpphsaul0tuxxnjuc"; 
+      
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          interests: formData.interests.join(", "), // Flattens array into a comma-separated string for Google Sheets
+          timestamp: new Date().toISOString()
+        }),
+      });
+
+      // Handle duplicate email (The 409 status set up in Make.com Router)
+      if (response.status === 409) {
+        setErrorMessage("An application with this email address has already been submitted.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Handle successful submission
+      if (response.ok) {
+        setIsSubmittingSuccess(true);
+        // Resets the form in the background
+        setFormData({
+          firstName: "", lastName: "", profession: "", employer: "", email: "",
+          phone: "", streetAddress: "", addressLine2: "", city: "", state: "",
+          postalCode: "", country: "", questions: "", interests: [], otherInterest: ""
+        });
+      } else {
+        setErrorMessage("Something went wrong on our end. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -289,7 +327,6 @@ export default function ContactUsPage() {
                         <option value="US">United States</option>
                         <option value="CA">Canada</option>
                         <option value="GB">United Kingdom</option>
-                        {/* Add more countries as needed */}
                       </select>
                     </div>
                   </div>
@@ -323,6 +360,12 @@ export default function ContactUsPage() {
                             {formData.interests.includes(option) && <Check size={14} className="text-white" />}
                           </div>
                           <span className="text-sm text-gray-700 select-none">{option}</span>
+                          <input 
+                            type="checkbox" 
+                            className="hidden" 
+                            checked={formData.interests.includes(option)}
+                            onChange={() => handleCheckboxChange(option)}
+                          />
                         </label>
                       ))}
                     </div>
@@ -340,8 +383,14 @@ export default function ContactUsPage() {
                     </div>
                   </div>
 
-                  {/* Submit Button */}
+                  {/* Error Message Display & Submit Button */}
                   <div className="pt-6">
+                    {errorMessage && (
+                      <div className="mb-4 p-4 bg-red-50 border border-red-100 text-red-600 text-sm rounded-md animate-in fade-in">
+                        {errorMessage}
+                      </div>
+                    )}
+
                     <button
                       type="submit"
                       disabled={isSubmitting || formData.interests.length === 0}
