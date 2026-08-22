@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { Check, Send } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -12,6 +16,59 @@ const educationLevels = [
 const internshipTypes = ["Paid internship", "Unpaid internship", "None"];
 
 export default function LegacyInternApplicationPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const raw = new FormData(e.target);
+    const payload = {
+      fullName:               raw.get("fullName"),
+      addressCityStateZip:    raw.get("addressCityStateZip"),
+      preferredEmail:         raw.get("preferredEmail"),
+      phone:                  raw.get("phone"),
+      businessDepartment:     raw.get("businessDepartment"),
+      educationLevel:         raw.get("educationLevel"),
+      internshipType:         raw.getAll("internshipType").join(", "),
+      socialHandles:          raw.get("socialHandles"),
+      idealBackground:        raw.get("idealBackground"),
+      developmentAreas:       raw.get("developmentAreas"),
+      opportunityDescription: raw.get("opportunityDescription"),
+      internSchedule:         raw.get("internSchedule"),
+      additionalBenefits:     raw.get("additionalBenefits"),
+      timestamp:              new Date().toISOString(),
+    };
+
+    try {
+      const response = await fetch("https://hook.us2.make.com/j9dub6demfu2lbhjxztrtxadzih0po48", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.status === 409) {
+        setErrorMessage("An application with this email address has already been submitted.");
+        return;
+      }
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        e.target.reset();
+      } else {
+        setErrorMessage("Something went wrong on our end. Please try again later.");
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#f8f6f1] font-sans text-[#344059] selection:bg-[#D89B2B] selection:text-white">
       <SiteHeader />
@@ -34,7 +91,24 @@ export default function LegacyInternApplicationPage() {
             </div>
           </div>
 
-          <form className="space-y-10" action="#" method="post">
+          {isSubmitted ? (
+            <div className="flex flex-col items-center justify-center min-h-[360px] text-center bg-white p-10 border border-[#344059]/10 animate-in fade-in zoom-in duration-500">
+              <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-5 border border-green-100">
+                <Check size={32} className="text-green-600" />
+              </div>
+              <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059] mb-3">Application Received</h3>
+              <p className="text-gray-600 text-base max-w-md mx-auto">
+                Thank you for submitting your internship host application. A member of our team will be in touch with you shortly.
+              </p>
+              <button
+                onClick={() => setIsSubmitted(false)}
+                className="mt-8 text-sm font-bold uppercase tracking-widest text-[#D89B2B] hover:text-[#344059] transition-colors"
+              >
+                Submit another application
+              </button>
+            </div>
+          ) : (
+          <form className="space-y-10" onSubmit={handleSubmit}>
             <section className="border border-[#344059]/10 bg-white p-6 sm:p-8">
               <h2 className="text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Contact Information</h2>
               <p className="mt-3 text-sm text-gray-600">Please provide your detailed contact information below.</p>
@@ -68,7 +142,7 @@ export default function LegacyInternApplicationPage() {
 
                 <div>
                   <label className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#344059]" htmlFor="preferredEmail">
-                    Preferred Email (Please re-enter) *
+                    Preferred Email *
                   </label>
                   <input
                     id="preferredEmail"
@@ -233,14 +307,24 @@ export default function LegacyInternApplicationPage() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-xs font-medium text-gray-500">* Required fields</p>
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center gap-3 bg-[#344059] px-8 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#D89B2B]"
-              >
-                Submit Application
-              </button>
+              <div className="flex flex-col items-end gap-3">
+                {errorMessage && (
+                  <div className="p-4 bg-red-50 border border-red-100 text-red-600 text-sm rounded-md animate-in fade-in w-full">
+                    {errorMessage}
+                  </div>
+                )}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center justify-center gap-3 bg-[#344059] px-8 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#D89B2B] disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Submitting..." : "Submit Application"}
+                  {!isSubmitting && <Send size={14} />}
+                </button>
+              </div>
             </div>
           </form>
+          )}
         </div>
       </main>
 
