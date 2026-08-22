@@ -197,10 +197,16 @@ const fellowshipCohortsQuery = `*[_type == "fellowshipCohort"] | order(yearLabel
   showViewClass,
   showBio,
   fellowsList[] {
+    _type,
+    // Fields for structured fellow objects
     name,
     role,
     bio,
-    headshot
+    headshot,
+    // Fields for plain image-only items (drag-and-drop)
+    asset,
+    hotspot,
+    crop
   }
 }`;
 
@@ -214,14 +220,26 @@ const normalizeFellowsTimeline = (cohorts = []) =>
       : cohort.image || "",
     showViewClass: cohort.showViewClass ?? true,
     showBio: cohort.showBio ?? false,
-    individuals: (cohort.fellowsList || cohort.individuals || []).map((person) => ({
-      name: person.name || "",
-      role: person.role || "",
-      image: person.headshot
-        ? urlFor(person.headshot).width(800).quality(85).url()
-        : person.image || "",
-      bio: person.bio || "",
-    })),
+    individuals: (cohort.fellowsList || cohort.individuals || []).map((person) => {
+      // Plain image item (bulk drag-and-drop) — _type is 'image', no headshot wrapper
+      if (person._type === 'image') {
+        return {
+          name: "",
+          role: "",
+          image: person.asset ? urlFor(person).width(800).quality(85).url() : "",
+          bio: "",
+        };
+      }
+      // Structured fellow object
+      return {
+        name: person.name || "",
+        role: person.role || "",
+        image: person.headshot
+          ? urlFor(person.headshot).width(800).quality(85).url()
+          : person.image || "",
+        bio: person.bio || "",
+      };
+    }),
   }));
 
 const fallbackFellowsTimeline = normalizeFellowsTimeline(fellowsByYear);
