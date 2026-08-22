@@ -1,9 +1,46 @@
-import { ArrowRight, Facebook, Youtube, Instagram } from "lucide-react";
+"use client";
 
+import { useState } from "react";
+import { ArrowRight, Facebook, Youtube, Instagram, Check, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function SiteFooter() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle"); // idle, loading, success, error
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setEmail("");
+      } else {
+        const data = await response.json();
+        setStatus("error");
+        setErrorMessage(data.error || "Failed to subscribe. Please try again.");
+      }
+    } catch (error) {
+      console.error("Newsletter error:", error);
+      setStatus("error");
+      setErrorMessage("A network error occurred. Please try again later.");
+    }
+  };
+
   return (
     <footer id="contact" className="bg-[#1e2533] pb-10 pt-20 text-white">
       <div className="mx-auto max-w-7xl px-6">
@@ -46,16 +83,41 @@ export default function SiteFooter() {
           <div>
             <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-[#D89B2B]">Newsletter</h4>
             <p className="mb-4 text-sm text-gray-400">Stay updated with our latest programs and impact.</p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="EMAIL ADDRESS"
-                className="w-full border border-gray-600 bg-transparent px-4 py-2 text-sm text-white focus:border-[#D89B2B] focus:outline-none"
-              />
-              <button className="bg-[#D89B2B] px-4 py-2 text-white transition-colors hover:bg-white hover:text-[#344059]" aria-label="Submit email">
-                <ArrowRight className="h-5 w-5" />
-              </button>
-            </div>
+            
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+              <div className="flex">
+                <input
+                  type="email"
+                  placeholder="EMAIL ADDRESS"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={status === "loading" || status === "success"}
+                  required
+                  className="w-full border border-gray-600 bg-transparent px-4 py-2 text-sm text-white focus:border-[#D89B2B] focus:outline-none disabled:opacity-50"
+                />
+                <button 
+                  type="submit"
+                  disabled={status === "loading" || status === "success"}
+                  className="flex min-w-[52px] items-center justify-center bg-[#D89B2B] px-4 py-2 text-white transition-colors hover:bg-white hover:text-[#344059] disabled:opacity-50 disabled:hover:bg-[#D89B2B] disabled:hover:text-white" 
+                  aria-label="Submit email"
+                >
+                  {status === "loading" ? (
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                  ) : status === "success" ? (
+                    <Check className="h-5 w-5" />
+                  ) : (
+                    <ArrowRight className="h-5 w-5" />
+                  )}
+                </button>
+              </div>
+              {status === "success" && (
+                <p className="text-xs text-green-400 animate-in fade-in">Successfully subscribed!</p>
+              )}
+              {status === "error" && (
+                <p className="text-xs text-red-400 animate-in fade-in">{errorMessage}</p>
+              )}
+            </form>
+
           </div>
         </div>
 

@@ -10,6 +10,7 @@ import HeroVideo from "@/components/HeroVideo";
 
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import NewsletterModal from "@/components/NewsletterModal";
 
 export default async function Home() {
   const query = `*[_type == "testimonial"] | order(orderRank){
@@ -33,6 +34,7 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-[#344059] selection:bg-[#D89B2B] selection:text-white">
+      <NewsletterModal />
       <SiteHeader />
 
       <main className="flex-1 bg-[var(--color-sand)] text-[var(--color-ink)]">
