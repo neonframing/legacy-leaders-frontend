@@ -304,9 +304,9 @@ const boardMembersQuery = `*[_type == "boardMember"] | order(orderRank) {
   "imageUrl": image.asset->url
 }`;
 
-const galaEventsQuery = `*[_type == "galaEvent"] | order(year desc) {
+const galaEventsQuery = `*[_type == "galaEvent"] | order(eventName desc) {
   _id,
-  year,
+  eventName,
   eventLabel,
   eventCaption,
   "images": galleryImages[] {
@@ -330,13 +330,13 @@ export default async function OurStoryPage() {
   // Transform Sanity Gala data to match the component's expected prop structure
   const galaEditions = rawGalaEvents?.map((gala) => {
     return {
-      year: gala.year,
+      year: gala.eventName,
       images: gala.images?.map((img, index) => {
         // Only the first image gets the label and caption based on the current Sanity schema
         if (index === 0) {
           return {
             src: img.src,
-            alt: img.alt || `Legacy Leaders ${gala.year} Gala Photo`,
+            alt: img.alt || `Legacy Leaders ${gala.eventName} Gala Photo`,
             label: gala.eventLabel,
             caption: gala.eventCaption,
           };
@@ -565,13 +565,13 @@ export default async function OurStoryPage() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-20 grid gap-6 md:grid-cols-2 md:items-end">
               <div>
-                <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Legacy Sneaker Gala</p>
+                <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Legacy Leaders Events</p>
                 <h2 className="text-5xl font-black uppercase tracking-tight sm:text-6xl md:text-[5.5rem] md:leading-[0.9]">
                   Celebration of purpose.
                 </h2>
               </div>
               <p className="text-lg leading-relaxed text-white/80 max-w-lg md:ml-auto">
-                Our signature biannual event brings together mentors, supporters, and emerging leaders for an evening of inspiration. More than a fundraiser, it is a reminder that leadership can be both authentic and accessible.
+                Our signature events gather mentors, supporters, and emerging leaders for inspiration, proving time and again that true leadership is both authentic and accessible.
               </p>
             </div>
             
