@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { Check, Send } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -41,6 +45,64 @@ const developmentAreas = [
 export default function LegacyFellowsApplicationPage() {
   const currentYear = new Date().getFullYear();
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    // Collect all form values using the native FormData API.
+    // FormData automatically reads every named input in the form.
+    // .getAll() is used for checkboxes so all selected values are captured as an array.
+    const raw = new FormData(e.target);
+    const payload = {
+      fullName:            raw.get("fullName"),
+      address1:            raw.get("address1"),
+      cityStateZip:        raw.get("cityStateZip"),
+      phone:               raw.get("phone"),
+      bestEmail:           raw.get("bestEmail"),
+      preferredContact:    raw.getAll("preferredContact").join(", "),
+      bestTimeToContact:   raw.get("bestTimeToContact"),
+      shirtSize:           raw.get("shirtSize"),
+      birthday:            raw.get("birthday"),
+      employerTitle:       raw.get("employerTitle"),
+      educationLevel:      raw.get("educationLevel"),
+      employmentStatus:    raw.get("employmentStatus"),
+      internshipInterest:  raw.getAll("internshipInterest").join(", "),
+      financialAssistance: raw.get("financialAssistance"),
+      developmentAreas:    raw.getAll("developmentAreas").join(", "),
+      timestamp:           new Date().toISOString(),
+    };
+
+    try {
+      const response = await fetch("https://hook.us2.make.com/87zee0kqvgjrc2jlaam8ik9xe17h8hdp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.status === 409) {
+        setErrorMessage("An application with this email address has already been submitted.");
+        return;
+      }
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        e.target.reset();
+      } else {
+        setErrorMessage("Something went wrong on our end. Please try again later.");
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#f8f6f1] font-sans text-[#344059] selection:bg-[#D89B2B] selection:text-white">
       <SiteHeader />
@@ -70,7 +132,24 @@ export default function LegacyFellowsApplicationPage() {
             </div>
           </div>
 
-          <form className="space-y-10" action="#" method="post" encType="multipart/form-data">
+          {isSubmitted ? (
+            <div className="flex flex-col items-center justify-center min-h-[360px] text-center bg-white p-10 border border-[#344059]/10 animate-in fade-in zoom-in duration-500">
+              <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-5 border border-green-100">
+                <Check size={32} className="text-green-600" />
+              </div>
+              <h3 className="text-2xl font-black uppercase tracking-tight text-[#344059] mb-3">Application Received</h3>
+              <p className="text-gray-600 text-base max-w-md mx-auto">
+                Thank you for applying to the Legacy Fellows program. Be on the lookout for an email scheduling your virtual interview.
+              </p>
+              <button
+                onClick={() => setIsSubmitted(false)}
+                className="mt-8 text-sm font-bold uppercase tracking-widest text-[#D89B2B] hover:text-[#344059] transition-colors"
+              >
+                Submit another application
+              </button>
+            </div>
+          ) : (
+          <form className="space-y-10" onSubmit={handleSubmit}>
             <section className="bg-white p-6 sm:p-8 border border-[#344059]/10">
               <h2 className="text-sm font-bold uppercase tracking-[0.24em] text-[#D89B2B]">Contact Information</h2>
               <p className="mt-3 text-sm text-gray-600">Please provide your detailed contact information below.</p>
@@ -244,14 +323,24 @@ export default function LegacyFellowsApplicationPage() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-xs font-medium text-gray-500">* Required fields</p>
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center gap-3 bg-[#344059] px-8 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#D89B2B]"
-              >
-                Submit Application
-              </button>
+              <div className="flex flex-col items-end gap-3">
+                {errorMessage && (
+                  <div className="p-4 bg-red-50 border border-red-100 text-red-600 text-sm rounded-md animate-in fade-in w-full">
+                    {errorMessage}
+                  </div>
+                )}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center justify-center gap-3 bg-[#344059] px-8 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#D89B2B] disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Submitting..." : "Submit Application"}
+                  {!isSubmitting && <Send size={14} className="group-hover:translate-x-1 transition-transform" />}
+                </button>
+              </div>
             </div>
           </form>
+          )}
         </div>
       </main>
 
