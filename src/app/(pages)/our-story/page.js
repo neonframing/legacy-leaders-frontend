@@ -198,12 +198,12 @@ const fellowshipCohortsQuery = `*[_type == "fellowshipCohort"] | order(yearLabel
   showBio,
   fellowsList[] {
     _type,
-    // Fields for structured fellow objects
     name,
     role,
     bio,
+    // Legacy structured fellow objects nested the image under "headshot"
     headshot,
-    // Fields for plain image-only items (drag-and-drop)
+    // Current fellow entries are images (with name/role/bio fields) uploaded directly
     asset,
     hotspot,
     crop
@@ -221,22 +221,16 @@ const normalizeFellowsTimeline = (cohorts = []) =>
     showViewClass: cohort.showViewClass ?? true,
     showBio: cohort.showBio ?? false,
     individuals: (cohort.fellowsList || cohort.individuals || []).map((person) => {
-      // Plain image item (bulk drag-and-drop) — _type is 'image', no headshot wrapper
-      if (person._type === 'image') {
-        return {
-          name: "",
-          role: "",
-          image: person.asset ? urlFor(person).width(800).quality(85).url() : "",
-          bio: "",
-        };
-      }
-      // Structured fellow object
+      // Legacy structured fellow object with a nested "headshot" image field
+      const image = person.headshot
+        ? urlFor(person.headshot).width(800).quality(85).url()
+        : person.asset
+          ? urlFor(person).width(800).quality(85).url()
+          : person.image || "";
       return {
         name: person.name || "",
         role: person.role || "",
-        image: person.headshot
-          ? urlFor(person.headshot).width(800).quality(85).url()
-          : person.image || "",
+        image,
         bio: person.bio || "",
       };
     }),
