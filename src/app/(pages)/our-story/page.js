@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Quote, Sparkles, Users } from "lucide-react";
 
-export const runtime = 'edge';
+export const revalidate = 3600;
 
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
@@ -312,9 +312,9 @@ const galaEventsQuery = `*[_type == "galaEvent"] | order(eventName desc) {
 export default async function OurStoryPage() {
   // Fetch all CMS data concurrently
   const [boardMembers, fellowshipCohorts, rawGalaEvents] = await Promise.all([
-    client.fetch(boardMembersQuery, {}, { cache: "no-store" }),
-    client.fetch(fellowshipCohortsQuery, {}, { cache: "no-store" }),
-    client.fetch(galaEventsQuery, {}, { cache: "no-store" }), // New Fetch
+    client.fetch(boardMembersQuery, {}, { next: { revalidate: 3600 } }),
+    client.fetch(fellowshipCohortsQuery, {}, { next: { revalidate: 3600 } }),
+    client.fetch(galaEventsQuery, {}, { next: { revalidate: 3600 } }), // New Fetch
   ]);
 
   const fellowsTimeline = fellowshipCohorts?.length

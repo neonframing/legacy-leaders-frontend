@@ -1,5 +1,4 @@
-export const dynamic = 'force-dynamic';
-export const runtime = 'edge';
+export const revalidate = 3600;
 
 import { ArrowRight, ArrowUpRight, BookOpen, Briefcase, Heart, Target, Users } from "lucide-react";
 import { client, urlFor } from '@/lib/sanityClient';
@@ -22,7 +21,7 @@ export default async function Home() {
   }`;
 
   const testimonials = await client.fetch(query, {}, {
-    cache: 'no-store'
+    next: { revalidate: 3600 },
   });
   const testimonialSlides = testimonials.map((testimonial) => ({
     _id: testimonial._id,
