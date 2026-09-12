@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { createClerkSupabaseServerClient } from "@/lib/supabaseClient";
 
+export const runtime = 'edge';
+
 // Creates or updates the signed-in user's blog profile (bio, socials, role, etc).
 export async function POST(request) {
   try {

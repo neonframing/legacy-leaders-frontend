@@ -5,6 +5,8 @@ import PostCard from "@/components/blog/PostCard";
 import SocialLinks from "@/components/blog/SocialLinks";
 import { supabasePublic } from "@/lib/supabaseClient";
 
+export const runtime = 'edge';
+
 export async function generateMetadata({ params }) {
   const { username } = await params;
   const { data: profile } = await supabasePublic

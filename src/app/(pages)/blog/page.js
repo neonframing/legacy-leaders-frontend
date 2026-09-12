@@ -5,6 +5,8 @@ import SiteFooter from "@/components/SiteFooter";
 import PostCard from "@/components/blog/PostCard";
 import { supabasePublic } from "@/lib/supabaseClient";
 
+export const runtime = 'edge';
+
 export const metadata = {
   title: "Blog | Legacy Leaders",
   description: "Stories, updates, and reflections from Legacy Leaders Fellows and Mentors.",

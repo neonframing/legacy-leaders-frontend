@@ -4,6 +4,8 @@ import SiteFooter from "@/components/SiteFooter";
 import ProfileForm from "@/components/blog/ProfileForm";
 import { createClerkSupabaseServerClient } from "@/lib/supabaseClient";
 
+export const runtime = 'edge';
+
 export const metadata = {
   title: "Edit Profile | Legacy Leaders Blog",
 };

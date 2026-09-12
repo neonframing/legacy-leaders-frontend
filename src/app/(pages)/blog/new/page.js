@@ -5,6 +5,8 @@ import SiteFooter from "@/components/SiteFooter";
 import PostForm from "@/components/blog/PostForm";
 import { createClerkSupabaseServerClient } from "@/lib/supabaseClient";
 
+export const runtime = 'edge';
+
 export const metadata = {
   title: "New Post | Legacy Leaders Blog",
 };

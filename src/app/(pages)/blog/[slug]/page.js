@@ -6,6 +6,8 @@ import CommentSection from "@/components/blog/CommentSection";
 import SocialLinks from "@/components/blog/SocialLinks";
 import { supabasePublic } from "@/lib/supabaseClient";
 
+export const runtime = 'edge';
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const { data: post } = await supabasePublic

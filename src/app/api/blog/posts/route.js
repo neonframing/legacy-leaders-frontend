@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import { createClerkSupabaseServerClient } from "@/lib/supabaseClient";
 
+export const runtime = 'edge';
+
 function slugify(title) {
   return title
     .toLowerCase()
