@@ -14,10 +14,11 @@ export default clerkMiddleware(async (auth, req) => {
 
 export const config = {
   matcher: [
+    "/blog",
     "/blog/new(.*)",
     "/blog/profile/edit(.*)",
     "/api/(.*)",
-    "/sign-in/(.*)",
-    "/sign-up/(.*)",
+    "/sign-in(.*)",
+    "/sign-up(.*)",
   ],
 };
