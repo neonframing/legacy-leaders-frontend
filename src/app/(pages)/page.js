@@ -259,32 +259,42 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Yacht Flyer Section */}
-        {/* <section className="bg-white py-8 sm:py-10">
-          <div className="mx-auto max-w-5xl px-6 lg:px-10">
-            <div className="overflow-hidden border border-gray-200 shadow-sm">
+        {/* Voices of Legacy Section */}
+        <section className="bg-white py-14 sm:py-16">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <div className="mb-8 text-center">
+              <h2 className="mb-3 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-[#D89B2B]">
+                <span className="h-px w-8 bg-[#D89B2B]" /> Voices of Legacy
+              </h2>
+              <p className="mx-auto max-w-2xl text-base leading-relaxed text-gray-600">
+                Celebrate the leaders and stories shaping our communities through reflection, connection, and purpose.
+              </p>
+            </div>
+
+            <div className="overflow-hidden rounded-sm border border-gray-200 bg-white shadow-sm">
               <Image
-                src="/yacht.png"
-                alt="Yacht event flyer"
+                src="/Voices of Legacy (5).png"
+                alt="Voices of Legacy flyer"
                 width={1600}
                 height={2000}
-                sizes="(min-width: 1024px) 1024px, 100vw"
-                className="h-auto w-full"
+                sizes="(min-width: 1024px) 1200px, 100vw"
+                className="h-auto w-full object-cover"
               />
             </div>
-            <div className="mt-6 flex justify-center">
+
+            <div className="mt-8 flex justify-center">
               <Link
-                href="https://givebutter.com/legacy-on-the-lakefront-a-yacht-party-experience-v1wdhu"
+                href="https://givebutter.com/c/voicesoflegacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-[#344059] !text-white font-bold uppercase tracking-widest text-xs hover:bg-[#D89B2B] transition-all duration-300 inline-flex items-center cursor-pointer gap-3 rounded-sm"
+                className="inline-flex items-center gap-3 rounded-sm bg-[#344059] px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] !text-white transition-all duration-300 hover:bg-[#D89B2B]"
               >
-                Buy Event Tickets
+                Reserve Your Spot
                 <ArrowUpRight size={16} />
               </Link>
             </div>
           </div>
-        </section> */}
+        </section>
 
         {/* Rich Banner Treatment for Get Involved Section */}
         <section id="get-involved" className="relative overflow-hidden bg-[#344059] py-16 md:py-20 text-white">
