@@ -273,7 +273,7 @@ export default async function Home() {
 
             <div className="overflow-hidden rounded-sm border border-gray-200 bg-white shadow-sm">
               <Image
-                src="/Voices of Legacy (5).png"
+                src="/VoicesLegacy.png"
                 alt="Voices of Legacy flyer"
                 width={1600}
                 height={2000}
