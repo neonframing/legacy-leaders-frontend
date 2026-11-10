@@ -122,3 +122,35 @@ create policy "Admins delete any comment" on public.comments
   for delete using (
     exists (select 1 from public.admins where clerk_user_id = (select auth.jwt()->>'sub'))
   );
+
+-- Class content: admin-authored updates and itinerary items shown on the private /fellows and /mentors pages.
+create table if not exists public.class_updates (
+  id uuid primary key default gen_random_uuid(),
+  audience text not null check (audience in ('fellow', 'mentor')),
+  title text not null,
+  content text not null,
+  created_at timestamptz not null default now()
+);
+alter table public.class_updates
+  add column if not exists kind text not null default 'update' check (kind in ('update', 'itinerary'));
+alter table public.class_updates add column if not exists event_date date;
+create index if not exists class_updates_audience_idx on public.class_updates (audience, created_at desc);
+alter table public.class_updates enable row level security;
+
+-- Readable by admins and by users whose profile role matches the audience.
+drop policy if exists "Read own audience updates" on public.class_updates;
+create policy "Read own audience updates" on public.class_updates
+  for select using (
+    exists (select 1 from public.admins where clerk_user_id = (select auth.jwt()->>'sub'))
+    or audience in (select role from public.profiles where clerk_user_id = (select auth.jwt()->>'sub'))
+  );
+drop policy if exists "Admins insert updates" on public.class_updates;
+create policy "Admins insert updates" on public.class_updates
+  for insert with check (
+    exists (select 1 from public.admins where clerk_user_id = (select auth.jwt()->>'sub'))
+  );
+drop policy if exists "Admins delete updates" on public.class_updates;
+create policy "Admins delete updates" on public.class_updates
+  for delete using (
+    exists (select 1 from public.admins where clerk_user_id = (select auth.jwt()->>'sub'))
+  );

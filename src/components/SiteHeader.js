@@ -65,6 +65,14 @@ const navLinks = [
     name: "Blog", 
     href: "/blog" 
   },
+  {
+    name: "Login",
+    href: "/fellows",
+    subLinks: [
+      { name: "Fellows", href: "/fellows" },
+      { name: "Mentors", href: "/mentors" },
+    ]
+  },
   { 
     name: "Contact Us", 
     href: "/contact-us" 

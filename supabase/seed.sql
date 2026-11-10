@@ -105,3 +105,42 @@ If you are curious about a career in policy or advocacy, reach out. I am always 
     now() - interval '1 days'
   )
 on conflict (slug) do nothing;
+
+-- Demo content for the private /fellows and /mentors pages. Run once (re-running duplicates rows).
+-- Dates are relative to today so the itinerary always looks current.
+insert into public.class_updates (audience, kind, title, content, event_date)
+values
+  ('fellow', 'itinerary', 'Fellows Kickoff & Orientation',
+   E'Time: 9:00 AM - 12:00 PM\nLocation: Legacy Leaders Center, Main Hall\nMeet your cohort, review the year ahead, and pick up your Fellowship binder. Business casual.',
+   current_date + 3),
+  ('fellow', 'itinerary', 'Leadership Workshop: Public Speaking',
+   E'Time: 6:00 PM - 8:00 PM\nLocation: Room 204\nPrepare a 2-minute introduction about yourself. Dinner provided.',
+   current_date + 10),
+  ('fellow', 'itinerary', 'College & Career Panel',
+   E'Time: 5:30 PM - 7:30 PM\nLocation: Virtual (link emailed the day before)\nAlumni and local professionals answer your questions about college and careers.',
+   current_date + 17),
+  ('fellow', 'itinerary', 'Community Service Day',
+   E'Time: 8:00 AM - 1:00 PM\nLocation: Meet at the Center, vans depart 8:15 AM\nWear your Legacy Leaders t-shirt and closed-toe shoes.',
+   current_date + 24),
+  ('fellow', 'update', 'Welcome to the new Fellowship year!',
+   E'We are thrilled to have you in this year''s cohort. Check this page regularly for your itinerary, reminders, and announcements from the team.\n\nFirst things first: please complete your Fellow profile on the blog so your mentor can get to know you.', null),
+  ('fellow', 'update', 'Reminder: Bring your goal-setting worksheet',
+   E'At the kickoff we will review your personal goals for the year. Fill out the worksheet from your welcome email and bring a copy.', null),
+  ('fellow', 'update', 'Mentor matches coming soon',
+   E'Mentor pairings will be announced after the kickoff. Your mentor will reach out within a week to schedule your first meeting.', null),
+
+  ('mentor', 'itinerary', 'Mentor Orientation & Training',
+   E'Time: 6:00 PM - 8:30 PM\nLocation: Legacy Leaders Center, Room 101\nOverview of the program, expectations, and best practices for effective mentoring. Light dinner provided.',
+   current_date + 5),
+  ('mentor', 'itinerary', 'Mentor-Fellow Meet & Greet',
+   E'Time: 10:00 AM - 12:00 PM\nLocation: Main Hall\nMeet your matched Fellow and set goals for your first month together.',
+   current_date + 12),
+  ('mentor', 'itinerary', 'Mentor Check-In Roundtable',
+   E'Time: 7:00 PM - 8:00 PM\nLocation: Virtual\nShare wins and challenges with fellow mentors and the program team.',
+   current_date + 26),
+  ('mentor', 'update', 'Thank you for mentoring with us',
+   E'Your time and experience make a real difference. This page will have your itinerary, training materials, and program updates throughout the year.', null),
+  ('mentor', 'update', 'Background check reminder',
+   E'If you have not yet completed your background check, please do so before the Meet & Greet. Contact the program team if you need help.', null),
+  ('mentor', 'update', 'Suggested monthly meeting topics',
+   E'Month 1: goals and expectations. Month 2: study habits and time management. Month 3: college and career exploration. Use these as a starting point and adapt to your Fellow.', null);
