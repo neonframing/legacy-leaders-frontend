@@ -13,12 +13,9 @@ export default clerkMiddleware(async (auth, req) => {
 });
 
 export const config = {
+  // ClerkProvider is in the root layout, so middleware must run on every page, not just blog routes.
   matcher: [
-    "/blog",
-    "/blog/new(.*)",
-    "/blog/profile/edit(.*)",
-    "/api/(.*)",
-    "/sign-in(.*)",
-    "/sign-up(.*)",
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    "/(api|trpc)(.*)",
   ],
 };
