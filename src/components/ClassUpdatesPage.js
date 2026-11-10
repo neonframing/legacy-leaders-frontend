@@ -1,4 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -42,6 +43,12 @@ export default async function ClassUpdatesPage({ audience, heading }) {
         ) : (
           <>
             <p className="mt-2 text-[#667085]">Itinerary and updates from the Legacy Leaders team.</p>
+            <Link
+              href={`/${audience}s/blog`}
+              className="mt-4 inline-block border border-[#344059] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-[#344059] transition-all hover:bg-[#344059] hover:text-white"
+            >
+              {heading} Blog
+            </Link>
             <ClassPageContent
               audience={audience}
               items={items}

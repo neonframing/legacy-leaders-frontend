@@ -17,6 +17,7 @@ export default async function BlogPage() {
   const { data: posts, error } = await supabasePublic
     .from("posts")
     .select("id, title, slug, excerpt, cover_image_url, created_at, profiles(display_name, avatar_url, role)")
+    .is("audience", null)
     .order("created_at", { ascending: false });
 
   return (

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function DeletePostButton({ postId }) {
+export default function DeletePostButton({ postId, redirectTo = "/blog" }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
 
@@ -16,7 +16,7 @@ export default function DeletePostButton({ postId }) {
       body: JSON.stringify({ id: postId }),
     });
     if (res.ok) {
-      router.push("/blog");
+      router.push(redirectTo);
       router.refresh();
     } else {
       setBusy(false);

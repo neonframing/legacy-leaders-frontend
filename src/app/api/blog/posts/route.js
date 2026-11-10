@@ -22,7 +22,11 @@ export async function POST(request) {
     }
 
     const body = await request.json();
-    const { title, content, excerpt, coverImageUrl } = body;
+    const { title, content, excerpt, coverImageUrl, audience = null } = body;
+
+    if (audience !== null && audience !== "fellow" && audience !== "mentor") {
+      return NextResponse.json({ error: "Invalid audience." }, { status: 400 });
+    }
 
     if (!title || !content) {
       return NextResponse.json({ error: "title and content are required." }, { status: 400 });
@@ -49,6 +53,7 @@ export async function POST(request) {
       .from("posts")
       .insert({
         author_id: profile.id,
+        audience,
         title,
         slug,
         excerpt: excerpt ?? null,

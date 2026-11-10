@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-export default function PostCard({ post }) {
+export default function PostCard({ post, basePath = "/blog" }) {
   const author = post.profiles;
 
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={`${basePath}/${post.slug}`}
       className="block border border-[#e7dfce] bg-[#fffdf8] p-6 transition-shadow hover:shadow-lg"
     >
       {post.cover_image_url && (

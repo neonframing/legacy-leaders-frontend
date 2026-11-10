@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import ImageDropzone from "@/components/blog/ImageDropzone";
 
-export default function PostForm() {
+export default function PostForm({ audience = null, basePath = "/blog" }) {
   const router = useRouter();
   const [form, setForm] = useState({ title: "", excerpt: "", content: "", coverImageUrl: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -27,7 +27,7 @@ export default function PostForm() {
       const res = await fetch("/api/blog/posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, audience }),
       });
       const data = await res.json();
 
@@ -36,7 +36,7 @@ export default function PostForm() {
         return;
       }
 
-      router.push(`/blog/${data.post.slug}`);
+      router.push(`${basePath}/${data.post.slug}`);
     } catch (err) {
       setError("Something went wrong. Please try again.");
     } finally {

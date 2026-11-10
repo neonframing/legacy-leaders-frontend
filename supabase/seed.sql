@@ -31,6 +31,15 @@ values
     'Policy advisor and community organizer. Legacy Fellow turned Legacy Mentor-in-training.',
     'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
     '{"website": "https://example.com"}'
+  ),
+  (
+    'seed_david_okafor',
+    'davido',
+    'David Okafor',
+    'mentor',
+    'Engineering manager and second-year Legacy Leaders mentor.',
+    'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+    '{"linkedin": "https://linkedin.com"}'
   )
 on conflict (clerk_user_id) do nothing;
 
@@ -144,3 +153,59 @@ values
    E'If you have not yet completed your background check, please do so before the Meet & Greet. Contact the program team if you need help.', null),
   ('mentor', 'update', 'Suggested monthly meeting topics',
    E'Month 1: goals and expectations. Month 2: study habits and time management. Month 3: college and career exploration. Use these as a starting point and adapt to your Fellow.', null);
+
+-- Demo content for the private Fellows and Mentors blogs. Run after the posts above and the audience migration in schema.sql.
+insert into public.posts (author_id, audience, title, slug, excerpt, content, created_at)
+values
+  ((select id from public.profiles where clerk_user_id = 'seed_marcus_johnson'), 'fellow',
+   'Study Group Starting Thursday: Who Is In?',
+   'fellows-study-group-thursday',
+   'Setting up a weekly study and accountability group for this cohort.',
+   E'A few of us are starting a weekly study group on Thursdays at 7 PM (virtual). We will cover college essays, scholarship applications, and anything else you want to work through together.\n\nReply in the comments if you want in and I will send the link.',
+   now() - interval '5 days'),
+  ((select id from public.profiles where clerk_user_id = 'seed_isaiah_washington'), 'fellow',
+   'Tips for Nailing Your Public Speaking Workshop',
+   'fellows-public-speaking-tips',
+   'What helped me prepare my two-minute introduction.',
+   E'Write it out, then cut it in half. Practice out loud, not in your head. Start with one specific detail about yourself that people will remember.\n\nAnd breathe. Everyone in that room is rooting for you.',
+   now() - interval '2 days'),
+  ((select id from public.profiles where clerk_user_id = 'seed_marcus_johnson'), 'fellow',
+   'Share Your Goals for the Year',
+   'fellows-share-your-goals',
+   'Let us hold each other accountable.',
+   E'I will go first: land a summer internship in software and read one book a month. What are your goals for this Fellowship year?',
+   now() - interval '1 days'),
+  ((select id from public.profiles where clerk_user_id = 'seed_elena_rodriguez'), 'mentor',
+   'Ideas for Your First Meeting With a Fellow',
+   'mentors-first-meeting-ideas',
+   'Icebreakers and questions that have worked well for me.',
+   E'Start with their story, not yours. A few questions I like: What are you most proud of this year? What is one thing you wish adults asked you more about? What would a great year look like?\n\nTake notes and follow up on one thing they said at the next meeting.',
+   now() - interval '6 days'),
+  ((select id from public.profiles where clerk_user_id = 'seed_david_okafor'), 'mentor',
+   'How Do You Handle Missed Meetings?',
+   'mentors-handling-missed-meetings',
+   'Looking for advice from more experienced mentors.',
+   E'My Fellow has cancelled twice in a row. I do not want to push too hard, but I also do not want to lose momentum. How have you handled this?',
+   now() - interval '3 days'),
+  ((select id from public.profiles where clerk_user_id = 'seed_elena_rodriguez'), 'mentor',
+   'Recommended Reading for Mentors',
+   'mentors-recommended-reading',
+   'A short list of books that shaped how I mentor.',
+   E'Three I keep recommending: "The Mentor Guide", "Radical Candor", and "Atomic Habits". Add yours in the comments.',
+   now() - interval '1 days')
+on conflict (slug) do nothing;
+
+insert into public.comments (post_id, author_id, content, created_at)
+values
+  ((select id from public.posts where slug = 'fellows-study-group-thursday'),
+   (select id from public.profiles where clerk_user_id = 'seed_isaiah_washington'),
+   'Count me in! Thursday at 7 works for me.', now() - interval '4 days'),
+  ((select id from public.posts where slug = 'fellows-public-speaking-tips'),
+   (select id from public.profiles where clerk_user_id = 'seed_marcus_johnson'),
+   'The cut-it-in-half tip is gold. Thanks, Isaiah.', now() - interval '1 days'),
+  ((select id from public.posts where slug = 'mentors-handling-missed-meetings'),
+   (select id from public.profiles where clerk_user_id = 'seed_elena_rodriguez'),
+   'I send a short text with two time options. Making it easy to say yes helps a lot.', now() - interval '2 days'),
+  ((select id from public.posts where slug = 'mentors-recommended-reading'),
+   (select id from public.profiles where clerk_user_id = 'seed_david_okafor'),
+   'Adding "Mindset" by Carol Dweck to this list.', now() - interval '12 hours');

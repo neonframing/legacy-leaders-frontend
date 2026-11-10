@@ -33,6 +33,7 @@ export default async function BlogPostPage({ params }) {
       "id, title, content, cover_image_url, created_at, profiles(username, display_name, avatar_url, role, bio, socials)"
     )
     .eq("slug", slug)
+    .is("audience", null)
     .single();
 
   if (!post) notFound();

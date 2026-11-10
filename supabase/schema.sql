@@ -154,3 +154,44 @@ create policy "Admins delete updates" on public.class_updates
   for delete using (
     exists (select 1 from public.admins where clerk_user_id = (select auth.jwt()->>'sub'))
   );
+
+-- Private blogs: posts.audience is null for the public blog, or 'fellow' / 'mentor' for the members-only blogs.
+alter table public.posts
+  add column if not exists audience text check (audience in ('fellow', 'mentor'));
+create index if not exists posts_audience_idx on public.posts (audience, created_at desc);
+
+-- Public posts stay public; private posts are readable by admins and members of that audience.
+drop policy if exists "Public read posts" on public.posts;
+drop policy if exists "Read posts by audience" on public.posts;
+create policy "Read posts by audience" on public.posts
+  for select using (
+    audience is null
+    or exists (select 1 from public.admins where clerk_user_id = (select auth.jwt()->>'sub'))
+    or audience in (select role from public.profiles where clerk_user_id = (select auth.jwt()->>'sub'))
+  );
+
+-- Comments follow the visibility of their post (the subquery is itself filtered by the posts policy).
+drop policy if exists "Public read comments" on public.comments;
+drop policy if exists "Read comments of visible posts" on public.comments;
+create policy "Read comments of visible posts" on public.comments
+  for select using (exists (select 1 from public.posts where posts.id = comments.post_id));
+
+-- Only members of the audience (or admins) can create private posts.
+drop policy if exists "Users create own posts" on public.posts;
+create policy "Users create own posts" on public.posts
+  for insert with check (
+    author_id in (select id from public.profiles where clerk_user_id = (select auth.jwt()->>'sub'))
+    and (
+      audience is null
+      or exists (select 1 from public.admins where clerk_user_id = (select auth.jwt()->>'sub'))
+      or audience in (select role from public.profiles where clerk_user_id = (select auth.jwt()->>'sub'))
+    )
+  );
+
+-- Comments can only be added to posts the user can see.
+drop policy if exists "Users create own comments" on public.comments;
+create policy "Users create own comments" on public.comments
+  for insert with check (
+    author_id in (select id from public.profiles where clerk_user_id = (select auth.jwt()->>'sub'))
+    and exists (select 1 from public.posts where posts.id = comments.post_id)
+  );
