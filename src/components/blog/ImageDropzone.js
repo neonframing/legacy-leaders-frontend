@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 
-export default function ImageDropzone({ label, value, onChange }) {
+export default function ImageDropzone({ label, value, onChange, avatar = false }) {
   const inputRef = useRef(null);
   const [dragOver, setDragOver] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -61,9 +61,13 @@ export default function ImageDropzone({ label, value, onChange }) {
         }`}
       >
         {value ? (
-          <div className="mb-3 flex aspect-[16/10] w-full items-center justify-center overflow-hidden bg-[#f6f1e8]">
-            <img src={value} alt="Cover preview" className="h-full w-full object-contain" />
-          </div>
+          avatar ? (
+            <img src={value} alt="Avatar preview" className="mb-3 h-28 w-28 rounded-full object-cover" />
+          ) : (
+            <div className="mb-3 flex aspect-[16/10] w-full items-center justify-center overflow-hidden bg-[#f6f1e8]">
+              <img src={value} alt="Cover preview" className="h-full w-full object-contain" />
+            </div>
+          )
         ) : null}
         <p className="text-[#667085]">
           {uploading ? "Uploading..." : "Drag & drop an image here, or click to browse"}
@@ -83,13 +87,15 @@ export default function ImageDropzone({ label, value, onChange }) {
 
       {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
 
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder="...or paste an image URL"
-        className="mt-2 w-full border border-[#e7dfce] bg-white p-3 text-sm focus:border-[#D89B2B] focus:outline-none"
-      />
+      {!avatar && (
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="...or paste an image URL"
+          className="mt-2 w-full border border-[#e7dfce] bg-white p-3 text-sm focus:border-[#D89B2B] focus:outline-none"
+        />
+      )}
 
       {value && (
         <button

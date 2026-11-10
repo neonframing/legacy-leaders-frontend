@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import ImageDropzone from "@/components/blog/ImageDropzone";
 
 const socialFields = ["instagram", "linkedin", "x", "website"];
 
@@ -94,16 +95,12 @@ export default function ProfileForm({ initialProfile }) {
           <option value="mentor">Mentor</option>
         </select>
       </div>
-      <div>
-        <label className="block text-sm font-semibold text-[#344059]">Avatar URL</label>
-        <input
-          name="avatarUrl"
-          value={form.avatarUrl}
-          onChange={handleChange}
-          placeholder="https://..."
-          className="mt-1 w-full border border-[#e7dfce] bg-white p-3 text-sm focus:border-[#D89B2B] focus:outline-none"
-        />
-      </div>
+      <ImageDropzone
+        label="Profile Picture"
+        avatar
+        value={form.avatarUrl}
+        onChange={(url) => setForm((prev) => ({ ...prev, avatarUrl: url }))}
+      />
       <div>
         <label className="block text-sm font-semibold text-[#344059]">Bio</label>
         <textarea
