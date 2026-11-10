@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import ImageDropzone from "@/components/blog/ImageDropzone";
 
-const socialFields = ["instagram", "linkedin", "x", "website"];
+const socialFields = ["instagram", "facebook", "linkedin", "x", "website"];
 
 export default function ProfileForm({ initialProfile }) {
   const router = useRouter();
@@ -16,6 +16,7 @@ export default function ProfileForm({ initialProfile }) {
     avatarUrl: initialProfile?.avatar_url ?? "",
     socials: {
       instagram: initialProfile?.socials?.instagram ?? "",
+      facebook: initialProfile?.socials?.facebook ?? "",
       linkedin: initialProfile?.socials?.linkedin ?? "",
       x: initialProfile?.socials?.x ?? "",
       website: initialProfile?.socials?.website ?? "",

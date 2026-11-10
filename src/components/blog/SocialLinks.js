@@ -1,7 +1,8 @@
-import { Globe, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Facebook, Globe, Instagram, Linkedin, Twitter } from "lucide-react";
 
 const SOCIAL_CONFIG = [
   { key: "instagram", label: "Instagram", Icon: Instagram },
+  { key: "facebook", label: "Facebook", Icon: Facebook },
   { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
   { key: "x", label: "X", Icon: Twitter },
   { key: "website", label: "Website", Icon: Globe },
