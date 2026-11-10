@@ -8,10 +8,7 @@ import DeletePostButton from "@/components/blog/DeletePostButton";
 import SocialLinks from "@/components/blog/SocialLinks";
 import { supabasePublic, createClerkSupabaseServerClient } from "@/lib/supabaseClient";
 
-export const runtime = 'edge';
-
-export async function generateMetadata({ params }) {
-  const { slug } = await params;
+export async function postMetadata(slug) {
   const { data: post } = await supabasePublic
     .from("posts")
     .select("title, excerpt")
@@ -24,8 +21,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function BlogPostPage({ params }) {
-  const { slug } = await params;
+export default async function BlogPostPage({ slug }) {
 
   const { data: post } = await supabasePublic
     .from("posts")

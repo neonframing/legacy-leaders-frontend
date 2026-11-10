@@ -87,8 +87,7 @@ export async function PrivateBlogNew({ audience }) {
   );
 }
 
-export async function PrivateBlogPost({ audience, params }) {
-  const { slug } = await params;
+export async function PrivateBlogPost({ audience, slug }) {
   const { supabase, isAdmin, allowed } = await getClassAccess(audience);
   if (!allowed) return <NotAllowed audience={audience} />;
 

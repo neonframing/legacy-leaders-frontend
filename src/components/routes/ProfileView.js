@@ -5,10 +5,7 @@ import PostCard from "@/components/blog/PostCard";
 import SocialLinks from "@/components/blog/SocialLinks";
 import { supabasePublic } from "@/lib/supabaseClient";
 
-export const runtime = 'edge';
-
-export async function generateMetadata({ params }) {
-  const { username } = await params;
+export async function profileMetadata(username) {
   const { data: profile } = await supabasePublic
     .from("profiles")
     .select("display_name")
@@ -18,8 +15,7 @@ export async function generateMetadata({ params }) {
   return { title: profile ? `${profile.display_name} | Legacy Leaders Blog` : "Legacy Leaders Blog" };
 }
 
-export default async function BlogProfilePage({ params }) {
-  const { username } = await params;
+export default async function BlogProfilePage({ username }) {
 
   const { data: profile } = await supabasePublic
     .from("profiles")
