@@ -51,3 +51,32 @@ export async function POST(request) {
     return NextResponse.json({ error: "An internal server error occurred." }, { status: 500 });
   }
 }
+
+// Row Level Security allows this only for the comment's author or an admin.
+export async function DELETE(request) {
+  try {
+    const { userId } = await auth();
+    if (!userId) {
+      return NextResponse.json({ error: "You must be signed in." }, { status: 401 });
+    }
+
+    const { id } = await request.json();
+    if (!id) {
+      return NextResponse.json({ error: "id is required." }, { status: 400 });
+    }
+
+    const supabase = createClerkSupabaseServerClient();
+    const { data, error } = await supabase.from("comments").delete().eq("id", id).select("id");
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    }
+    if (!data?.length) {
+      return NextResponse.json({ error: "Not allowed." }, { status: 403 });
+    }
+    return NextResponse.json({ ok: true }, { status: 200 });
+  } catch (error) {
+    console.error("Comment delete error:", error);
+    return NextResponse.json({ error: "An internal server error occurred." }, { status: 500 });
+  }
+}

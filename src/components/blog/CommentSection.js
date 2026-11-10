@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function CommentSection({ postId, initialComments }) {
+export default function CommentSection({ postId, initialComments, isAdmin = false }) {
   const [comments, setComments] = useState(initialComments);
   const [content, setContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -38,6 +38,20 @@ export default function CommentSection({ postId, initialComments }) {
     }
   }
 
+  async function handleDelete(id) {
+    if (!window.confirm("Delete this comment?")) return;
+    const res = await fetch("/api/blog/comments", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+    if (res.ok) {
+      setComments((prev) => prev.filter((c) => c.id !== id));
+    } else {
+      setError("Could not delete the comment.");
+    }
+  }
+
   return (
     <div className="mt-12">
       <h3 className="text-lg font-bold text-[#344059]">Comments ({comments.length})</h3>
@@ -51,6 +65,15 @@ export default function CommentSection({ postId, initialComments }) {
               </span>
               <span>&middot;</span>
               <span>{new Date(comment.created_at).toLocaleDateString()}</span>
+              {isAdmin && (
+                <button
+                  type="button"
+                  onClick={() => handleDelete(comment.id)}
+                  className="ml-auto font-semibold text-red-600 hover:underline"
+                >
+                  Delete
+                </button>
+              )}
             </div>
             <p className="mt-2 text-sm text-[#344059]">{comment.content}</p>
           </li>

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { auth } from "@clerk/nextjs/server";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CommentSection from "@/components/blog/CommentSection";
+import DeletePostButton from "@/components/blog/DeletePostButton";
 import SocialLinks from "@/components/blog/SocialLinks";
-import { supabasePublic } from "@/lib/supabaseClient";
+import { supabasePublic, createClerkSupabaseServerClient } from "@/lib/supabaseClient";
 
 export const runtime = 'edge';
 
@@ -44,6 +46,17 @@ export default async function BlogPostPage({ params }) {
   const author = post.profiles;
   const socials = author?.socials ?? {};
 
+  const { userId } = await auth();
+  let isAdmin = false;
+  if (userId) {
+    const { data: admin } = await createClerkSupabaseServerClient()
+      .from("admins")
+      .select("clerk_user_id")
+      .eq("clerk_user_id", userId)
+      .maybeSingle();
+    isAdmin = Boolean(admin);
+  }
+
   return (
     <>
       <SiteHeader />
@@ -54,6 +67,11 @@ export default async function BlogPostPage({ params }) {
           </div>
         )}
         <h1 className="text-3xl font-bold text-[#344059]">{post.title}</h1>
+        {isAdmin && (
+          <div className="mt-4">
+            <DeletePostButton postId={post.id} />
+          </div>
+        )}
 
         <Link
           href={`/blog/profile/${author?.username}`}
@@ -72,7 +90,7 @@ export default async function BlogPostPage({ params }) {
 
         <SocialLinks socials={socials} />
 
-        <CommentSection postId={post.id} initialComments={comments ?? []} />
+        <CommentSection postId={post.id} initialComments={comments ?? []} isAdmin={isAdmin} />
       </main>
       <SiteFooter />
     </>

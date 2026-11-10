@@ -101,3 +101,24 @@ create policy "Signed-in users upload blog images" on storage.objects
   for insert with check (bucket_id = 'blog-images' and (select auth.jwt()->>'sub') is not null);
 
 
+
+-- Admins: can moderate (delete) any post or comment.
+-- Add an admin with: insert into public.admins (clerk_user_id) values ('user_xxx');
+create table if not exists public.admins (
+  clerk_user_id text primary key
+);
+alter table public.admins enable row level security;
+drop policy if exists "Admins read self" on public.admins;
+create policy "Admins read self" on public.admins
+  for select using (clerk_user_id = (select auth.jwt()->>'sub'));
+
+drop policy if exists "Admins delete any post" on public.posts;
+create policy "Admins delete any post" on public.posts
+  for delete using (
+    exists (select 1 from public.admins where clerk_user_id = (select auth.jwt()->>'sub'))
+  );
+drop policy if exists "Admins delete any comment" on public.comments;
+create policy "Admins delete any comment" on public.comments
+  for delete using (
+    exists (select 1 from public.admins where clerk_user_id = (select auth.jwt()->>'sub'))
+  );
