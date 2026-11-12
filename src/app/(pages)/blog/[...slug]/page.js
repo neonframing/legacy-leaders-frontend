@@ -4,8 +4,6 @@ import BlogNew, { blogNewMetadata } from "@/components/routes/BlogNew";
 import ProfileView, { profileMetadata } from "@/components/routes/ProfileView";
 import ProfileEdit, { profileEditMetadata } from "@/components/routes/ProfileEdit";
 
-// Handles every /blog/* page in one edge function to stay under Cloudflare's bundle limit.
-export const runtime = 'edge';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;

@@ -3,7 +3,6 @@ import { PrivateBlogIndex, PrivateBlogNew, PrivateBlogPost } from "@/components/
 import { AUDIENCES } from "@/lib/audiences";
 
 // slug is everything after /fellows or /mentors; only /blog, /blog/new and /blog/<post> exist.
-export const runtime = 'edge';
 
 export async function generateMetadata({ params }) {
   const { audience: key, slug } = await params;

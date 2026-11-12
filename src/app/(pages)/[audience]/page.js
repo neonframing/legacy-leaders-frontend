@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import ClassUpdatesPage from "@/components/ClassUpdatesPage";
 import { AUDIENCES } from "@/lib/audiences";
 
-export const runtime = 'edge';
 
 export async function generateMetadata({ params }) {
   const { audience: key } = await params;
